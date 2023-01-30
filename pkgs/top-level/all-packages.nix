@@ -27472,6 +27472,8 @@ with pkgs;
 
   soundfont-ydp-grand = callPackage ../data/soundfonts/ydp-grand { };
 
+  soundfont-freepats = (recurseIntoAttrs (callPackages ../data/soundfonts/freepats {}));
+
   spdx-license-list-data = callPackage ../data/misc/spdx-license-list-data { };
 
   stdmanpages = callPackage ../data/documentation/std-man-pages { };
@@ -28530,6 +28532,8 @@ with pkgs;
     statusnotifier = callPackage ../applications/audio/deadbeef/plugins/statusnotifier.nix { };
     playlist-manager = callPackage ../applications/audio/deadbeef/plugins/playlist-manager.nix { };
   };
+
+  devolo-dlan-cockpit = callPackage ../applications/networking/devolo-dlan-cockpit { };
 
   deadbeef-with-plugins = callPackage ../applications/audio/deadbeef/wrapper.nix {
     plugins = [];

@@ -461,6 +461,11 @@ in mkLicense lset) ({
     url = "https://fedoraproject.org/wiki/Licensing/GPL_Classpath_Exception";
   };
 
+  gpl2FreepatsPlus = {
+    fullName = "GNU General Public License v2.0 or later (with FreePats GPL special exception)";
+    url = "https://freepats.zenvoid.org/Percussion/acoustic-drum-kit.html";
+  };
+
   gpl2Oss = {
     fullName = "GNU General Public License version 2 only (with OSI approved licenses linking exception)";
     url = "https://www.mysql.com/about/legal/licensing/foss-exception";
@@ -484,6 +489,11 @@ in mkLicense lset) ({
   gpl3ClasspathPlus = {
     fullName = "GNU General Public License v3.0 or later (with Classpath exception)";
     url = "https://fedoraproject.org/wiki/Licensing/GPL_Classpath_Exception";
+  };
+
+  gpl3FreepatsPlus = {
+    fullName = "GNU General Public License v3.0 or later (with FreePats GPL special exception)";
+    url = "https://freepats.zenvoid.org/licenses.html#GPL_exception";
   };
 
   hpnd = {
