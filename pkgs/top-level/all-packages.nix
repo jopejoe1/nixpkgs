@@ -29275,6 +29275,8 @@ with pkgs;
 
   denaro = callPackage ../applications/finance/denaro { };
 
+  devolo-dlan-cockpit = callPackage ../applications/networking/devolo-dlan-cockpit { };
+
   dfasma = libsForQt5.callPackage ../applications/audio/dfasma { };
 
   dht = callPackage ../applications/networking/p2p/dht { };
