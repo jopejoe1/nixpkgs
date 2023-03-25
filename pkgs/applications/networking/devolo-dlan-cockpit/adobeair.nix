@@ -2,35 +2,27 @@
 , stdenv
 , fetchurl
 , dpkg
+, pkgsi686Linux
 }:
 
 stdenv.mkDerivation rec {
   pname = "adobeair";
   version = "2.6.0.19170-devolo1";
 
-  src = fetchurl {
-    url = "https://www.devolo.global/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/devolo-cockpit-v5-2-0-185-linux.run";
-    sha256 = "sha256-l2CZtapHhe3Jzqu2JGq+ckt40ucX0ZBuuRvxN/WFoeY=";
+  src = if (stdenv.hostPlatform.system == "i686-linux") then fetchurl {
+    url = "http://update.devolo.com/linux/apt/pool/main/a/${pname}/${pname}_${version}_i386.deb";
+    sha256 = "918d6a73c33a2934ad8c3a61b2a93a19d6dff99b06a966fe5941a0688f958229";
+  } else fetchurl {
+    url = "http://update.devolo.com/linux/apt/pool/main/a/${pname}/${pname}_${version}_amd64.deb";
+    sha256 = "e9de65e7934ee413af29e1e9f5ddd39a61ca6b30585709692b418d9dc7193a50";
   };
 
-  dontUnpack = true;
   dontBuild = true;
-  dontStrip = true;
 
-  installPhase = ''
-    skip=$(grep -a -m1 -n "HERE_BE_DRAG[O]NS" $src | cut -d: -f1)
-    tail $src -n +$((skip+1)) | tar -x -C .
-  '' + (if stdenv.isi686 then ''
-    ${dpkg}/bin/dpkg -x devolo-dlan-cockpit_${version}-0_i386.deb $out
-    ${dpkg}/bin/dpkg -x adobeair*i386.deb $out
-  '' else ''
-    ${dpkg}/bin/dpkg -x devolo-dlan-cockpit_${version}-0_amd64.deb $out
-    ${dpkg}/bin/dpkg -x adobeair*amd64.deb $out
-  '');
+  unpackPhase = "dpkg -x $src ./";
 
   meta = with lib; {
-    description = "Display and configure settings of your devolo device";
-    homepage = "https://www.devolo.global/devolo-cockpit";
+    description = "Adobe AIR 2 distibuted by devolo";
     #license = licenses.unfree;
     maintainers = with maintainers; [ ];
     platforms = [ "x86_64-linux" "i686-linux" ];
