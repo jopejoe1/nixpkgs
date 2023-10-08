@@ -161,7 +161,7 @@ rec {
         homepage = "https://github.com/googlefonts/noto-emoji";
         license = with licenses; [ ofl asl20 ];
         platforms = platforms.all;
-        maintainers = with maintainers; [ mathnerd314 sternenseemann ];
+        maintainers = with maintainers; [ mathnerd314 sternenseemann jopejoe1 ];
       };
     };
 
