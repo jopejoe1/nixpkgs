@@ -29908,6 +29908,7 @@ with pkgs;
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
+    noto-fonts-color-emoji_withExtraFlags
     noto-fonts-emoji-blob-bin
     noto-fonts-monochrome-emoji
     ;
