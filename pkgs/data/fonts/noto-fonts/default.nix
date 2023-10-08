@@ -4,6 +4,7 @@
 , gitUpdater
 , fetchFromGitHub
 , fetchurl
+, fetchpatch
 , cairo
 , nixosTests
 , pkg-config
@@ -90,6 +91,80 @@ rec {
       };
     };
 
+  mkNotoEmoji =
+    { pname
+    , withExtraFlags ? false
+    }:
+    let
+      emojiPythonEnv =
+        buildPackages.python3.withPackages (p: with p; [ fonttools nototools ]);
+    in
+    stdenvNoCC.mkDerivation rec {
+      inherit pname;
+      version = "2.038";
+
+      src = fetchFromGitHub {
+        owner = "googlefonts";
+        repo = "noto-emoji";
+        rev = "v${version}";
+        sha256 = "1rgmcc6nqq805iqr8kvxxlk5cf50q714xaxk3ld6rjrd69kb8ix9";
+      };
+
+      depsBuildBuild = [
+        buildPackages.stdenv.cc
+        pkg-config
+        cairo
+      ];
+
+      nativeBuildInputs = [
+        imagemagick
+        zopfli
+        pngquant
+        which
+        emojiPythonEnv
+      ];
+
+      patches = lib.optionals withExtraFlags [
+        (fetchpatch {
+          url = "https://aur.archlinux.org/cgit/aur.git/plain/0001-remove-flag-filter.patch?h=noto-fonts-emoji-flag-git";
+          hash = "sha256-VOgr0/kUV84YH5ALU1QPFZH3CPMCfijU6Hx+kG1/elY=";
+        })
+      ];
+
+      postPatch = ''
+        patchShebangs *.py
+        patchShebangs third_party/color_emoji/*.py
+        # remove check for virtualenv, since we handle
+        # python requirements using python.withPackages
+        sed -i '/ifndef VIRTUAL_ENV/,+2d' Makefile
+
+        # Make the build verbose so it won't get culled by Hydra thinking that
+        # it somehow got stuck doing nothing.
+        sed -i 's;\t@;\t;' Makefile
+
+        # Use upstream region-flags
+        rm -r third_party/region-flags
+        ln -s ${region-flags} third_party/region-flags
+      '';
+
+      enableParallelBuilding = true;
+
+      installPhase = ''
+        runHook preInstall
+        mkdir -p $out/share/fonts/noto
+        cp NotoColorEmoji.ttf $out/share/fonts/noto
+        runHook postInstall
+      '';
+
+      meta = with lib; {
+        description = "Color emoji font";
+        homepage = "https://github.com/googlefonts/noto-emoji";
+        license = with licenses; [ ofl asl20 ];
+        platforms = platforms.all;
+        maintainers = with maintainers; [ mathnerd314 sternenseemann ];
+      };
+    };
+
   mkNotoCJK = { typeface, version, sha256 }:
     stdenvNoCC.mkDerivation {
       pname = "noto-fonts-cjk-${lib.toLower typeface}";
@@ -165,70 +240,14 @@ rec {
     sha256 = "sha256-y1103SS0qkZMhEL5+7kQZ+OBs5tRaqkqOcs4796Fzhg=";
   };
 
-  noto-fonts-color-emoji =
-    let
-      version = "2.038";
-      emojiPythonEnv =
-        buildPackages.python3.withPackages (p: with p; [ fonttools nototools ]);
-    in
-    stdenvNoCC.mkDerivation {
-      pname = "noto-fonts-emoji";
-      inherit version;
+  noto-fonts-color-emoji = mkNotoEmoji {
+    pname = "noto-fonts-emoji";
+  };
 
-      src = fetchFromGitHub {
-        owner = "googlefonts";
-        repo = "noto-emoji";
-        rev = "v${version}";
-        sha256 = "1rgmcc6nqq805iqr8kvxxlk5cf50q714xaxk3ld6rjrd69kb8ix9";
-      };
-
-      depsBuildBuild = [
-        buildPackages.stdenv.cc
-        pkg-config
-        cairo
-      ];
-
-      nativeBuildInputs = [
-        imagemagick
-        zopfli
-        pngquant
-        which
-        emojiPythonEnv
-      ];
-
-      postPatch = ''
-        patchShebangs *.py
-        patchShebangs third_party/color_emoji/*.py
-        # remove check for virtualenv, since we handle
-        # python requirements using python.withPackages
-        sed -i '/ifndef VIRTUAL_ENV/,+2d' Makefile
-
-        # Make the build verbose so it won't get culled by Hydra thinking that
-        # it somehow got stuck doing nothing.
-        sed -i 's;\t@;\t;' Makefile
-
-        # Use upstream region-flags
-        rm -r third_party/region-flags
-        ln -s ${region-flags} third_party/region-flags
-      '';
-
-      enableParallelBuilding = true;
-
-      installPhase = ''
-        runHook preInstall
-        mkdir -p $out/share/fonts/noto
-        cp NotoColorEmoji.ttf $out/share/fonts/noto
-        runHook postInstall
-      '';
-
-      meta = with lib; {
-        description = "Color emoji font";
-        homepage = "https://github.com/googlefonts/noto-emoji";
-        license = with licenses; [ ofl asl20 ];
-        platforms = platforms.all;
-        maintainers = with maintainers; [ mathnerd314 sternenseemann ];
-      };
-    };
+  noto-fonts-color-emoji_withExtraFlags = mkNotoEmoji {
+    pname = "noto-fonts-emoji_withExtraFlags";
+    withExtraFlags = true;
+  };
 
   noto-fonts-monochrome-emoji =
     # Metadata fetched from
