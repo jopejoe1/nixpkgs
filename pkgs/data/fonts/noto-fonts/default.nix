@@ -10,6 +10,7 @@
 , pngquant
 , which
 , imagemagick
+, region-flags
 , zopfli
 , buildPackages
 , variants ? [ ]
@@ -205,6 +206,10 @@ rec {
         # Make the build verbose so it won't get culled by Hydra thinking that
         # it somehow got stuck doing nothing.
         sed -i 's;\t@;\t;' Makefile
+
+        # Use upstream region-flags
+        rm -r third_party/region-flags
+        ln -s ${region-flags} third_party/region-flags
       '';
 
       enableParallelBuilding = true;
