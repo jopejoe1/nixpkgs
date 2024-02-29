@@ -733,7 +733,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "A complete, cross-platform solution to record, convert and stream audio and video";
     homepage = "https://www.ffmpeg.org/";
-    changelog = "https://github.com/FFmpeg/FFmpeg/blob/n${finalAttrs.version}/Changelog";
+    changelog = "https://github.com/FFmpeg/FFmpeg/blob/${finalAttrs.src.rev}/Changelog";
     longDescription = ''
       FFmpeg is the leading multimedia framework, able to decode, encode, transcode,
       mux, demux, stream, filter and play pretty much anything that humans and machines
