@@ -279,14 +279,7 @@
 /*
  *  Darwin frameworks
  */
-, AVFoundation
-, Cocoa
-, CoreAudio
-, CoreMedia
-, CoreServices
-, MediaToolbox
-, VideoDecodeAcceleration
-, VideoToolbox
+, darwin
 /*
  *  Testing
  */
@@ -308,6 +301,7 @@
 
 let
   inherit (lib) optional optionals optionalString enableFeature versionAtLeast;
+  inherit (darwin.apple_sdk.frameworks) AVFoundation Cocoa CoreAudio CoreMedia CoreServices MediaToolbox VideoDecodeAcceleration VideoToolbox;
 in
 
 

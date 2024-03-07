@@ -20992,11 +20992,7 @@ with pkgs;
 
   linbox = callPackage ../development/libraries/linbox { };
 
-  ffmpeg_4 = callPackage ../development/libraries/ffmpeg/4.nix {
-    inherit (darwin.apple_sdk.frameworks)
-      Cocoa CoreServices CoreAudio CoreMedia AVFoundation MediaToolbox
-      VideoDecodeAcceleration VideoToolbox;
-  };
+  ffmpeg_4 = callPackage ../development/libraries/ffmpeg/4.nix { };
   ffmpeg_4-headless = ffmpeg_4.override {
     ffmpegVariant = "headless";
   };
@@ -21004,11 +21000,7 @@ with pkgs;
     ffmpegVariant = "full";
   };
 
-  ffmpeg_5 = callPackage ../development/libraries/ffmpeg/5.nix {
-    inherit (darwin.apple_sdk.frameworks)
-      Cocoa CoreServices CoreAudio CoreMedia AVFoundation MediaToolbox
-      VideoDecodeAcceleration VideoToolbox;
-  };
+  ffmpeg_5 = callPackage ../development/libraries/ffmpeg/5.nix { };
   ffmpeg_5-headless = ffmpeg_5.override {
     ffmpegVariant = "headless";
   };
@@ -21016,11 +21008,7 @@ with pkgs;
     ffmpegVariant = "full";
   };
 
-  ffmpeg_6 = callPackage ../development/libraries/ffmpeg/6.nix {
-     inherit (darwin.apple_sdk.frameworks)
-      Cocoa CoreServices CoreAudio CoreMedia AVFoundation MediaToolbox
-      VideoDecodeAcceleration VideoToolbox;
-  };
+  ffmpeg_6 = callPackage ../development/libraries/ffmpeg/6.nix { };
   ffmpeg_6-headless = ffmpeg_6.override {
     ffmpegVariant = "headless";
   };
