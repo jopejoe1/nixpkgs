@@ -463,6 +463,11 @@ in mkLicense lset) ({
     free = false;
   };
 
+  etsi-ipr = {
+    fullName = "ETSI Intellectual Property Rights Policy";
+    url = "https://www.etsi.org/images/files/IPR/etsi-ipr-policy.pdf";
+  };
+
   eupl11 = {
     spdxId = "EUPL-1.1";
     fullName = "European Union Public License 1.1";
