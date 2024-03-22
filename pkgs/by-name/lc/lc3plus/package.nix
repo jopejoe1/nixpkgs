@@ -2,19 +2,12 @@
   lib,
   stdenv,
   fetchurl,
+  fetchpatch,
   fetchFromGitHub,
   unzip,
   cmake,
 }:
 
-let
-  buildFiles = fetchFromGitHub {
-    owner = "bluekitchen";
-    repo = "libLC3plus";
-    rev = "887a9e1b3dd5e51462bc60b0400152eab51337ec";
-    hash = "sha256-b41uxcwQ5n9qXK0VSQGOMfe8sudBM/B6651wJgSv74s=";
-  };
-in
 stdenv.mkDerivation (finalAttrs: {
   pname = "lc3plus";
   version = "01.04.01";
@@ -32,11 +25,8 @@ stdenv.mkDerivation (finalAttrs: {
   sourceRoot = "ETSI_Release/LC3plus_ETSI_src_va15eb59632b_20230228/src/fixed_point";
 
   postPatch = ''
-    cp "${buildFiles}/CMakeLists.txt" CMakeLists.txt
-    cp "${buildFiles}/LC3plus.pc.in" LC3plus.pc.in
-    substituteInPlace LC3plus.pc.in \
-    --replace "\''${exec_prefix}/@CMAKE_INSTALL_LIBDIR@" @CMAKE_INSTALL_FULL_LIBDIR@ \
-    --replace "\''${prefix}/@CMAKE_INSTALL_INCLUDEDIR@" @CMAKE_INSTALL_FULL_INCLUDEDIR@
+    cp "${./CMakeLists.txt}" CMakeLists.txt
+    cp "${./lc3plus.pc.in}" lc3plus.pc.in
   '';
 
   meta = with lib; {
