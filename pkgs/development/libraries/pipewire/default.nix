@@ -44,6 +44,7 @@
 , liblc3
 , fdk_aac
 , libopus
+, lc3plus
 , ldacbtSupport ? bluezSupport && lib.meta.availableOn stdenv.hostPlatform ldacbt
 , ldacbt
 , nativeHspSupport ? true
@@ -132,7 +133,7 @@ stdenv.mkDerivation(finalAttrs: {
   ++ lib.optionals gstreamerSupport [ gst_all_1.gst-plugins-base gst_all_1.gstreamer ]
   ++ lib.optionals libcameraSupport [ libcamera libdrm ]
   ++ lib.optional ffmpegSupport ffmpeg
-  ++ lib.optionals bluezSupport [ bluez libfreeaptx liblc3 sbc fdk_aac libopus ]
+  ++ lib.optionals bluezSupport [ bluez libfreeaptx liblc3 sbc fdk_aac libopus lc3plus ]
   ++ lib.optional ldacbtSupport ldacbt
   ++ lib.optional nativeModemManagerSupport modemmanager
   ++ lib.optional pulseTunnelSupport libpulseaudio
@@ -169,7 +170,7 @@ stdenv.mkDerivation(finalAttrs: {
     (lib.mesonEnable "bluez5-backend-ofono" ofonoSupport)
     (lib.mesonEnable "bluez5-backend-hsphfpd" hsphfpdSupport)
     # source code is not easily obtainable
-    (lib.mesonEnable "bluez5-codec-lc3plus" false)
+    (lib.mesonEnable "bluez5-codec-lc3plus" bluezSupport)
     (lib.mesonEnable "bluez5-codec-lc3" bluezSupport)
     (lib.mesonEnable "bluez5-codec-ldac" ldacbtSupport)
     (lib.mesonOption "sysconfdir" "/etc")
@@ -185,6 +186,8 @@ stdenv.mkDerivation(finalAttrs: {
     (lib.mesonEnable "compress-offload" true)
     (lib.mesonEnable "man" true)
   ];
+
+  env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
 
   # Fontconfig error: Cannot load default config file
   FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
