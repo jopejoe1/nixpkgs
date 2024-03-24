@@ -40953,32 +40953,6 @@ with pkgs;
 
   mpvc = callPackage ../applications/misc/mpvc { };
 
-  # Overriding does not work when using callPackage on discord using import instead. (https://github.com/NixOS/nixpkgs/pull/179906)
-  discord = import ../applications/networking/instant-messengers/discord {
-    inherit lib stdenv;
-    inherit (pkgs) callPackage fetchurl;
-    branch = "stable";
-  };
-
-  discord-ptb = import ../applications/networking/instant-messengers/discord {
-    inherit lib stdenv;
-    inherit (pkgs) callPackage fetchurl;
-    branch = "ptb";
-  };
-
-  discord-canary = import ../applications/networking/instant-messengers/discord {
-    inherit lib stdenv;
-    inherit (pkgs) callPackage fetchurl;
-    branch = "canary";
-  };
-
-  discord-development = import ../applications/networking/instant-messengers/discord {
-    inherit lib stdenv;
-    inherit (pkgs) callPackage fetchurl;
-    branch = "development";
-  };
-
-
   discord-screenaudio = qt6.callPackage ../applications/networking/instant-messengers/discord-screenaudio { };
 
   discordo = callPackage ../applications/networking/discordo/default.nix { };
