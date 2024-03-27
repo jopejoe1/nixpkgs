@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , lz4
-, ffmpeg-full
+, ffmpeg
 , fetchFromGitHub
 , openssh
 , netcat
@@ -33,9 +33,7 @@ stdenv.mkDerivation rec {
 
   postInstall = let
     deps = [
-      # `ffmpeg-full` is used here to bring in `ffplay`, which is used
-      # to display the reMarkable framebuffer
-      ffmpeg-full
+      ffmpeg
       lz4
       openssh
       # Libressl netcat brings in `nc` which used for --uncompressed mode.
