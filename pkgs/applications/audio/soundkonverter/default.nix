@@ -14,7 +14,7 @@
   withMp3 ? true, lame, mp3gain,
   withAac ? true, faad2, aacgain,
   withUnfreeAac ? false, faac,
-  withFfmpeg ? true, ffmpeg-full,
+  withFfmpeg ? true, ffmpeg,
   withMplayer ? false, mplayer,
   withSox ? true, sox,
   withOpus ? true, opusTools,
@@ -30,7 +30,7 @@ let runtimeDeps = []
     ++ lib.optional withCD cdparanoia
     ++ lib.optional withFlac flac
     ++ lib.optional withSpeex speex
-    ++ lib.optional withFfmpeg ffmpeg-full
+    ++ lib.optional withFfmpeg ffmpeg
     ++ lib.optional withMplayer mplayer
     ++ lib.optional withSox sox
     ++ lib.optional withOpus opusTools
