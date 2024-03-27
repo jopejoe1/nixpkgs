@@ -3,7 +3,7 @@
 , fetchFromGitHub
 , cmake
 , symlinkJoin
-, ffmpeg-full
+, ffmpeg
 , pkg-config
 , ninja
 , pybind11
@@ -43,9 +43,9 @@ buildPythonPackage rec {
   FFMPEG_ROOT = symlinkJoin {
     name = "ffmpeg";
     paths = [
-      ffmpeg-full.bin
-      ffmpeg-full.dev
-      ffmpeg-full.lib
+      ffmpeg.bin
+      ffmpeg.dev
+      ffmpeg.lib
     ];
   };
 
@@ -58,7 +58,7 @@ buildPythonPackage rec {
   ];
 
   buildInputs = [
-    ffmpeg-full
+    ffmpeg
     pybind11
     sox
     torch.cxxdev
