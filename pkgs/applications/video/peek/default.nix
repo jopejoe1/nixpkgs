@@ -17,7 +17,7 @@
 , glib
 , cairo
 , keybinder3
-, ffmpeg-full
+, ffmpeg
 , python3
 , libxml2
 , gst_all_1
@@ -75,7 +75,7 @@ stdenv.mkDerivation rec {
   '';
 
   preFixup = ''
-    gappsWrapperArgs+=(--prefix PATH : ${lib.makeBinPath [ which ffmpeg-full gifski ]})
+    gappsWrapperArgs+=(--prefix PATH : ${lib.makeBinPath [ which ffmpeg gifski ]})
   '';
 
   passthru = {
