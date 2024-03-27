@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, buildDotnetModule, ffmpeg-full, dotnetCorePackages }:
+{ lib, fetchFromGitHub, buildDotnetModule, ffmpeg, dotnetCorePackages }:
 
 buildDotnetModule rec {
   pname = "tone";
@@ -20,7 +20,7 @@ buildDotnetModule rec {
   ];
 
   dotnet-sdk = dotnetCorePackages.sdk_6_0;
-  runtimeDeps = [ ffmpeg-full ];
+  runtimeDeps = [ ffmpeg ];
 
   meta = with lib; {
     homepage = "https://github.com/sandreas/tone";
