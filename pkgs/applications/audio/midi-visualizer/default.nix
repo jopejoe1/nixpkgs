@@ -10,7 +10,7 @@
 , libXinerama
 , libXcursor
 , gtk3
-, ffmpeg-full
+, ffmpeg
 , AppKit
 , Carbon
 , Cocoa
@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     glfw
-    ffmpeg-full
+    ffmpeg
   ] ++ lib.optionals stdenv.isLinux [
     libX11
     libXrandr
