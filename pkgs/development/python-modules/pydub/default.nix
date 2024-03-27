@@ -2,7 +2,7 @@
 , buildPythonPackage
 , fetchFromGitHub
 , fetchpatch
-, ffmpeg-full
+, ffmpeg
 , pytestCheckHook
 , pythonOlder
 , setuptools
@@ -36,7 +36,7 @@ buildPythonPackage rec {
   ];
 
   nativeCheckInputs = [
-    ffmpeg-full
+    ffmpeg
     pytestCheckHook
   ];
 
