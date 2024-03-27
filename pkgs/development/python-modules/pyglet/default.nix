@@ -12,7 +12,7 @@
 , gdk-pixbuf
 , fontconfig
 , freetype
-, ffmpeg-full
+, ffmpeg
 , openal
 , libpulseaudio
 }:
@@ -62,7 +62,7 @@ buildPythonPackage rec {
             elif name == 'freetype':
                 path = '${freetype}/lib/libfreetype${ext}'
             elif name[0:2] == 'av' or name[0:2] == 'sw':
-                path = '${ffmpeg-full}/lib/lib' + name + '${ext}'
+                path = '${ffmpeg}/lib/lib' + name + '${ext}'
             elif name == 'openal':
                 path = '${openal}/lib/libopenal${ext}'
             elif name == 'pulse':
