@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, autoreconfHook, docbook_xsl, ffmpeg-full, glib, gtk3
+{ lib, stdenv, fetchurl, autoreconfHook, docbook_xsl, ffmpeg, glib, gtk3
 , intltool, libxslt, pkg-config, sox, wrapGAppsHook }:
 
 stdenv.mkDerivation rec {
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-       --prefix PATH : "${lib.makeBinPath [ ffmpeg-full sox ]}"
+       --prefix PATH : "${lib.makeBinPath [ ffmpeg sox ]}"
     )
   '';
 
