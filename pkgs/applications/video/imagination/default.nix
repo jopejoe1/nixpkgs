@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
     wrapGAppsHook
   ];
 
-  buildInputs = [ ffmpeg-full glib gtk3 sox ];
+  buildInputs = [ ffmpeg glib gtk3 sox ];
 
   preBuild = ''
     substituteInPlace src/main-window.c \
