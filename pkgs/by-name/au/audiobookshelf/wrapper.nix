@@ -1,4 +1,4 @@
-{ stdenv, ffmpeg-full, tone, pname, nodejs, getopt }: ''
+{ stdenv, ffmpeg, tone, pname, nodejs, getopt }: ''
     #!${stdenv.shell}
 
     port=8000
@@ -52,8 +52,8 @@
 
     NODE_ENV=production \
       SOURCE=nixpkgs \
-      FFMPEG_PATH=${ffmpeg-full}/bin/ffmpeg \
-      FFPROBE_PATH=${ffmpeg-full}/bin/ffprobe \
+      FFMPEG_PATH=${ffmpeg}/bin/ffmpeg \
+      FFPROBE_PATH=${ffmpeg}/bin/ffprobe \
       TONE_PATH=${tone}/bin/tone \
       CONFIG_PATH="$config" \
       METADATA_PATH="$metadata" \
