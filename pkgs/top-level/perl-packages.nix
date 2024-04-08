@@ -15607,8 +15607,10 @@ with self; {
     version = "0.52";
     src = fetchurl {
       url = "mirror://cpan/authors/id/E/EX/EXOBUZZ/MediaWiki-API-0.52.tar.gz";
-      hash = "";
+      hash = "sha256-L1Cp2F6/bxK6yeCfUrz+rSz0GYAsFRkbFyck7i9J0MI=";
     };
+    #propagatedBuildInputs = [  ];
+    buildInputs = [ Encode JSON LWPUserAgentCached TestMoreUTF8 JSONPP ];
     meta = {
       description = "Provides a Perl interface to the MediaWiki API";
       homepage = "https://metacpan.org/dist/MediaWiki-API";
