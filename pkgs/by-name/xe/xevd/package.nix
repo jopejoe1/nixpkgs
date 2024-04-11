@@ -41,7 +41,7 @@ stdenv.mkDerivation (finalAttrs: {
     ln $dev/include/xevd/* $dev/include/
   '';
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-lm" ];
+  env.NIX_CFLAGS_COMPILE = toString (lib.optinals stdenv.hostPlatform.isLinux [ "-lm" ]);
 
   outputs = [
     "out"
