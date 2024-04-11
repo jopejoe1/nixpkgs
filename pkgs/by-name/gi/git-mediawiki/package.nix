@@ -1,23 +1,22 @@
 { lib
 , stdenv
-, fetchgit
+, fetchFromGitHub
 , perl
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "git-mediawiki";
-  version = "0-unstable-2023-12-09";
+  version = "0-unstable-2022-03-10";
 
-  src = fetchgit {
-    url = "https://git.kernel.org/pub/scm/git/git.git";
-    rev = "1ef1cce9c254d3787586ac87c1d1a2ca2c00bfd3";
-    hash = "sha256-3GY42QoZOguEob6FfaDBFleFs9XufTufLW5vZzRLn3Y=";
-    sparseCheckout = [
-      "contrib/mw-to-git"
-    ];
+  src = fetchFromGitHub {
+    owner = "Git-Mediawiki";
+    repo = "Git-Mediawiki";
+    rev = "73da25d20690cc78e479088a6c0968762411ad41";
+    hash = "";
+    fetchSubmodules = true;
   };
 
-  sourceRoot = "${src.name}/contrib/mw-to-git";
+  #sourceRoot = "${src.name}/contrib/mw-to-git";
 
   buildInputs = [
     perl
