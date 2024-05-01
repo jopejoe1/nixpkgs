@@ -10,7 +10,7 @@
 assert lib.elem ui [ "terminal" "curses" ];
 stdenv.mkDerivation (finalAttrs: {
   pname = "2048-cli";
-  version = "unstable-2019-12-10";
+  version = "0.9.2-unstable-2019-12-10";
 
   src = fetchFromGitHub {
     owner = "tiehuis";
