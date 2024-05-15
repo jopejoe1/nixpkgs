@@ -27,8 +27,6 @@ stdenv.mkDerivation (finalAttrs: {
     ln $dev/include/xeve/* $dev/include/
   '';
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-lm" ];
-
   outputs = [
     "out"
     "lib"
