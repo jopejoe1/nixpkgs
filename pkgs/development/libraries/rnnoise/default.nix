@@ -73,6 +73,8 @@ in stdenv.mkDerivation (finalAttrs: {
         "$modelJson" | sponge "$modelJson"
   '';
 
+  outputs = [ "out" "lib" "dev" "doc" ];
+
   meta = {
     description = "Recurrent neural network for audio noise reduction";
     homepage = "https://people.xiph.org/~jm/demo/rnnoise/";
