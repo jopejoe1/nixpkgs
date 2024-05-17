@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, openssl, pkg-config
+{ lib, stdenv, fetchurl, openssl, pkg-config, testers
 , withPerl ? false, perl
 , withPython ? false, python3
 , withTcl ? false, tcl
@@ -9,12 +9,12 @@
 , withDebug ? false
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "znc";
   version = "1.8.2";
 
   src = fetchurl {
-    url = "https://znc.in/releases/archive/${pname}-${version}.tar.gz";
+    url = "https://znc.in/releases/archive/znc-${finalAttrs.version}.tar.gz";
     sha256 = "03fyi0j44zcanj1rsdx93hkdskwfvhbywjiwd17f9q1a7yp8l8zz";
   };
 
@@ -39,11 +39,18 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
+  passthru = {
+    tests = {
+      pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
+    };
+  };
+
   meta = with lib; {
     description = "Advanced IRC bouncer";
     homepage = "https://wiki.znc.in/ZNC";
     maintainers = with maintainers; [ schneefux lnl7 ];
     license = licenses.asl20;
     platforms = platforms.unix;
+    pkgConfigModules = [ "znc" ];
   };
-}
+})
