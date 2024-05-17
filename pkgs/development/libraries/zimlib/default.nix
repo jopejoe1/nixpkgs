@@ -7,16 +7,17 @@
 , xz
 , zstd
 , gtest
+, testers
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "zimlib";
   version = "9.1.0";
 
   src = fetchFromGitHub {
     owner = "openzim";
     repo = "libzim";
-    rev = version;
+    rev = finalAttrs.version;
     hash = "sha256-yWnW/+CaQwbemrNLzvQpXw5yvW2Q6LtwDgvA58+fVUs=";
   };
 
@@ -45,7 +46,7 @@ stdenv.mkDerivation rec {
     patchShebangs scripts
   '';
 
-  mesonFlags = [  "-Dtest_data_dir=${testData}" ];
+  mesonFlags = [  "-Dtest_data_dir=${finalAttrs.testData}" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals (stdenv.cc.isGNU) [
@@ -59,11 +60,18 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
+  passthru = {
+    tests = {
+      pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
+    };
+  };
+
   meta = with lib; {
     description = "Library for reading and writing ZIM files";
     homepage =  "https://www.openzim.org/wiki/Zimlib";
     license = licenses.gpl2;
     maintainers = with maintainers; [ greg ];
     platforms = platforms.linux;
+    pkgConfigModules = [ "libzim" ];
   };
-}
+})
