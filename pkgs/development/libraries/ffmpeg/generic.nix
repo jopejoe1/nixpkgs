@@ -73,6 +73,7 @@
 , withJxl ? withFullDeps && lib.versionAtLeast version "5" # JPEG XL de/encoding
 , withLadspa ? withFullDeps # LADSPA audio filtering
 , withLzma ? withHeadlessDeps # xz-utils
+, withMetal ? withHeadlessDeps
 , withMfx ? withFullDeps && (with stdenv.hostPlatform; isLinux && !isAarch) # Hardware acceleration via intel-media-sdk/libmfx
 , withModplug ? withFullDeps && !stdenv.isDarwin # ModPlug support
 , withMp3lame ? withHeadlessDeps # LAME MP3 encoder
@@ -316,7 +317,9 @@
 , AudioToolbox
 , AVFoundation
 , CoreImage
+, Metal
 , VideoToolbox
+, xcode # unfree contains metalcc and metallib
 /*
  *  Testing
  */
@@ -580,6 +583,7 @@ stdenv.mkDerivation (finalAttrs: {
   ] ++ [
     (enableFeature withLadspa "ladspa")
     (enableFeature withLzma "lzma")
+    (enableFeature withMetal "metal")
     (enableFeature withMfx "libmfx")
     (enableFeature withModplug "libmodplug")
     (enableFeature withMp3lame "libmp3lame")
@@ -679,7 +683,8 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   nativeBuildInputs = [ removeReferencesTo addOpenGLRunpath perl pkg-config texinfo yasm ]
-  ++ optionals withCudaLLVM [ clang ];
+  ++ optionals withCudaLLVM [ clang ]
+  ++ optionals withMetal [ xcode ];
 
   buildInputs = []
   ++ optionals withAlsa [ alsa-lib ]
@@ -719,6 +724,7 @@ stdenv.mkDerivation (finalAttrs: {
   ++ optionals withJxl [ libjxl ]
   ++ optionals withLadspa [ ladspaH ]
   ++ optionals withLzma [ xz ]
+  ++ optionals withMetal [ Metal ]
   ++ optionals withMfx [ intel-media-sdk ]
   ++ optionals withModplug [ libmodplug ]
   ++ optionals withMp3lame [ lame ]

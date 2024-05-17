@@ -11,7 +11,9 @@ let
           AVFoundation
           CoreImage
           VideoToolbox
+          Metal
           ;
+        inherit (darwin) xcode;
       }
       // (initArgs // { inherit ffmpegVariant; })
     );
