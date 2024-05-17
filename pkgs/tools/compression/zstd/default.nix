@@ -17,16 +17,17 @@
 , curl
 , python3Packages
 , haskellPackages
+, testers
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "zstd";
   version = "1.5.6";
 
   src = fetchFromGitHub {
     owner = "facebook";
     repo = "zstd";
-    rev = "v${version}";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-qcd92hQqVBjMT3hyntjcgk29o9wGQsg5Hg7HE5C0UNc=";
   };
 
@@ -105,6 +106,7 @@ stdenv.mkDerivation rec {
       python-zstd = python3Packages.zstd;
       haskell-zstd = haskellPackages.zstd;
       haskell-hs-zstd = haskellPackages.hs-zstd;
+      pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
     };
   };
 
@@ -120,10 +122,11 @@ stdenv.mkDerivation rec {
       property shared by most LZ compression algorithms, such as zlib.
     '';
     homepage = "https://facebook.github.io/zstd/";
-    changelog = "https://github.com/facebook/zstd/blob/v${version}/CHANGELOG";
+    changelog = "https://github.com/facebook/zstd/blob/v${finalAttrs.version}/CHANGELOG";
     license = with licenses; [ bsd3 ]; # Or, at your opinion, GPL-2.0-only.
 
     platforms = platforms.all;
     maintainers = with maintainers; [ orivej ];
+    pkgConfigModules = [ "libzstd" ];
   };
-}
+})
