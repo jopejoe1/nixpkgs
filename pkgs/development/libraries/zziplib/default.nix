@@ -9,16 +9,17 @@
 , xmlto
 , zip
 , zlib
+, testers
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "zziplib";
   version = "0.13.74";
 
   src = fetchFromGitHub {
     owner = "gdraheim";
-    repo = pname;
-    rev = "v${version}";
+    repo = "zziplib";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-MjqGHzb+dsAq2PrcBhU3sv4eMX3afkgFWUbhDp+5o/s=";
   };
 
@@ -48,6 +49,12 @@ stdenv.mkDerivation rec {
     "-DBUILDTESTS=OFF"
   ];
 
+  passthru = {
+    tests = {
+      pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
+    };
+  };
+
   meta = with lib; {
     homepage = "https://github.com/gdraheim/zziplib";
     description = "Library to extract data from files archived in a zip file";
@@ -61,5 +68,6 @@ stdenv.mkDerivation rec {
     license = with licenses; [ lgpl2Plus mpl11 ];
     maintainers = with maintainers; [ AndersonTorres ];
     platforms = platforms.unix;
+    pkgConfigModules = [ "zziplib" "zzipfseeko" "zzipmmapped" ];
   };
-}
+})
