@@ -668,6 +668,9 @@ stdenv.mkDerivation (finalAttrs: {
   ] ++ optionals stdenv.cc.isClang [
     "--cc=clang"
     "--cxx=clang++"
+  ] ++ optionals withMetal [
+    "--metalcc=${xcode}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/metal"
+    "--metallib=${xcode}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/metallib"
   ];
 
   # ffmpeg embeds the configureFlags verbatim in its binaries and because we
@@ -683,8 +686,7 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   nativeBuildInputs = [ removeReferencesTo addOpenGLRunpath perl pkg-config texinfo yasm ]
-  ++ optionals withCudaLLVM [ clang ]
-  ++ optionals withMetal [ xcode ];
+  ++ optionals withCudaLLVM [ clang ];
 
   buildInputs = []
   ++ optionals withAlsa [ alsa-lib ]
