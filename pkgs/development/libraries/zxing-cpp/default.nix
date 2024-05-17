@@ -5,6 +5,7 @@
 , pkg-config
 , python3
 , gitUpdater
+, testers
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -31,6 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru = {
     tests = {
       inherit (python3.pkgs) zxing-cpp;
+      pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
     };
     updateScript = gitUpdater {
       rev-prefix = "v";
@@ -52,5 +54,6 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ AndersonTorres lukegb ];
     platforms = lib.platforms.unix;
+    pkgConfigModules = [ "zxing" ];
   };
 })
