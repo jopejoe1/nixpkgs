@@ -727,7 +727,7 @@ stdenv.mkDerivation (finalAttrs: {
   ++ optionals withJxl [ libjxl ]
   ++ optionals withLadspa [ ladspaH ]
   ++ optionals withLzma [ xz ]
-  ++ optionals withMetal [ Metal ]
+  #++ optionals withMetal [ Metal ]
   ++ optionals withMfx [ intel-media-sdk ]
   ++ optionals withModplug [ libmodplug ]
   ++ optionals withMp3lame [ lame ]
