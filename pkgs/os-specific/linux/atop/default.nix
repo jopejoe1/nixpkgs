@@ -1,6 +1,7 @@
 { lib
 , stdenv
-, fetchurl
+, fetchFromGitHub
+, gitUpdater
 , zlib
 , ncurses
 , findutils
@@ -10,13 +11,15 @@
 , withAtopgpu ? false
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "atop";
   version = "2.8.1";
 
-  src = fetchurl {
-    url = "https://www.atoptool.nl/download/atop-${version}.tar.gz";
-    sha256 = "sha256-lwBYoZt5w0RPlx+FRXKg5jiR3C1fcDf/g3VwhUzg2h4=";
+  src = fetchFromGitHub {
+    owner = "Atoptool";
+    repo = "atop";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-JseaDC5ptaJSsNamZUhD1GvKFBCrMs0flBpPqQT0X80=";
   };
 
   nativeBuildInputs = lib.optionals withAtopgpu [
@@ -70,12 +73,14 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     # Remove extra files we don't need
-    rm -r $out/{var,etc} $out/bin/atop{sar,}-${version}
+    rm -r $out/{var,etc} $out/bin/atop{sar,}-${finalAttrs.version}
   '' + (if withAtopgpu then ''
     wrapPythonPrograms
   '' else ''
     rm $out/lib/systemd/system/atopgpu.service $out/bin/atopgpud $out/share/man/man8/atopgpud.8
   '');
+
+  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
 
   meta = with lib; {
     platforms = platforms.linux;
@@ -90,6 +95,7 @@ stdenv.mkDerivation rec {
       memory growth, disk utilization, priority, username, state, and exit code.
     '';
     license = licenses.gpl2Plus;
+    mainProgram = "atop";
     downloadPage = "http://atoptool.nl/downloadatop.php";
   };
-}
+})
