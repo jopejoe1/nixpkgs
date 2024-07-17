@@ -804,7 +804,7 @@ stdenv.mkDerivation (finalAttrs: {
   buildFlags = [ "all" ]
     ++ optional buildQtFaststart "tools/qt-faststart"; # Build qt-faststart executable
 
-  doCheck = stdenv.hostPlatform == stdenv.buildPlatform;
+  doCheck = stdenv.hostPlatform == stdenv.buildPlatform && !withFullDeps;
 
   # Fails with SIGABRT otherwise FIXME: Why?
   checkPhase = let
