@@ -25,6 +25,11 @@ stdenv.mkDerivation (finalAttrs: {
       url = "https://github.com/mpeg5/xevd/commit/41db32ca3283eb8ac175465edb6b4b3d78e8b9c9.patch";
       hash = "sha256-SmamhxEQGvAYNbzwnle8zeAFfmX/DPRh3wrHrd44AYc=";
     })
+    (fetchpatch2 {
+      name = "fix_compiling_on_clang_2";
+      url = "https://github.com/mpeg5/xevd/commit/69daf32668657c2f5da8b11fd3b277186bf06f5e.patch";
+      hash = "sha256-Rs5sQLs23qAwwUtCOfDtt8EFA+MFRKPMUSjP/cjpAHk=";
+    })
   ];
 
   postPatch = ''
