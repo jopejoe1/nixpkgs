@@ -27,8 +27,8 @@ stdenv.mkDerivation (finalAttrs: {
     })
     (fetchpatch2 {
       name = "fix_compiling_on_clang_2";
-      url = "https://github.com/mpeg5/xevd/commit/69daf32668657c2f5da8b11fd3b277186bf06f5e.patch";
-      hash = "sha256-Rs5sQLs23qAwwUtCOfDtt8EFA+MFRKPMUSjP/cjpAHk=";
+      url = "https://github.com/mpeg5/xevd/commit/daf25895eb2f0293f3efead45fbb8213f963c866.patch";
+      hash = "sha256-uQ4iW5m5F+7CYTix5TbLt2l63HRuu7UrSQcG22NgbUY=";
     })
   ];
 
