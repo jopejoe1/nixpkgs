@@ -47,7 +47,9 @@ stdenv.mkDerivation (finalAttrs: {
     "dev"
   ];
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-lm" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    (lib.optionalString stdenv.hostPlatform.isLinux "-lm")
+  ];
 
   passthru.updateScript = gitUpdater { rev-prefix = "v"; };
   passthru.tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
