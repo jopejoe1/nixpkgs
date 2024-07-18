@@ -5,6 +5,7 @@
   gitUpdater,
   testers,
   cmake,
+  fetchpatch2,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -18,9 +19,21 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Dc2V77t+DrZo9252FAL0eczrmikrseU02ob2RLBdVvU=";
   };
 
+  patches = [
+    (fetchpatch2 {
+      name = "fix_compiling_on_clang";
+      url = "https://github.com/mpeg5/xevd/commit/41db32ca3283eb8ac175465edb6b4b3d78e8b9c9.patch";
+      hash = "sha256-SmamhxEQGvAYNbzwnle8zeAFfmX/DPRh3wrHrd44AYc=";
+    })
+  ];
+
   postPatch = ''
     echo v$version > version.txt
   '';
+
+  cmakeFlags = [
+    (lib.cmakeBool "ARM" stdenv.hostPlatform.isAarch)
+  ];
 
   nativeBuildInputs = [ cmake ];
 
@@ -47,6 +60,5 @@ stdenv.mkDerivation (finalAttrs: {
     pkgConfigModules = [ "xevd" ];
     maintainers = with lib.maintainers; [ jopejoe1 ];
     platforms = lib.platforms.all;
-    broken = !stdenv.hostPlatform.isx86 || !stdenv.cc.isGNU;
   };
 })
