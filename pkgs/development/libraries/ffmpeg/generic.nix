@@ -129,7 +129,7 @@
 , withXcbShm ? withFullDeps # X11 grabbing shm communication
 , withXcbxfixes ? withFullDeps # X11 grabbing mouse rendering
 # Currently only supports gcc and msvc as compiler, remove the limitation next xeve and xevd release.
-, withXevd ? withFullDeps && lib.versionAtLeast version "7" # MPEG-5 EVC decoding
+, withXevd ? withFullDeps && lib.versionAtLeast version "7" && !stdenv.isDarwin # MPEG-5 EVC decoding
 , withXeve ? withFullDeps && lib.versionAtLeast version "7" # MPEG-5 EVC encoding
 , withXlib ? withFullDeps # Xlib support
 , withXml2 ? withFullDeps # libxml2 support, for IMF and DASH demuxers
