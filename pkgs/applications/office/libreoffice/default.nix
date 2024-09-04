@@ -50,6 +50,7 @@
 , libGL
 , bsh
 , coinmp
+, libfrozen
 , libwps
 , libabw
 , libargon2
@@ -58,6 +59,7 @@
 , automake
 , openldap
 , bash
+, dragonbox
 , hunspell
 , librdf_rasqal
 , librdf_redland
@@ -90,6 +92,7 @@
 , gdb
 , adwaita-icon-theme
 , glib
+, hyphen
 , ncurses
 , libepoxy
 , gpgme
@@ -324,6 +327,7 @@ in stdenv.mkDerivation (finalAttrs: {
     curl
     db
     dbus-glib
+    dragonbox
     expat
     file
     flex
@@ -340,6 +344,7 @@ in stdenv.mkDerivation (finalAttrs: {
     gtk3
     (harfbuzz.override { withIcu = true; })
     hunspell
+    hyphen
     icu
     jre'
     lcms2
@@ -362,6 +367,7 @@ in stdenv.mkDerivation (finalAttrs: {
     libepubgen
     libetonyek
     libexttextcat
+    libfrozen
     libjpeg
     liblangtag
     libmspack
@@ -480,9 +486,12 @@ in stdenv.mkDerivation (finalAttrs: {
     (lib.withFeature withFonts "fonts")
     "--without-doxygen"
 
+    "--with-system-altlinuxhyph"
     "--with-system-beanshell"
     "--with-system-cairo"
     "--with-system-coinmp"
+    "--with-system-dragonbox"
+    "--with-system-frozen"
     "--with-system-headers"
     "--with-system-libabw"
     "--with-system-libcmis"
@@ -500,15 +509,12 @@ in stdenv.mkDerivation (finalAttrs: {
     "--with-system-xmlsec"
 
     # TODO: package these as system libraries
-    "--without-system-altlinuxhyph"
-    "--without-system-frozen"
     "--without-system-libfreehand"
     "--without-system-libmspub"
     "--without-system-libnumbertext"
     "--without-system-libpagemaker"
     "--without-system-libstaroffice"
     "--without-system-libqxp"
-    "--without-system-dragonbox"
     "--without-system-libfixmath"
 
     # requires an oddly specific, old version
