@@ -78,7 +78,7 @@
 , withLzma ? withHeadlessDeps # xz-utils
 , withMetal ? false # Unfree and requires manual downloading of files
 , withMfx ? withFullDeps && (with stdenv.hostPlatform; isLinux && !isAarch) # Hardware acceleration via intel-media-sdk/libmfx
-, withModplug ? withFullDeps && !stdenv.isDarwin # ModPlug support
+, withModplug ? withFullDeps # ModPlug support
 , withMp3lame ? withHeadlessDeps # LAME MP3 encoder
 , withMysofa ? withFullDeps # HRTF support via SOFAlizer
 , withNvdec ? withHeadlessDeps && withNvcodec
@@ -93,16 +93,16 @@
 , withOpenjpeg ? withHeadlessDeps # JPEG 2000 de/encoder
 , withOpenmpt ? withFullDeps # Tracked music files decoder
 , withOpus ? withHeadlessDeps # Opus de/encoder
-, withPlacebo ? withFullDeps && !stdenv.isDarwin # libplacebo video processing library
+, withPlacebo ? withFullDeps # libplacebo video processing library
 , withPulse ? withSmallDeps && stdenv.isLinux # Pulseaudio input support
 , withQrencode ? withFullDeps && lib.versionAtLeast version "7" # QR encode generation
 , withQuirc ? withFullDeps && lib.versionAtLeast version "7" # QR decoding
 , withRav1e ? withFullDeps # AV1 encoder (focused on speed and safety)
 , withRtmp ? withFullDeps # RTMP[E] support
 , withRubberband ? withFullDeps && withGPL # Rubberband filter
-, withSamba ? withFullDeps && !stdenv.isDarwin && withGPLv3 # Samba protocol
+, withSamba ? withFullDeps && withGPLv3 # Samba protocol
 , withSdl2 ? withSmallDeps
-, withShaderc ? withFullDeps && !stdenv.isDarwin && lib.versionAtLeast version "5.0"
+, withShaderc ? withFullDeps && lib.versionAtLeast version "5.0"
 , withShine ? withFullDeps # Fixed-point MP3 encoding
 , withSnappy ? withFullDeps # Snappy compression, needed for hap encoding
 , withSoxr ? withHeadlessDeps # Resampling via soxr
@@ -125,7 +125,7 @@
 , withVorbis ? withHeadlessDeps # Vorbis de/encoding, native encoder exists
 , withVpl ? false # Hardware acceleration via intel libvpl
 , withVpx ? withHeadlessDeps && stdenv.buildPlatform == stdenv.hostPlatform # VP8 & VP9 de/encoding
-, withVulkan ? withSmallDeps && !stdenv.isDarwin
+, withVulkan ? withSmallDeps
 , withWebp ? withHeadlessDeps # WebP encoder
 , withX264 ? withHeadlessDeps && withGPL # H.264/AVC encoder
 , withX265 ? withHeadlessDeps && withGPL # H.265/HEVC encoder
@@ -861,7 +861,7 @@ stdenv.mkDerivation (finalAttrs: {
     addDriverRunpath ${placeholder "lib"}/lib/libavutil.so
   ''
   # https://trac.ffmpeg.org/ticket/10809
-  + optionalString (versionAtLeast version "5.0" && withVulkan && !stdenv.hostPlatform.isMinGW) ''
+  + optionalString (versionAtLeast version "5.0" && withVulkan && stdenv.isLinux) ''
     patchelf $lib/lib/libavcodec.so --add-needed libvulkan.so --add-rpath ${lib.makeLibraryPath [ vulkan-loader ]}
   '';
 
