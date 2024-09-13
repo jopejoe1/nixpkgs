@@ -13,6 +13,7 @@ breakpoint.section.md
 cmake.section.md
 gdk-pixbuf.section.md
 ghc.section.md
+gn.section.md
 gnome.section.md
 installShellFiles.section.md
 libiconv.section.md
