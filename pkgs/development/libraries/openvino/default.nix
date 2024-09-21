@@ -40,12 +40,6 @@ let
   # prevent scons from leaking in the default python version
   scons' = scons.override { inherit python3Packages; };
 
-  tbbbind_version = "2_5";
-  tbbbind = fetchurl {
-    url = "https://storage.openvinotoolkit.org/dependencies/thirdparty/linux/tbbbind_${tbbbind_version}_static_lin_v4.tgz";
-    hash = "sha256-Tr8wJGUweV8Gb7lhbmcHxrF756ZdKdNRi1eKdp3VTuo=";
-  };
-
   python = python3Packages.python.withPackages (ps: with ps; [
     cython
     pybind11
@@ -88,14 +82,6 @@ stdenv.mkDerivation rec {
     cudaPackages.cuda_nvcc
   ];
 
-  postPatch = ''
-    mkdir -p temp/tbbbind_${tbbbind_version}
-    pushd temp/tbbbind_${tbbbind_version}
-    bsdtar -xf ${tbbbind}
-    echo "${tbbbind.url}" > ie_dependency.info
-    popd
-  '';
-
   dontUseSconsCheck = true;
   dontUseSconsBuild = true;
   dontUseSconsInstall = true;
@@ -130,6 +116,9 @@ stdenv.mkDerivation rec {
     (cmakeBool "ENABLE_SYSTEM_PUGIXML" true)
     (cmakeBool "ENABLE_SYSTEM_SNAPPY" true)
     (cmakeBool "ENABLE_SYSTEM_TBB" true)
+
+    # included in TBB
+    (cmakeBool "ENABLE_TBBBIND_2_5" false)
   ];
 
   autoPatchelfIgnoreMissingDeps = [
