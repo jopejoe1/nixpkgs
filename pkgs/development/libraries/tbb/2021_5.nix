@@ -3,6 +3,8 @@
 , fetchFromGitHub
 , fetchpatch
 , cmake
+, pkg-config
+, hwloc
 }:
 
 stdenv.mkDerivation rec {
@@ -20,6 +22,12 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
+    pkg-config
+  ];
+
+  buildInputs = [
+    # Needed for tbbbind
+    hwloc
   ];
 
   patches = [
