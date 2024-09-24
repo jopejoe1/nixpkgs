@@ -105,6 +105,7 @@
 , withShaderc ? withFullDeps && !stdenv.isDarwin && lib.versionAtLeast version "5.0"
 , withShine ? withFullDeps # Fixed-point MP3 encoding
 , withSnappy ? withFullDeps # Snappy compression, needed for hap encoding
+, withSndio ? withFullDeps # sndio input support
 , withSoxr ? withHeadlessDeps # Resampling via soxr
 , withSpeex ? withHeadlessDeps # Speex de/encoder
 , withSrt ? withHeadlessDeps # Secure Reliable Transport (SRT) protocol
@@ -307,6 +308,7 @@
 , shaderc
 , shine
 , snappy
+, sndio
 , soxr
 , speex
 , srt
@@ -641,6 +643,7 @@ stdenv.mkDerivation (finalAttrs: {
   ] ++ [
     (enableFeature withShine "libshine")
     (enableFeature withSnappy "libsnappy")
+    (enableFeature withSndio "sndio")
     (enableFeature withSoxr "libsoxr")
     (enableFeature withSpeex "libspeex")
     (enableFeature withSrt "libsrt")
@@ -785,6 +788,7 @@ stdenv.mkDerivation (finalAttrs: {
   ++ optionals withShaderc [ shaderc ]
   ++ optionals withShine [ shine ]
   ++ optionals withSnappy [ snappy ]
+  ++ optionals withSndio [ sndio ]
   ++ optionals withSoxr [ soxr ]
   ++ optionals withSpeex [ speex ]
   ++ optionals withSrt [ srt ]
