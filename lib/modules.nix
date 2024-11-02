@@ -1018,16 +1018,181 @@ let
       inherit contents;
     };
 
+  /**
+    Sets the priorty for the given value used for conflict resolution when merging modules.
+
+    # Inputs
+
+    `priority`
+
+    : The priority to set the value to.
+
+    `content`
+
+    : The value to wich the priorty applies.
+
+    # Type
+
+    ```
+    mkOverride :: Number -> Any -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `lib.modules.mkOverride` usage example
+
+    ```nix
+    mkOverride 40 "Any Value"
+    => { _type = "override"; priority = 40; content = "Any Value"; }
+    ```
+
+    :::
+  */
   mkOverride = priority: content:
     { _type = "override";
       inherit priority content;
     };
 
+  /**
+    Sets the priorty for the given value to 1500. This is most likely the lowest priority. Priority 1500 is commonly used in option definitions.
+
+    # Inputs
+
+    `content`
+
+    : The value to wich the priorty applies.
+
+    # Type
+
+    ```
+    mkOptionDefault :: Any -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `lib.modules.mkOptionDefault` usage example
+
+    ```nix
+    mkOptionDefault "Any Value"
+    => { _type = "override"; priority = 1500; content = "Any Value"; }
+    ```
+
+    :::
+  */
   mkOptionDefault = mkOverride 1500; # priority of option defaults
+
+  /**
+    Sets the priorty for the given value to 1000.
+
+    # Inputs
+
+    `content`
+
+    : The value to wich the priorty applies.
+
+    # Type
+
+    ```
+    mkDefault :: Any -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `lib.modules.mkDefault` usage example
+
+    ```nix
+    mkDefault "Any Value"
+    => { _type = "override"; priority = 1000; content = "Any Value"; }
+    ```
+
+    :::
+  */
   mkDefault = mkOverride 1000; # used in config sections of non-user modules to set a default
+
   defaultOverridePriority = 100;
+
+  /**
+    Sets the priorty for the given value to 60.
+
+    # Inputs
+
+    `content`
+
+    : The value to wich the priorty applies.
+
+    # Type
+
+    ```
+    mkImageMediaOverride :: Any -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `lib.modules.mkImageMediaOverride` usage example
+
+    ```nix
+    mkImageMediaOverride "Any Value"
+    => { _type = "override"; priority = 60; content = "Any Value"; }
+    ```
+
+    :::
+  */
   mkImageMediaOverride = mkOverride 60; # image media profiles can be derived by inclusion into host config, hence needing to override host config, but do allow user to mkForce
+
+  /**
+    Sets the priorty for the given value to 50.
+
+    # Inputs
+
+    `content`
+
+    : The value to wich the priorty applies.
+
+    # Type
+
+    ```
+    mkForce :: Any -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `lib.modules.mkForce` usage example
+
+    ```nix
+    mkForce "Any Value"
+    => { _type = "override"; priority = 50; content = "Any Value"; }
+    ```
+
+    :::
+  */
   mkForce = mkOverride 50;
+
+  /**
+    Sets the priorty for the given value to 10.
+
+    # Inputs
+
+    `content`
+
+    : The value to wich the priorty applies.
+
+    # Type
+
+    ```
+    mkVMOverride :: Any -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `lib.modules.mkVMOverride` usage example
+
+    ```nix
+    mkVMOverride "Any Value"
+    => { _type = "override"; priority = 10; content = "Any Value"; }
+    ```
+
+    :::
+  */
   mkVMOverride = mkOverride 10; # used by ‘nixos-rebuild build-vm’
 
   defaultPriority = warnIf (oldestSupportedReleaseIsAtLeast 2305) "lib.modules.defaultPriority is deprecated, please use lib.modules.defaultOverridePriority instead." defaultOverridePriority;
