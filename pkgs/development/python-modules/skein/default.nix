@@ -20,6 +20,9 @@ buildPythonPackage rec {
   pname = "skein";
   version = "0.8.2";
   pyproject = true;
+
+  disabled = isPy27;
+
   src = fetchPypi {
     inherit pname version;
     hash = "sha256-nXTqsJNX/LwAglPcPZkmdYPfF+vDLN+nNdZaDFTrHzE=";
@@ -77,8 +80,5 @@ buildPythonPackage rec {
       alexbiehl
       illustris
     ];
-    # https://github.com/NixOS/nixpkgs/issues/48663#issuecomment-1083031627
-    # replace with https://github.com/NixOS/nixpkgs/pull/140325 once it is merged
-    broken = lib.traceIf isPy27 "${pname} not supported on ${python.executable}" isPy27;
   };
 }
