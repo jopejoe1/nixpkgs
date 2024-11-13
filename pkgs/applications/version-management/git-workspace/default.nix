@@ -2,8 +2,6 @@
 , stdenv
 , fetchFromGitHub
 , rustPlatform
-, libiconv
-, Security
 , pkg-config
 , openssl
 , nix-update-script
@@ -26,8 +24,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ openssl ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv Security ];
+  buildInputs = [ openssl ];
 
   passthru = {
     updateScript = nix-update-script { };
