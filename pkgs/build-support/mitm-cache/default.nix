@@ -5,7 +5,6 @@
 , rustPlatform
 , substituteAll
 , openssl
-, Security
 , python3Packages
 }:
 
@@ -19,10 +18,6 @@ rustPlatform.buildRustPackage rec {
     rev = "v${version}";
     hash = "sha256-l9dnyA4Zo4jlbiCMRzUqW3NkiploVpmvxz9i896JkXU=";
   };
-
-  buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
-    Security
-  ];
 
   cargoHash = "sha256-6eYOSSlswJGR2IrFo17qVnwI+h2FkyTjLFvwf62nG2c=";
 
