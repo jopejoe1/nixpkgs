@@ -997,9 +997,7 @@ with pkgs;
 
   fontbakery = with python3Packages; toPythonApplication fontbakery;
 
-  weylus = callPackage ../applications/graphics/weylus  {
-    inherit (darwin.apple_sdk.frameworks) ApplicationServices Carbon Cocoa VideoToolbox;
-  };
+  weylus = callPackage ../applications/graphics/weylus  { };
 
   # This is to workaround gfal2-python broken against Python 3.12 or later.
   # TODO: Remove these lines after solving the breakage.
@@ -1233,9 +1231,7 @@ with pkgs;
 
   git-fame = callPackage ../applications/version-management/git-fame { };
 
-  git-gone = callPackage ../applications/version-management/git-gone {
-    inherit (darwin.apple_sdk.frameworks) Security;
-  };
+  git-gone = callPackage ../applications/version-management/git-gone { };
 
   git-imerge = python3Packages.callPackage ../applications/version-management/git-imerge { };
 

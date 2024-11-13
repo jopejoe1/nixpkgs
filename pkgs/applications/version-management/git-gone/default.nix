@@ -2,7 +2,6 @@
 , stdenv
 , fetchFromGitHub
 , rustPlatform
-, Security
 , installShellFiles
 }:
 
@@ -20,8 +19,6 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-H41wpG5LhjJ7BtFrol0JbjTpssOPUgumgapOiZJi2lc=";
 
   nativeBuildInputs = [ installShellFiles ];
-
-  buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
   postInstall = ''
     installManPage git-gone.1
