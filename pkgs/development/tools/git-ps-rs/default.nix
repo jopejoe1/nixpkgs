@@ -5,7 +5,6 @@
 , pkg-config
 , dbus
 , openssl
-, Security
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -23,7 +22,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ openssl dbus ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
+  buildInputs = [ openssl dbus ];
 
   meta = with lib; {
     description = "Tool for working with a stack of patches";

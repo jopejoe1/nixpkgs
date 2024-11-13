@@ -1239,9 +1239,7 @@ with pkgs;
 
   git-machete = python3Packages.callPackage ../applications/version-management/git-machete { };
 
-  git-ps-rs = callPackage ../development/tools/git-ps-rs {
-    inherit (darwin.apple_sdk.frameworks) Security;
-  };
+  git-ps-rs = callPackage ../development/tools/git-ps-rs { };
 
   git-publish = python3Packages.callPackage ../applications/version-management/git-publish { };
 
