@@ -1256,9 +1256,7 @@ with pkgs;
 
   git-review = python3Packages.callPackage ../applications/version-management/git-review { };
 
-  git-stack = callPackage ../applications/version-management/git-stack {
-    inherit (darwin.apple_sdk.frameworks) Security;
-  };
+  git-stack = callPackage ../applications/version-management/git-stack { };
 
   git-trim = darwin.apple_sdk_11_0.callPackage ../applications/version-management/git-trim {
     inherit (darwin.apple_sdk_11_0.frameworks) IOKit CoreFoundation Security;
