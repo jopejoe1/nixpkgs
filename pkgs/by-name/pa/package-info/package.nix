@@ -64,7 +64,7 @@ let
     path: value:
     let
       attempt =
-        lib.warn "Missing meta: ${lib.concatStringsSep "." path}" (if (lib.isDerivation value) then
+        (if (lib.isDerivation value) then
           [
             {
               name = lib.concatStringsSep "." path;
@@ -73,7 +73,7 @@ let
                   name
                   ;
                 version = value.version or null; #(lib.warn "Missing version: ${lib.concatStringsSep "." path}" null);
-                pname = value.pname or null; #(lib.warn "Missing pname: ${lib.concatStringsSep "." path}" null);
+                pname = value.pname or (lib.warn "Missing pname: ${lib.concatStringsSep "." path}" null);
                 outputs = value.outputs or null; #(lib.warn "Missing outputs: ${lib.concatStringsSep "." path}" null);
                 system = value.system or null; #(lib.warn "Missing system: ${lib.concatStringsSep "." path}" null);
                 outputName = value.outputName or null; #(lib.warn "Missing outputName: ${lib.concatStringsSep "." path}" null);
