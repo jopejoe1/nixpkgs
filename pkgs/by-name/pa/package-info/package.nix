@@ -3,7 +3,7 @@
   lib,
   stdenv,
   path,
-  pkgsToCheck ? (import path {
+  pkgsToCheck ? import path {
     system = stdenv.system;
     config = {
       # Aliases throm a lot of warings
@@ -13,12 +13,9 @@
       allowUnfree = true;
       allowUnsupportedSystem = true;
       allowInsecurePredicate = x: true;
+      android_sdk.accept_license = true;
+      sc2-headless.accept_license = true;
     };
-  }) // {
-    mkCheckpointedBuild = null;
-    buildNeovimPluginFrom2Nix = null;
-    rustPlatform = null;
-    package-info = true;
   },
   excludedAttrs ? {
     # Filter out recoursions
@@ -47,6 +44,7 @@
 
     # Fails to eval
     config = true;
+    type = true;
 
     # Takes up most of the eval time
     haskell = true;
@@ -90,8 +88,10 @@ let
           lib.pipe value [
             (lib.mapAttrs (
               name: innerValue:
-              if excludedAttrs."${name}" or (lib.elem name path) then
+              if excludedAttrs."${name}" or false then
                 []#(lib.warn "Missing outputName: ${lib.concatStringsSep "." (path ++ [ name ])}" []) #[ ]
+              #else if (lib.elem name path) then
+              #  (lib.warn "Dupplicate path element: ${lib.concatStringsSep "." (path ++ [ name ])}" ((results (path ++ [ name ]) innerValue)))
               else ((results (path ++ [ name ]) innerValue))
             ))
             lib.attrValues
@@ -100,7 +100,7 @@ let
 
       seq = builtins.deepSeq attempt attempt;
       tried = builtins.tryEval seq;
-      result = if tried.success then tried.value else [ ];
+      result = if tried.success then tried.value else [];#lib.warn "Failed to eval: ${lib.concatStringsSep "." path}" [ ];
     in
     result;
   json = builtins.toJSON ({
