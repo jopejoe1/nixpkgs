@@ -25,6 +25,8 @@ let
       bin = "${getBin provider}/bin/${cmd}";
       manpage = "${getOutput "man" provider}/share/man/man1/${cmd}.1.gz";
     in runCommand "${cmd}-${provider.name}" {
+      inherit (provider) version;
+      pname = "${cmd}-${provider.pname}";
       meta = {
         mainProgram = cmd;
         priority = 10;
@@ -51,7 +53,10 @@ let
 
   # more is unavailable in darwin
   # so we just use less
-  more_compat = runCommand "more-${pkgs.less.name}" {} ''
+  more_compat = runCommand "more-${pkgs.less.name}" {
+    inherit (pkgs.less) version;
+    pname = "more-${pkgs.less.pname}";
+  } ''
     mkdir -p $out/bin
     ln -s ${pkgs.less}/bin/less $out/bin/more
   '';
