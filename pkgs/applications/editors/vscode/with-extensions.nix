@@ -43,8 +43,6 @@
 
 let
   inherit (vscode) executableName longName;
-  wrappedPkgVersion = lib.getVersion vscode;
-  wrappedPkgName = lib.removeSuffix "-${wrappedPkgVersion}" vscode.name;
 
   extensionJsonFile = writeTextFile {
     name = "vscode-extensions-json";
@@ -62,12 +60,12 @@ let
   '';
 in
 
-runCommand "${wrappedPkgName}-with-extensions-${wrappedPkgVersion}" {
+runCommand "${vscode.pname}-with-extensions-${vscode.version}" {
+  inherit (vscode) version pname meta;
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [ vscode ];
   dontPatchELF = true;
   dontStrip = true;
-  meta = vscode.meta;
 } (if stdenv.hostPlatform.isDarwin then ''
   mkdir -p $out/bin/
   mkdir -p "$out/Applications/${longName}.app/Contents/MacOS"
