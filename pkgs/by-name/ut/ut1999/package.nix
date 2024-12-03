@@ -47,7 +47,7 @@ let
     i686-linux = "System";
   }.${stdenv.hostPlatform.system} or (throw "unsupported system: ${stdenv.hostPlatform.system}");
 in stdenv.mkDerivation {
-  name = "ut1999";
+  pname = "ut1999";
   inherit version;
   sourceRoot = ".";
   src = srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
