@@ -70,8 +70,8 @@ let
 in
 
 symlinkJoin {
-  name = "wiringpi-${version}";
-  inherit passthru;
+  pname = "wiringpi";
+  inherit passthru version;
   paths = [
     passthru.wiringPi
     passthru.devLib
