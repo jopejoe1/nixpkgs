@@ -1,7 +1,7 @@
 { lib, stdenv, fetchzip }:
 
 stdenv.mkDerivation rec {
-  name = "updfparser";
+  pname = "updfparser";
   version = "unstable-2023-08-08";
   rev = "c5ce75b9eea8ebb2746b13eeb0f335813c615115";
 
