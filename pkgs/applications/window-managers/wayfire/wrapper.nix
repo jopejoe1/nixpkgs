@@ -1,7 +1,8 @@
 { symlinkJoin, lib, makeWrapper, wayfire, plugins ? [ ] }:
 
 symlinkJoin {
-  name = "wayfire-wrapped-${lib.getVersion wayfire}";
+  pname = "wayfire-wrapped";
+  inherit (wayfire) version;
 
   nativeBuildInputs = [ makeWrapper ];
 
