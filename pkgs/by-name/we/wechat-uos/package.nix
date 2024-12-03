@@ -184,7 +184,7 @@ let
     };
 in
 buildFHSEnv {
-  inherit (wechat) name meta;
+  inherit (wechat) pname version meta;
   runScript = writeShellScript "wechat-uos-launcher" ''
     export QT_QPA_PLATFORM=xcb
     export QT_AUTO_SCREEN_SCALE_FACTOR=1
