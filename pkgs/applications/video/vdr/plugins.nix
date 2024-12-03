@@ -3,11 +3,11 @@
 , boost, libgcrypt, ncurses
 , callPackage
 }: let
-  mkPlugin = name: stdenv.mkDerivation {
-    name = "vdr-${name}-${vdr.version}";
-    inherit (vdr) src;
+  mkPlugin = pname: stdenv.mkDerivation {
+    pname = "vdr-${pname}";
+    inherit (vdr) src version;
     buildInputs = [ vdr ];
-    preConfigure = "cd PLUGINS/src/${name}";
+    preConfigure = "cd PLUGINS/src/${pname}";
     installFlags = [ "DESTDIR=$(out)" ];
   };
 in {
