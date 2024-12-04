@@ -1,7 +1,7 @@
 { lib, buildGoModule, fetchFromGitHub }:
 
 buildGoModule rec {
-  name = "sigtop";
+  pname = "sigtop";
   version = "0.12.0";
 
   src = fetchFromGitHub {
