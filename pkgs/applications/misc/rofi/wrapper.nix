@@ -1,7 +1,8 @@
 { symlinkJoin, lib, rofi-unwrapped, makeWrapper, wrapGAppsHook3, gdk-pixbuf, hicolor-icon-theme, theme ? null, plugins ? [], symlink-dmenu ? false }:
 
 symlinkJoin {
-  name = "rofi-${rofi-unwrapped.version}";
+  pname = "rofi";
+  inherit (rofi-unwrapped) version;
 
   paths = [
     rofi-unwrapped.out
