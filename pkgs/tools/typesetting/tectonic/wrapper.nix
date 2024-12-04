@@ -8,7 +8,8 @@
 }:
 
 symlinkJoin {
-  name = "${tectonic-unwrapped.pname}-wrapped-${tectonic-unwrapped.version}";
+  pname = "${tectonic-unwrapped.pname}-wrapped";
+  inherit (tectonic-unwrapped) version;
   paths = [ tectonic-unwrapped ];
 
   nativeBuildInputs = [ makeBinaryWrapper ];
