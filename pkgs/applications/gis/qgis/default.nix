@@ -20,7 +20,7 @@ let
 in symlinkJoin rec {
 
   inherit (qgis-unwrapped) version;
-  name = "qgis-${version}";
+  pname = "qgis";
 
   paths = [ qgis-unwrapped ];
 
