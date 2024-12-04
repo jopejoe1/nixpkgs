@@ -37,7 +37,8 @@ let
   );
 in
 symlinkJoin {
-  name = "retroarch-with-cores-${lib.getVersion retroarch-bare}";
+  pname = "retroarch-with-cores";
+  inherit (retroarch-bare) version;
 
   paths = [ retroarch-bare ] ++ cores;
 
