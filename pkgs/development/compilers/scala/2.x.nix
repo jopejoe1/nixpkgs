@@ -35,7 +35,7 @@ in with versionMap.${majorVersion};
 stdenv.mkDerivation rec {
   inherit version;
 
-  name = "scala-${version}";
+  pname = "scala";
 
   src = fetchurl {
     inherit sha256;
