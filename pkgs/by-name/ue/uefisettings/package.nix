@@ -4,7 +4,7 @@
 }:
 
 rustPlatform.buildRustPackage {
-  name = "uefisettings";
+  pname = "uefisettings";
   version = "0-unstable-2024-03-26";
 
   src = fetchFromGitHub {
