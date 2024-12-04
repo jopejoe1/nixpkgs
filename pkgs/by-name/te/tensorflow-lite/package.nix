@@ -25,7 +25,7 @@ let
       (throw "unsupported host system ${hostPlatform.system} with build system ${buildPlatform.system}");
 in
 buildBazelPackage rec {
-  name = "tensorflow-lite";
+  pname = "tensorflow-lite";
   version = "2.13.0";
 
   src = fetchFromGitHub {
