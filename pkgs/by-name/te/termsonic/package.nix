@@ -6,7 +6,7 @@
   alsa-lib
 }:
 buildGoModule rec {
-  name = "termsonic";
+  pname = "termsonic";
   version = "0-unstable-2024-09-15";
 
   src = fetchzip {
