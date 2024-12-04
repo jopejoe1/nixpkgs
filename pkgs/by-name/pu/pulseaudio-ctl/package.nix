@@ -3,10 +3,8 @@
 
 let
   path = lib.makeBinPath [ bc dbus gawk gnused libnotify pulseaudio ];
-  pname = "pulseaudio-ctl";
-
 in stdenv.mkDerivation rec {
-  name = "${pname}-${version}";
+  pname = "pulseaudio-ctl";
   version = "1.70";
 
   src = fetchFromGitHub {
