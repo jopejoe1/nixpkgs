@@ -1,7 +1,7 @@
 { lib, symlinkJoin, man, prevo-tools, prevo-data, makeWrapper }:
 
 symlinkJoin rec {
-  name = "prevo-${version}";
+  pname = "prevo";
   inherit (prevo-tools) version;
 
   paths = [ prevo-tools ];
