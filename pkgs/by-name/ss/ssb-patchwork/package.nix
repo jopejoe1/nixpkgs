@@ -30,7 +30,7 @@ let
 
 in
   symlinkJoin {
-    inherit name;
+    inherit pname version;
     paths = [ binary ];
 
     postBuild = ''
