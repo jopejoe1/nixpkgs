@@ -2,12 +2,11 @@
 ... }:
 
 stdenv.mkDerivation rec {
-  appname = "popfile";
+  pname = "popfile";
   version = "1.1.3";
-  name = "${appname}-${version}";
 
   src = fetchzip {
-    url = "https://getpopfile.org/downloads/${appname}-${version}.zip";
+    url = "https://getpopfile.org/downloads/popfile-${version}.zip";
     sha256 = "0gcib9j7zxk8r2vb5dbdz836djnyfza36vi8215nxcdfx1xc7l63";
     stripRoot = false;
   };
