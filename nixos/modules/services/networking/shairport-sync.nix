@@ -7,6 +7,10 @@ let
   cfg = config.services.shairport-sync;
   configFormat = pkgs.formats.libconfig {};
   configFile = configFormat.generate "shairport-sync.conf" cfg.config;
+  airplay2Support = cfg.package.airplay2Support;
+  mainPort = cfg.config.general.port or if airplay2Support then 7000 else 5000;
+  udpPortBase = cfg.config.general.udp_port_base or 6001;
+  udpPortRange = cfg.config.general.udp_port_range or 10;
 in
 
 {
@@ -126,8 +130,11 @@ in
     };
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [ 5000 ];
-      allowedUDPPortRanges = [ { from = 6001; to = 6011; } ];
+      allowedTCPPorts = [ mainPort ];
+      allowedUDPPortRanges = lib.optional (!airplay2Support) {
+        from = udpPortBase;
+        to = udpPortBase + udpPortRange;
+      };
     };
 
     systemd.services.shairport-sync =
