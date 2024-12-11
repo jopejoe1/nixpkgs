@@ -8,7 +8,7 @@ let
   configFormat = pkgs.formats.libconfig {};
   configFile = configFormat.generate "shairport-sync.conf" cfg.config;
   airplay2Support = cfg.package.airplay2Support;
-  mainPort = cfg.config.general.port or if airplay2Support then 7000 else 5000;
+  mainPort = cfg.config.general.port or (if airplay2Support then 7000 else 5000);
   udpPortBase = cfg.config.general.udp_port_base or 6001;
   udpPortRange = cfg.config.general.udp_port_range or 10;
 in
