@@ -83,6 +83,8 @@ in
         default = false;
         description = ''
           Whether to automatically open ports in the firewall.
+
+          You maybe also want to open the firewall for avahi and nqptp.
         '';
       };
 
