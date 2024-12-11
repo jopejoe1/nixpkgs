@@ -141,6 +141,10 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
+  passthru = {
+    airplay2Support = enableAirplay2;
+  };
+
   meta = {
     homepage = "https://github.com/mikebrady/shairport-sync";
     description = "Airtunes server and emulator with multi-room capabilities";
