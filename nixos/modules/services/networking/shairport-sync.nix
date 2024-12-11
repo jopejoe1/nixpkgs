@@ -113,9 +113,17 @@ in
 
   config = mkIf config.services.shairport-sync.enable {
 
-    services.avahi.enable = true;
-    services.avahi.publish.enable = true;
-    services.avahi.publish.userServices = true;
+    services = {
+      avahi = {
+        enable = true;
+        publish = {
+          enable = true;
+          userServices = true;
+        };
+      };
+    } // lib.optionalAttrs airplay2Support {
+      nqptp.enable = true;
+    };
 
     users = {
       users.${cfg.user} = {
@@ -156,5 +164,4 @@ in
       etc."shairport-sync.conf".source = configFile;
     };
   };
-
 }
