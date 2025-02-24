@@ -10,8 +10,6 @@
   help2man,
   libiconv,
   gettext,
-  Carbon,
-  IOKit,
 }:
 
 stdenv.mkDerivation rec {
@@ -45,16 +43,12 @@ stdenv.mkDerivation rec {
     autoreconfHook
     texinfo
   ];
-  buildInputs =
-    [
-      libcddb
-      libiconv
-      ncurses
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Carbon
-      IOKit
-    ];
+
+  buildInputs = [
+    libcddb
+    libiconv
+    ncurses
+  ];
 
   enableParallelBuilding = true;
 
