@@ -2,6 +2,7 @@
   lib,
   stdenv,
   fetchurl,
+  libsndfile,
 }:
 
 stdenv.mkDerivation rec {
@@ -24,6 +25,10 @@ stdenv.mkDerivation rec {
   '';
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error=unused-command-line-argument";
+
+  buildInputs = [
+    libsndfile
+  ];
 
   makeFlags = [
     "CC=${stdenv.cc.targetPrefix}cc"
