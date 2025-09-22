@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     sed -i 's@/usr/@$(out)/@g'  Makefile
     substituteInPlace Makefile \
       --replace-fail /tmp/test.wav $NIX_BUILD_TOP/${sourceRoot}/test.wav \
-      --replace-fail ",--version-script=gcc_exports.map" ""
+      --replace-fail "-Wl,--version-script=gcc_exports.map" "-Wno-error=unused-command-line-argument"
   '';
 
   makeFlags = [
