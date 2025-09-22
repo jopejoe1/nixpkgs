@@ -12047,8 +12047,6 @@ with pkgs;
     fftw = fftwSinglePrec;
   };
 
-  ladspa-sdk = callPackage ../applications/audio/ladspa-sdk { };
-
   lemonbar = callPackage ../applications/window-managers/lemonbar { };
 
   lemonbar-xft = callPackage ../applications/window-managers/lemonbar/xft.nix { };

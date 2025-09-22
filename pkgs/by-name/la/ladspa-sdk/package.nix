@@ -35,6 +35,11 @@ stdenv.mkDerivation rec {
   # it's probably still useful to run the part that creates the file.
   doCheck = true;
 
+  outputs = [
+    "out"
+    "dev"
+  ];
+
   meta = {
     description = "SDK for the LADSPA audio plugin standard";
     longDescription = ''
@@ -45,6 +50,6 @@ stdenv.mkDerivation rec {
     homepage = "http://www.ladspa.org/ladspa_sdk/overview.html";
     license = lib.licenses.lgpl2;
     maintainers = [ lib.maintainers.magnetophon ];
-    platforms = lib.platforms.linux;
+    platforms = lib.platforms.all;
   };
 }
