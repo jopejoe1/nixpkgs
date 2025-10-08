@@ -180,7 +180,7 @@ stdenv.mkDerivation (finalAttrs: {
       OpenGL ES API calls to one of the hardware-supported APIs available
       for that platform.
     '';
-    homepage = "https://angleproject.org";
+    homepage = "https://chromium.googlesource.com/angle/angle/";
     maintainers = with lib.maintainers; [
       jess
       jk
