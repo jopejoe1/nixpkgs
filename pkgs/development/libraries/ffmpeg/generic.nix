@@ -185,7 +185,7 @@
   withRuntimeCPUDetection ? true, # Detect CPU capabilities at runtime (disable to compile natively)
   withGrayscale ? withFullDeps, # Full grayscale support
   withSwscaleAlpha ? buildSwscale, # Alpha channel support in swscale. You probably want this when buildSwscale.
-  withHardcodedTables ? withHeadlessDeps, # Hardcode decode tables instead of runtime generation
+  withHardcodedTables ? false, # Hardcode decode tables instead of runtime generation #Note: currently brocken on the latest ffmpeg versions
   withSafeBitstreamReader ? withHeadlessDeps, # Buffer boundary checking in bitreaders
   withMultithread ? true, # Multithreading via pthreads/win32 threads
   withNetwork ? withHeadlessDeps, # Network support
