@@ -1899,8 +1899,6 @@ with pkgs;
 
   online-judge-tools = with python3.pkgs; toPythonApplication online-judge-tools;
 
-  opaline = callPackage ../by-name/op/opaline/package.nix { inherit ocamlPackages; };
-
   inherit (ocamlPackages) patdiff;
 
   patool = with python3Packages; toPythonApplication patool;
