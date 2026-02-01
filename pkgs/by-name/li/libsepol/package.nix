@@ -47,6 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "SELinux binary policy manipulation library";
     homepage = "http://userspace.selinuxproject.org";
     platforms = lib.platforms.linux;
+    # Note: changing maintainers here changes maintainers for all SELinux-related libraries
     maintainers = with lib.maintainers; [
       RossComputerGuy
       numinit

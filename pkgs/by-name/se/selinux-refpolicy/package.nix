@@ -56,7 +56,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "SELinux Reference Policy v2";
     homepage = "http://userspace.selinuxproject.org";
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [ RossComputerGuy ];
+    inherit (semodule-utils.meta) maintainers;
     license = lib.licenses.gpl2Only;
   };
 })

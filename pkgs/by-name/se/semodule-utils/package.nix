@@ -26,7 +26,6 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "SELinux policy core utilities (packaging additions)";
     license = lib.licenses.gpl2Only;
-    inherit (libsepol.meta) homepage platforms;
-    maintainers = with lib.maintainers; [ RossComputerGuy ];
+    inherit (libsepol.meta) homepage platforms maintainers;
   };
 })
