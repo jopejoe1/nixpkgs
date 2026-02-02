@@ -2,10 +2,13 @@
   lib,
   stdenv,
   fetchurl,
-  ocamlPackages,
+  buildPackages,
   version ? "3.20.2",
 }:
-
+let
+  # needed for pkgsStatic
+  inherit (buildPackages.buildPackages) ocamlPackages;
+in
 stdenv.mkDerivation {
   pname = "dune";
   inherit version;
@@ -29,7 +32,10 @@ stdenv.mkDerivation {
     findlib
   ];
 
+  depsBuildBuild = [ buildPackages.stdenv.cc ];
+
   strictDeps = true;
+  __structuredAttrs = true;
 
   buildFlags = [ "release" ];
 
