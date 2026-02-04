@@ -12,7 +12,7 @@
   fts,
 }:
 
-assert enablePython -> swig != null && python3 != null;
+assert enablePython -> swig != null && python3 != null && !stdenv.hostPlatform.isStatic;
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "libselinux";
@@ -103,6 +103,19 @@ stdenv.mkDerivation (finalAttrs: {
   preFixup = lib.optionalString enablePython ''
     mv $out/${python3.sitePackages}/selinux/* $py/${python3.sitePackages}/selinux/
     rm -rf $out/lib/python*
+
+    # We need to fix this symlink so it's named correctly for cross compiles.
+    # e.g. the Makefile would put _selinux.cpython-313-x86_64-linux-gnu.so -> selinux/_selinux.cpython-313-x86_64-linux-gnu.so
+    # here on a cross compile for aarch64, but put the aarch64 file in the selinux directory
+    pushd .
+    cd $py/${python3.sitePackages}
+    [ -f "$(ls selinux/_selinux.*${stdenv.hostPlatform.extensions.sharedLibrary})" ] || {
+      echo "selinux shared library not found!" >&2
+      exit 1
+    }
+    rm -vf _selinux.*${stdenv.hostPlatform.extensions.sharedLibrary}
+    ln -vsf selinux/_selinux.*${stdenv.hostPlatform.extensions.sharedLibrary}
+    popd
   '';
 
   meta = removeAttrs libsepol.meta [ "outputsToInstall" ] // {
