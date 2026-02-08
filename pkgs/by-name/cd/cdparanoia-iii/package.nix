@@ -9,7 +9,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "cdparanoia-III";
+  pname = "cdparanoia-iii";
   version = "10.2";
 
   src = fetchurl {
