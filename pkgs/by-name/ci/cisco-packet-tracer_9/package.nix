@@ -10,10 +10,8 @@
 }:
 
 let
-  pname = "ciscoPacketTracer9";
-
   appimage = stdenvNoCC.mkDerivation {
-    pname = "ciscoPacketTracer9-appimage";
+    pname = "cisco-packet-tracer-appimage";
     inherit version;
 
     src =
@@ -45,7 +43,9 @@ let
 
 in
 appimageTools.wrapType2 rec {
-  inherit pname version;
+  pname = "cisco-packet-tracer";
+  inherit version;
+
   src = appimage;
 
   extraPkgs = _: [

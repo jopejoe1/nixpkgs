@@ -9822,7 +9822,7 @@ with pkgs;
   geany = callPackage ../applications/editors/geany { };
   geany-with-vte = callPackage ../applications/editors/geany/with-vte.nix { };
 
-  gImageReader-qt = qt6Packages.callPackage ../by-name/gi/gImageReader/package.nix {
+  gimagereader-qt = qt6Packages.callPackage ../by-name/gi/gimagereader/package.nix {
     withQt6 = true;
   };
 

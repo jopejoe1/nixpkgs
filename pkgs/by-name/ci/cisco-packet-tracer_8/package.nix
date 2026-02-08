@@ -59,7 +59,7 @@ let
   };
 
   unwrapped = stdenvNoCC.mkDerivation {
-    name = "ciscoPacketTracer8-unwrapped";
+    name = "cisco-packet-tracer-unwrapped";
     inherit version;
 
     src =
@@ -135,14 +135,15 @@ let
   };
 
   fhs-env = buildFHSEnv {
-    name = "ciscoPacketTracer8-fhs-env";
+    pname = "cisco-packet-tracer-fhs-env";
+    inherit version;
     runScript = lib.getExe' unwrapped "packettracer8";
     targetPkgs = _: [ libudev0-shim ];
   };
 in
 
 stdenvNoCC.mkDerivation {
-  pname = "ciscoPacketTracer8";
+  pname = "cisco-packet-tracer";
   inherit version;
 
   dontUnpack = true;
@@ -155,7 +156,7 @@ stdenvNoCC.mkDerivation {
     runHook preInstall
 
     mkdir -p $out/bin
-    ln -s ${fhs-env}/bin/${fhs-env.name} $out/bin/packettracer8
+    ln -s ${fhs-env}/bin/${fhs-env.pname} $out/bin/packettracer8
 
     mkdir -p $out/share/icons/hicolor/48x48/apps
     ln -s ${unwrapped}/opt/pt/art/app.png $out/share/icons/hicolor/48x48/apps/cisco-packet-tracer-8.png

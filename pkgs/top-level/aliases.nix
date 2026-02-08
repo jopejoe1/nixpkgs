@@ -281,6 +281,7 @@ mapAliases {
   akkoma-frontends.akkoma-fe = throw "'akkoma-frontends.akkoma-fe' has been renamed to/replaced by 'akkoma-fe'"; # Converted to throw 2025-10-27
   amazon-ecs-cli = throw "'amazon-ecs-cli' has been removed due to being unmaintained upstream"; # Added 2026-01-19
   amazon-qldb-shell = throw "'amazon-qldb-shell' has been removed due to being unmaintained upstream"; # Added 2025-07-30
+  AMB-plugins = amb-plugins; # Added 2026-02-08
   amdvlk = throw "'amdvlk' has been removed since it was deprecated by AMD. Its replacement, RADV, is enabled by default."; # Added 2025-09-20
   ams-lv2 = throw "'ams-lv2' has been removed due to being archived upstream."; # Added 2025-10-26
   android-udev-rules = throw "'android-udev-rules' has been removed due to being superseded by built-in systemd uaccess rules."; # Added 2025-10-21
@@ -448,7 +449,9 @@ mapAliases {
   chrome-gnome-shell = throw "'chrome-gnome-shell' has been renamed to/replaced by 'gnome-browser-connector'"; # Converted to throw 2025-10-27
   ci-edit = throw "'ci-edit' has been removed due to lack of maintenance upstream"; # Added 2025-08-26
   cinnamon-common = cinnamon; # Added 2025-08-06
-  ciscoPacketTracer7 = throw "'ciscoPacketTracer7' has been removed in favor of 'ciscoPacketTracer8' and 'ciscoPacketTracer9'";
+  ciscoPacketTracer7 = throw "'ciscoPacketTracer7' has been removed in favor of 'cisco-packet-tracer_8' and 'cisco-packet-tracer_9'";
+  ciscoPacketTracer8 = cisco-packet-tracer_8; # Added 2026-02-08
+  ciscoPacketTracer9 = cisco-packet-tracer_9; # Added 2026-02-08
   citrix_workspace_23_11_0 = throw "'citrix_workspace_23_11_0' has been removed because it has reached EOL."; # Added 2025-11-25
   citrix_workspace_24_02_0 = throw "'citrix_workspace_24_02_0' has been removed because it has reached EOL."; # Added 2025-11-25
   citrix_workspace_24_05_0 = throw "'citrix_workspace_24_05_0' has been removed because it depended on the removed webkitgtk_4_0."; # Added 2025-11-25
@@ -762,6 +765,8 @@ mapAliases {
   gg = throw "'gg' has been renamed to/replaced by 'go-graft'"; # Converted to throw 2025-10-27
   ggobi = throw "'ggobi' has been removed from Nixpkgs, as it is unmaintained and broken"; # Added 2025-05-18
   gh-copilot = throw "'gh-copilot' has been removed since it has been deprecated and archived upstream. Consider using 'github-copilot-cli' instead"; # Added 2026-01-20
+  gImageReader = gimagereader; # Added 2026-02-08
+  gImageReader-qt = gimagereader-qt; # Added 2026-02-08
   gimp3 = gimp; # Added 2025-10-03
   gimp3-with-plugins = gimp-with-plugins; # Added 2025-10-03
   gimp3Plugins = gimpPlugins; # Added 2025-10-03
