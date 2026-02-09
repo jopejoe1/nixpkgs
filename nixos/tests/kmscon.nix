@@ -29,8 +29,7 @@
   enableOCR = true;
 
   testScript = ''
-    machine.succeed(":")
-    # ^ this create a screen
+    machine.wait_for_unit("multi-user.target")
 
     with subtest("ensure we can open a tty"):
       machine.wait_for_text("machine login:")
@@ -38,6 +37,8 @@
       machine.wait_for_text("Password:")
       machine.send_chars("foobar\n")
       machine.wait_for_text("alice@machine")
+      machine.send_chars("echo $TERM\n")
+      machine.wait_for_text("xterm-256color")
       machine.screenshot("tty.png")
   '';
 }

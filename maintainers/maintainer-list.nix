@@ -588,6 +588,11 @@
       { fingerprint = "CE85 54F7 B9BC AC0D D648  5661 AB5F C04C 3C94 443F"; }
     ];
   };
+  adam-tj = {
+    github = "adam-tj";
+    githubId = 9314405;
+    name = "Adam Tjörnhammar";
+  };
   adam248 = {
     email = "adamjbutler091@gmail.com";
     github = "adam248";
@@ -1044,7 +1049,7 @@
     keys = [ { fingerprint = "F354 FFAB EA89 A49D 33ED  2590 4729 B829 AC5F CC72"; } ];
   };
   ALameLlama = {
-    email = "NicholasACiechanowski@gmail.com";
+    email = "nicholas@ciech.anow.ski";
     name = "Nicholas Ciechanowski";
     github = "ALameLlama";
     githubId = 55490546;
@@ -4944,6 +4949,12 @@
     githubId = 136485;
     name = "Chad Jablonski";
   };
+  cjimti = {
+    email = "cj@imti.co";
+    github = "cjimti";
+    githubId = 356698;
+    name = "Craig Johnston";
+  };
   cjshearer = {
     email = "cjshearer@live.com";
     github = "cjshearer";
@@ -7903,6 +7914,7 @@
     email = "eric@eric.dev.br";
     github = "EpicEric";
     githubId = 3129194;
+    matrix = "@epiceric:nixos.dev";
     name = "Eric Rodrigues Pires";
   };
   epireyn = {
@@ -21702,6 +21714,12 @@
     github = "qoelet";
     githubId = 115877;
     name = "Kenny Shen";
+  };
+  qrzbing = {
+    email = "qrzbing@foxmail.com";
+    github = "qrzbing";
+    githubId = 23500397;
+    name = "qrzbing";
   };
   quadradical = {
     email = "nixos@henryhiles.com";
