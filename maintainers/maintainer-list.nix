@@ -28037,6 +28037,11 @@
     githubId = 13259982;
     name = "Vanessa McHale";
   };
+  vmfunc = {
+    github = "vmfunc";
+    githubId = 59031302;
+    name = "vmfunc";
+  };
   vncsb = {
     email = "viniciusbernardino1@hotmail.com";
     github = "vncsb";

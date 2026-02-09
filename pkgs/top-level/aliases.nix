@@ -292,6 +292,7 @@ mapAliases {
   androidndkPkgs_25 = throw "androidndkPkgs_25 has been removed, as it is EOL"; # Added 2025-08-09
   androidndkPkgs_26 = throw "androidndkPkgs_26 has been removed, as it is EOL"; # Added 2025-08-09
   anew = throw "'anew' has been removed, as it has been unmaintained upstream since March 2022"; # Added 2026-01-01
+  anonymousPro = anonymous-pro-fonts; # Added 2026-02-08
   ansible-language-server = throw "ansible-language-server was removed, because it was unmaintained in nixpkgs."; # Added 2025-09-24
   ansible-later = throw "ansible-later has been discontinued. The author recommends switching to ansible-lint"; # Added 2025-08-24
   ansible_2_16 = throw "ansible_2_16 has been removed, as it is EOL"; # Added 2025-11-10
@@ -410,6 +411,7 @@ mapAliases {
   cargo-espflash = throw "'cargo-espflash' has been renamed to/replaced by 'espflash'"; # Converted to throw 2025-10-27
   cargo-sync-readme = throw "'cargo-sync-readme' has been removed because upstream 404s"; # Converted to throw 2025-12-18
   cargonode = throw "'cargonode' has been removed due to lack of upstream maintenance"; # Added 2025-06-18
+  carp = throw "'carp' has been removed due to being broken for more than a year; see RFC 180"; # Added 2026-02-05
   cask = throw "'cask' has been renamed to/replaced by 'emacs.pkgs.cask'"; # Converted to throw 2025-10-27
   catalyst-browser = throw "'catalyst-browser' has been removed due to a lack of maintenance and not satisfying our security criteria for browsers."; # Added 2025-06-25
   cataract = throw "'cataract' has been removed due to a lack of maintenace"; # Added 2025-08-25
@@ -632,6 +634,7 @@ mapAliases {
   evolve-core = throw "'evolve-core' has been removed, as it hindered the removal of flutter329"; # Added 2026-01-25
   eww-wayland = throw "'eww-wayland' has been renamed to/replaced by 'eww'"; # Converted to throw 2025-10-27
   f3d_egl = warnAlias "'f3d' now build with egl support by default, so `f3d_egl` is deprecated, consider using 'f3d' instead." f3d; # Added 2025-07-18
+  fabs = throw "'fabs' has been removed due to being broken for more than a year; see RFC 180"; # Added 2026-02-05
   fast-cli = throw "'fast-cli' has been removed because it was unmaintainable in nixpkgs"; # Added 2025-11-17
   fastnlo_toolkit = throw "'fastnlo_toolkit' has been renamed to/replaced by 'fastnlo-toolkit'"; # Converted to throw 2025-10-27
   faustStk = throw "'faustStk' has been renamed to/replaced by 'faustPhysicalModeling'"; # Converted to throw 2025-10-27
@@ -876,6 +879,7 @@ mapAliases {
   immersed-vr = throw "'immersed-vr' has been renamed to/replaced by 'immersed'"; # Converted to throw 2025-10-27
   inconsolata-nerdfont = throw "'inconsolata-nerdfont' has been renamed to/replaced by 'nerd-fonts.inconsolata'"; # Converted to throw 2025-10-27
   incrtcl = throw "'incrtcl' has been renamed to/replaced by 'tclPackages.incrtcl'"; # Converted to throw 2025-10-27
+  infamousPlugins = infamousplugins; # Added 2026-02-08
   inotifyTools = throw "'inotifyTools' has been renamed to/replaced by 'inotify-tools'"; # Converted to throw 2025-10-27
   insync-emblem-icons = throw "'insync-emblem-icons' has been removed, use 'insync-nautilus' instead"; # Added 2025-05-14
   invalidateFetcherByDrvHash = throw "'invalidateFetcherByDrvHash' has been renamed to/replaced by 'testers.invalidateFetcherByDrvHash'"; # Converted to throw 2025-10-27
