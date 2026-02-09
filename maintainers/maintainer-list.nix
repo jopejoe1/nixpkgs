@@ -24779,6 +24779,14 @@
     githubId = 1505617;
     name = "Sean Lee";
   };
+  sleroq = {
+    name = "Sleroq";
+    email = "sleroq@cum.army";
+    github = "sleroq";
+    matrix = "@sleroq:sleroq.link";
+    githubId = 52239427;
+    keys = [ { fingerprint = "2502 640F 4254 7933 FEF1  7A33 3414 5C1D B76E 618F"; } ];
+  };
   SlothOfAnarchy = {
     email = "slothofanarchy1@gmail.com";
     matrix = "@michel.weitbrecht:helsinki-systems.de";
@@ -27135,12 +27143,6 @@
     github = "traxys";
     githubId = 5623227;
     name = "Quentin Boyer";
-  };
-  TredwellGit = {
-    email = "tredwell@tutanota.com";
-    github = "TredwellGit";
-    githubId = 61860346;
-    name = "Tredwell";
   };
   treemo = {
     email = "matthieu.chevrier@treemo.fr";

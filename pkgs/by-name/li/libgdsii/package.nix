@@ -6,7 +6,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "libGDSII";
+  pname = "libgdsii";
   version = "0.21";
 
   src = fetchFromGitHub {

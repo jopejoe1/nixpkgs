@@ -14710,6 +14710,8 @@ self: super: with self; {
 
   pyseventeentrack = callPackage ../development/python-modules/pyseventeentrack { };
 
+  pysfcgal = callPackage ../development/python-modules/pysfcgal { };
+
   pysftp = callPackage ../development/python-modules/pysftp { };
 
   pyshark = callPackage ../development/python-modules/pyshark { };
