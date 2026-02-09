@@ -2052,6 +2052,8 @@ let
 
         swhid_core = callPackage ../development/ocaml-modules/swhid_core { };
 
+        symex = callPackage ../development/ocaml-modules/symex { };
+
         synchronizer = callPackage ../development/ocaml-modules/synchronizer { };
 
         syslog = callPackage ../development/ocaml-modules/syslog { };

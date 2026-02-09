@@ -6,7 +6,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "LAStools";
+  pname = "lastools";
   version = "2.0.4";
 
   src = fetchFromGitHub {

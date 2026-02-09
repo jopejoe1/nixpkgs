@@ -962,6 +962,7 @@ mapAliases {
   lanzaboote-tool = throw "lanzaboote-tool has been removed due to lack of integration maintenance with nixpkgs. Consider using the Nix expressions provided by https://github.com/nix-community/lanzaboote"; # Added 2025-07-23
   larynx = throw "'larynx' has been renamed to/replaced by 'piper-tts'"; # Converted to throw 2025-10-27
   lash = throw "'lash' has been removed, as it is unmaintained upstream"; # Added 2026-01-02
+  LAStools = lastools; # Added 2026-02-08
   LASzip2 = throw "'LASzip2' has been renamed to/replaced by 'laszip_2'"; # Converted to throw 2025-10-27
   LASzip = throw "'LASzip' has been renamed to/replaced by 'laszip'"; # Converted to throw 2025-10-27
   latinmodern-math = throw "'latinmodern-math' has been renamed to/replaced by 'lmmath'"; # Converted to throw 2025-10-27
@@ -1097,6 +1098,7 @@ mapAliases {
   linux_6_16 = throw "linux 6.16 was removed because it has reached its end of life upstream"; # Added 2025-10-22
   linux_6_17 = linuxKernel.kernels.linux_6_17;
   linux_6_18 = linuxKernel.kernels.linux_6_18;
+  linux_6_19 = linuxKernel.kernels.linux_6_19;
   linux_ham = throw "linux_ham has been removed in favour of the standard kernel packages"; # Added 2025-06-24
   linux_hardened = linuxPackages_hardened.kernel; # Added 2025-08-10
   linux_latest-libre = throw "linux_latest_libre has been removed due to lack of maintenance"; # Added 2025-10-01
@@ -1127,6 +1129,7 @@ mapAliases {
   linuxPackages_6_16 = throw "linux 6.16 was removed because it has reached its end of life upstream"; # Added 2025-10-22
   linuxPackages_6_17 = linuxKernel.packages.linux_6_17;
   linuxPackages_6_18 = linuxKernel.packages.linux_6_18;
+  linuxPackages_6_19 = linuxKernel.packages.linux_6_19;
   linuxPackages_ham = throw "linux_ham has been removed in favour of the standard kernel packages"; # Added 2025-06-24
   linuxPackages_hardened = linuxKernel.packages.linux_hardened; # Added 2025-08-10
   linuxPackages_latest-libre = throw "linux_latest_libre has been removed due to lack of maintenance"; # Added 2025-10-01
@@ -1265,6 +1268,7 @@ mapAliases {
   minetest-touch = throw "'minetest-touch' has been renamed to/replaced by 'luanti-client'"; # Converted to throw 2025-10-27
   minetestclient = throw "'minetestclient' has been renamed to/replaced by 'luanti-client'"; # Converted to throw 2025-10-27
   minetestserver = throw "'minetestserver' has been renamed to/replaced by 'luanti-server'"; # Converted to throw 2025-10-27
+  miniHttpd = mini-httpd; # Added 2026-02-08
   minio_legacy_fs = throw "'minio_legacy_fs' has been removed, migrate your data and use 'minio'"; # Added 2026-02-02
   minizincide = warnAlias "'minizincide' has been renamed to 'minizinc-ide'" minizinc-ide; # Added 2026-01-03
   minizip2 = throw "'minizip2' has been renamed to/replaced by 'minizip-ng'"; # Converted to throw 2025-10-27
@@ -1875,6 +1879,7 @@ mapAliases {
   uae = throw "'uae' has been removed due to lack of upstream maintenance. Consider using 'fsuae' instead."; # Added 2025-06-11
   ubuntu_font_family = throw "'ubuntu_font_family' has been renamed to/replaced by 'ubuntu-classic'"; # Converted to throw 2025-10-27
   udisks2 = udisks; # Added 2025-10-30
+  ue4demos = throw "'ue4demos' has been removed because it is unmaintained"; # Added 2026-02-07
   unicap = throw "'unicap' has been removed because it is unmaintained"; # Added 2025-05-17
   unifi-poller = throw "'unifi-poller' has been renamed to/replaced by 'unpoller'"; # Converted to throw 2025-10-27
   unzoo = throw "'unzoo' has been removed since it is unmaintained upstream and doesn't compile with newer versions of GCC anymore"; # Removed 2025-05-24
