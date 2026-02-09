@@ -13,7 +13,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "libLAS";
+  pname = "liblas";
   version = "1.8.1";
 
   src = fetchurl {
