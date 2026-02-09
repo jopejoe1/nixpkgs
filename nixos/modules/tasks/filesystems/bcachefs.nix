@@ -242,9 +242,6 @@ in
           }
         ];
 
-        # Use LTS that bcachefs is compatible with.
-        boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_6_18;
-
         # needed for systemd-remount-fs
         system.fsPackages = [ cfg.package ];
         services.udev.packages = [ cfg.package ];
