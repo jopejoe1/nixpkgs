@@ -23,6 +23,12 @@ let
       "aarch64-linux"
       "x86_64-linux"
     ];
+    knownVulnerabilities = lib.optional stdenvNoCC.hostPlatform.isLinux ''
+      CWE-78: Clicking on a file attachment whose name contains backtick-quoted
+      commands will cause it to be executed.
+
+      Reference: https://archive.ph/A5McZ (Chinese)
+    '';
   };
 
   sources =

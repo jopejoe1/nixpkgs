@@ -18785,6 +18785,13 @@
     github = "netthier";
     githubId = 66856670;
   };
+  nettika = {
+    email = "nettika@leaf.ninja";
+    name = "Nettika";
+    github = "nettika-cat";
+    githubId = 131948390;
+    keys = [ { fingerprint = "6AC6 0C6F FA92 94AD AEA7  8C03 C357 EE70 D502 7BCC"; } ];
+  };
   networkexception = {
     name = "networkException";
     email = "nix@nwex.de";
@@ -18847,6 +18854,12 @@
     github = "nhooyr";
     githubId = 10180857;
     name = "Anmol Sethi";
+  };
+  ni5arga = {
+    email = "hello@ni5arga.com";
+    github = "ni5arga";
+    githubId = 45588772;
+    name = "Nisarga Adhikary";
   };
   nialov = {
     email = "nikolasovaskainen@gmail.com";

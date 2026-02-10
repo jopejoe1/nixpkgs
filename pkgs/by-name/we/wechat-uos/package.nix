@@ -194,6 +194,14 @@ let
           xddxdd
         ];
         mainProgram = "wechat-uos";
+        knownVulnerabilities = [
+          ''
+            CWE-78: Clicking on a file attachment whose name contains backtick-quoted
+            commands will cause it to be executed.
+
+            Reference: https://archive.ph/A5McZ (Chinese)
+          ''
+        ];
       };
     };
 in
