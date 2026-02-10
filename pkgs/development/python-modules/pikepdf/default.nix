@@ -4,10 +4,10 @@
   buildPythonPackage,
   fetchFromGitHub,
   hypothesis,
-  pythonOlder,
   jbig2dec,
   deprecated,
   lxml,
+  withMupdf ? false,
   mupdf-headless,
   numpy,
   packaging,
@@ -44,7 +44,13 @@ buildPythonPackage rec {
   patches = [
     (replaceVars ./paths.patch {
       jbig2dec = lib.getExe' jbig2dec "jbig2dec";
-      mutool = lib.getExe' mupdf-headless "mutool";
+      mutool =
+        if withMupdf then
+          lib.getExe' mupdf-headless "mutool"
+        else
+          # replace with non-existing path. This is okay, as this is only
+          # called by Jupyter/iPython
+          "mutool";
     })
   ];
 
