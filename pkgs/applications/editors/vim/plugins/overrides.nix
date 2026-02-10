@@ -301,6 +301,10 @@ assertNoAdditions {
     ];
   };
 
+  blink-cmp-conventional-commits = super.blink-cmp-conventional-commits.overrideAttrs {
+    dependencies = [ self.blink-cmp ];
+  };
+
   blink-cmp-copilot = super.blink-cmp-copilot.overrideAttrs {
     dependencies = [ self.copilot-lua ];
   };
