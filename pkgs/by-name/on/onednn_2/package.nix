@@ -8,10 +8,10 @@
 # This was originally called mkl-dnn, then it was renamed to dnnl, and it has
 # just recently been renamed again to oneDNN. See here for details:
 # https://github.com/oneapi-src/oneDNN#oneapi-deep-neural-network-library-onednn
-# oneDNN_2 is currently only consumed by rocmPackages.migraphx and likely
+# onednn_2 is currently only consumed by rocmPackages.migraphx and likely
 # to be dropped once migraphx can migrate to 3
 stdenv.mkDerivation (finalAttrs: {
-  pname = "oneDNN";
+  pname = "onednn";
   version = "2.7.5";
 
   src = fetchFromGitHub {
@@ -52,7 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     changelog = "https://github.com/oneapi-src/oneDNN/releases/tag/v${finalAttrs.version}";
     description = "oneAPI Deep Neural Network Library (oneDNN)";
-    homepage = "https://01.org/oneDNN";
+    homepage = "http://uxlfoundation.github.io/oneDNN";
     license = lib.licenses.asl20;
     teams = [ lib.teams.rocm ];
     platforms = lib.platforms.all;

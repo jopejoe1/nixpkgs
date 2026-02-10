@@ -2,7 +2,7 @@
   lib,
   buildPythonPackage,
   fetchFromGitHub,
-  poetry-core,
+  hatchling,
   pyrate-limiter,
   pytestCheckHook,
   requests-mock,
@@ -22,7 +22,7 @@ buildPythonPackage rec {
     hash = "sha256-/fyZ+fjboAw97FPI6TgcjHRUAJbdNomvh7xJqTrTmuY=";
   };
 
-  build-system = [ poetry-core ];
+  build-system = [ hatchling ];
 
   dependencies = [
     pyrate-limiter

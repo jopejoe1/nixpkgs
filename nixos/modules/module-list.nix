@@ -558,6 +558,7 @@
   ./services/desktops/blueman.nix
   ./services/desktops/bonsaid.nix
   ./services/desktops/cpupower-gui.nix
+  ./services/desktops/crossmacro.nix
   ./services/desktops/dleyna.nix
   ./services/desktops/dunst.nix
   ./services/desktops/espanso.nix

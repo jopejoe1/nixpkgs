@@ -2022,8 +2022,6 @@ with pkgs;
     protobuf = protobuf_21;
   };
 
-  circus = with python310Packages; toPythonApplication circus;
-
   inherit (callPackage ../applications/networking/remote/citrix-workspace { })
     citrix_workspace_25_08_10
     ;
@@ -10100,8 +10098,6 @@ with pkgs;
   pinboard = with python3Packages; toPythonApplication pinboard;
 
   pinboard-notes-backup = haskell.lib.compose.justStaticExecutables haskellPackages.pinboard-notes-backup;
-
-  pixel2svg = python310Packages.callPackage ../tools/graphics/pixel2svg { };
 
   inherit (callPackage ../applications/virtualization/singularity/packages.nix { })
     apptainer

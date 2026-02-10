@@ -15,7 +15,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "artyFX";
+  pname = "openav-artyfx";
   version = "1.3.1";
 
   src = fetchFromGitHub {

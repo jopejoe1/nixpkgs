@@ -7,7 +7,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "libHX";
+  pname = "libhx";
   version = "5.3";
 
   src = fetchFromCodeberg {
