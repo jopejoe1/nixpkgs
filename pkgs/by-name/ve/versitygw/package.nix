@@ -2,6 +2,8 @@
   lib,
   fetchFromGitHub,
   buildGoModule,
+  nix-update-script,
+  versionCheckHook,
 }:
 
 buildGoModule (finalAttrs: {
@@ -17,12 +19,25 @@ buildGoModule (finalAttrs: {
 
   vendorHash = "sha256-z+m5ez17yF+GcUHyKU6a3Q69A6ACBVk0gCjKIaIJ554=";
 
-  doCheck = false; # Require access to online S3 services
+  # Require access to online S3 services
+  doCheck = false;
 
-  ldFlags = [
-    "-s"
-    "-w"
+  # Needed for "versitygw --version" to not show placeholders
+  ldflags = [
+    "-X main.Build=v${finalAttrs.version}"
+    "-X main.BuildTime=1980-01-01T00:00:02Z"
+    "-X main.Version=v${finalAttrs.version}"
   ];
+
+  doInstallCheck = true;
+
+  nativeInstallCheckInputs = [ versionCheckHook ];
+
+  versionCheckProgramArg = "--version";
+
+  passthru = {
+    updateScript = nix-update-script { };
+  };
 
   meta = {
     description = "Versity S3 gateway, a high-performance S3 translation service";

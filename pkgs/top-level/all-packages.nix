@@ -7913,8 +7913,8 @@ with pkgs;
   go = go_1_25;
   buildGoModule = buildGo125Module;
 
-  go_latest = go_1_25;
-  buildGoLatestModule = buildGo125Module;
+  go_latest = go_1_26;
+  buildGoLatestModule = buildGo126Module;
 
   go_1_24 = callPackage ../development/compilers/go/1.24.nix { };
   buildGo124Module = callPackage ../build-support/go/module.nix {

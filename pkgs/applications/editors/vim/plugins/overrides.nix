@@ -72,6 +72,7 @@
   gitMinimal,
   # opencode-nvim,
   opencode,
+  lsof,
   # Preview-nvim dependencies
   md-tui,
   # sidekick-nvim dependencies
@@ -2995,6 +2996,7 @@ assertNoAdditions {
     runtimeDeps = [
       curl
       opencode
+      lsof
     ];
   };
 
