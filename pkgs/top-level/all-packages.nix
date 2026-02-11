@@ -1183,7 +1183,7 @@ with pkgs;
 
   ### APPLICATIONS/EMULATORS
 
-  _86Box-with-roms = _86Box.override {
+  _86box-with-roms = _86box.override {
     unfreeEnableRoms = true;
     unfreeEnableDiscord = true;
   };
@@ -2818,8 +2818,6 @@ with pkgs;
   m2r = with python3Packages; toPythonApplication m2r;
 
   md2gemini = with python3.pkgs; toPythonApplication md2gemini;
-
-  md2pdf = with python3Packages; toPythonApplication md2pdf;
 
   mdcat = callPackage ../tools/text/mdcat {
     inherit (python3Packages) ansi2html;

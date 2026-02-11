@@ -7,7 +7,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "libfakeXinerama";
+  pname = "libfakexinerama";
   version = "0.1.0";
 
   src = fetchurl {

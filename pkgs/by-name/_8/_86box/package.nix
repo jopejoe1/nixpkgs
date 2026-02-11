@@ -40,7 +40,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "86Box";
+  pname = "86box";
   version = "5.3";
 
   src = fetchFromGitHub {

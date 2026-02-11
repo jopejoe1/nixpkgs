@@ -8,5 +8,5 @@ version=$(jq -r '.tag_name' <<<"$latest_release" | cut -c2-)
 main_hash=$(nix-prefetch-github --json --rev "v$version" 86Box 86Box | jq -r '.hash')
 roms_hash=$(nix-prefetch-github --json --rev "v$version" 86Box roms | jq -r '.hash')
 
-update-source-version _86Box "_$version" "$main_hash"
-update-source-version _86Box "$version" "$roms_hash" --source-key=roms
+update-source-version _86box "_$version" "$main_hash"
+update-source-version _86box "$version" "$roms_hash" --source-key=roms
