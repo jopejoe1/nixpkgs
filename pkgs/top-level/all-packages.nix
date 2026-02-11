@@ -503,7 +503,13 @@ with pkgs;
         protobuf = protobuf_25.override {
           abseil-cpp = abseil-cpp_202407;
         };
-        stdenv = if stdenv.cc.isClang then llvmPackages_19.stdenv else stdenv;
+        stdenv =
+          if stdenv.cc.isClang then
+            llvmPackages_19.stdenv
+          else if stdenv.cc.isGNU then
+            gcc14Stdenv
+          else
+            stdenv;
       };
     })
     mysql-shell_8
@@ -515,7 +521,13 @@ with pkgs;
     protobuf = protobuf_25.override {
       abseil-cpp = abseil-cpp_202407;
     };
-    stdenv = if stdenv.cc.isClang then llvmPackages_19.stdenv else stdenv;
+    stdenv =
+      if stdenv.cc.isClang then
+        llvmPackages_19.stdenv
+      else if stdenv.cc.isGNU then
+        gcc14Stdenv
+      else
+        stdenv;
   };
 
   # this is used by most `fetch*` functions
@@ -2981,8 +2993,6 @@ with pkgs;
 
   marimo = with python3Packages; toPythonApplication marimo;
 
-  mbutil = python310Packages.callPackage ../applications/misc/mbutil { };
-
   mcstatus = with python3Packages; toPythonApplication mcstatus;
 
   miniupnpd = callPackage ../tools/networking/miniupnpd { };
@@ -3089,10 +3099,6 @@ with pkgs;
     );
 
   nvfetcher = haskell.lib.compose.justStaticExecutables haskellPackages.nvfetcher;
-
-  mkgmap = callPackage ../applications/misc/mkgmap { };
-
-  mkgmap-splitter = callPackage ../applications/misc/mkgmap/splitter { };
 
   op-geth = callPackage ../applications/blockchains/optimism/geth.nix { };
 
@@ -6221,8 +6227,6 @@ with pkgs;
   mypy = with python3Packages; toPythonApplication mypy;
 
   mypy-protobuf = with python3Packages; toPythonApplication mypy-protobuf;
-
-  basedmypy = with python3Packages; toPythonApplication basedmypy;
 
   ### DEVELOPMENT / LIBRARIES
 

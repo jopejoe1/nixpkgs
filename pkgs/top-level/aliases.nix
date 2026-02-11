@@ -353,6 +353,7 @@ mapAliases {
   banking = saldo; # Added 2025-08-29
   barrier = throw "'barrier' has been removed as it is unmaintained. Consider 'deskflow' or 'input-leap' instead."; # Added 2025-09-29
   base16-builder = throw "'base16-builder' has been removed due to being unmaintained"; # Added 2025-06-03
+  basedmypy = throw "basedmypy has been deprecated by upstream. Use instead 'basedpyright' or 'ty'"; # added 2026-02-03
   baserow = throw "baserow has been removed, due to lack of maintenance"; # Added 2025-08-02
   bazel_5 = throw "bazel_5 has been removed as it is EOL"; # Added 2025-08-09
   bazel_6 = throw "bazel_6 has been removed as it will be EOL by the release of Nixpkgs 25.11"; # Added 2025-08-19
@@ -428,6 +429,7 @@ mapAliases {
   certmgr-selfsigned = throw "'certmgr-selfsigned' has been renamed to/replaced by 'certmgr'"; # Converted to throw 2025-10-27
   cgit-pink = throw "cgit-pink has been removed, as it is unmaintained upstream"; # Added 2026-01-21
   challenger = throw "'challenger' has been renamed to/replaced by 'taler-challenger'"; # Converted to throw 2025-10-27
+  charis-sil = throw "'charis-sil' has renamed to/replaced by 'charis'"; # Added 2025-12-01
   charmcraft = throw "charmcraft was removed in Sep 25 following removal of LXD from nixpkgs"; # Added 2025-09-18
   charybdis = throw "charybdis was removed since its upstream repo was archived in 2021"; # Added 2026-01-13
   chatgpt-retrieval-plugin = throw "chatgpt-retrieval-plugin has been removed because it has been marked as broken since at least November 2024."; # Added 2025-09-28
@@ -632,6 +634,7 @@ mapAliases {
   eris-go = throw "'eris-go' has been removed due to a hostile upstream moving tags and breaking src FODs"; # Added 2025-09-01
   eriscmd = throw "'eriscmd' has been removed due to a hostile upstream moving tags and breaking src FODs"; # Added 2025-09-01
   erlang-ls = throw "'erlang-ls' has been removed as it has been archived upstream. Consider using 'erlang-language-platform' instead"; # Added 2025-10-02
+  etBook = warnAlias "'etBook' has been renamed to 'et-book'" et-book; # Added 2026-02-08
   ethercalc = throw "'ethercalc' has been removed from nixpkgs as the project was old, unmaintained, and could not be packaged well in nixpkgs"; # Added 2025-11-28
   ethersync = warnAlias "'ethersync' has been renamed to 'teamtype'" teamtype; # Added 2025-10-31
   evolve-core = throw "'evolve-core' has been removed, as it hindered the removal of flutter329"; # Added 2026-01-25
@@ -1227,6 +1230,7 @@ mapAliases {
   lxde.lxsession = throw "'lxsession' has been moved to top-level. Use 'lxsession' directly"; # Added 2025-08-31
   lxde.lxtask = throw "'lxtask' has been moved to top-level. Use 'lxtask' directly"; # Added 2025-08-31
   lxdvdrip = throw "'lxdvdrip' has been removed due to lack of upstream maintenance."; # Added 2025-06-09
+  LycheeSlicer = warnAlias "'LycheeSlicer' has been renamed to 'lycheeslicer'" lycheeslicer; # Added 2026-02-08
   mac = throw "'mac' has been renamed to/replaced by 'monkeysAudio'"; # Converted to throw 2025-10-27
   MACS2 = throw "'MACS2' has been renamed to/replaced by 'macs2'"; # Converted to throw 2025-10-27
   magma_2_6_2 = throw "'magma_2_6_2' has been removed, use the latest 'magma' package instead."; # Added 2025-07-20
@@ -1257,6 +1261,7 @@ mapAliases {
   mediastreamer-openh264 = throw "'mediastreamer-openh264' has been moved to 'linphonePackages.msopenh264'"; # Added 2025-09-20
   meilisearch_1_11 = throw "'meilisearch_1_11' has been removed, as it is no longer supported"; # Added 2025-10-03
   melmatcheq.lv2 = melmatcheq-lv2; # Added 2025-09-27
+  melonDS = warnAlias "'melonDS' has been renamed to 'melonds'" melonds; # Added 2026-02-08
   meshlab-unstable = throw "meshlab-unstable has been removed, as it was behind meshlab"; # Added 2025-09-21
   meteo = throw "'meteo' has been removed as it was unmaintained and depends on deprecated webkitgtk_4_0"; # Added 2025-10-09
   microcodeAmd = throw "'microcodeAmd' has been renamed to/replaced by 'microcode-amd'"; # Converted to throw 2025-10-27
@@ -1746,6 +1751,7 @@ mapAliases {
   sourcehut = throw "'sourcehut.*' has been removed due to being broken and unmaintained"; # Added 2025-06-15
   SP800-90B_EntropyAssessment = throw "'SP800-90B_EntropyAssessment' has been renamed to/replaced by 'sp800-90b-entropyassessment'"; # Converted to throw 2025-10-27
   space-orbit = throw "'space-orbit' has been removed because it is unmaintained; Debian upstream stopped tracking it in 2011."; # Added 2025-06-08
+  spacevim = throw "'spacevim' has been removed due to being archived upstream."; # Added 2026-02-10
   SPAdes = throw "'SPAdes' has been renamed to/replaced by 'spades'"; # Converted to throw 2025-10-27
   spago = spago-legacy; # Added 2025-09-23, pkgs.spago should become spago@next which hasn't been packaged yet
   spark2014 = throw "'spark2014' has been renamed to/replaced by 'gnatprove'"; # Converted to throw 2025-10-27

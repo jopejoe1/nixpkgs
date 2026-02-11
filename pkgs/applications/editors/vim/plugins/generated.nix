@@ -6790,6 +6790,19 @@ final: prev: {
     meta.hydraPlatforms = [ ];
   };
 
+  im-select-nvim = buildVimPlugin {
+    pname = "im-select.nvim";
+    version = "0-unstable-2025-07-24";
+    src = fetchFromGitHub {
+      owner = "keaising";
+      repo = "im-select.nvim";
+      rev = "113a6905a1c95d2990269f96abcbad9718209557";
+      hash = "sha256-rtbqJjih9yy2svMIro7FbdH9DqGTumAmfcRICfqT8tQ=";
+    };
+    meta.homepage = "https://github.com/keaising/im-select.nvim/";
+    meta.hydraPlatforms = [ ];
+  };
+
   img-clip-nvim = buildVimPlugin {
     pname = "img-clip.nvim";
     version = "0.6.0-unstable-2025-12-19";
@@ -8544,6 +8557,19 @@ final: prev: {
       hash = "sha256-7WaBHHQj7d/y4y3jLbE2HJ3XRXtEzY5wcKdrE4+frPc=";
     };
     meta.homepage = "https://github.com/vim-scripts/mayansmoke/";
+    meta.hydraPlatforms = [ ];
+  };
+
+  mcphub-nvim = buildVimPlugin {
+    pname = "mcphub.nvim";
+    version = "6.2.0-unstable-2026-01-18";
+    src = fetchFromGitHub {
+      owner = "ravitemer";
+      repo = "mcphub.nvim";
+      rev = "7cd5db330f41b7bae02b2d6202218a061c3ebc1f";
+      hash = "sha256-g9tPvjThz6EUk7zcY7lL+YH4lrT4x3FJ6jrNMHA8PAE=";
+    };
+    meta.homepage = "https://github.com/ravitemer/mcphub.nvim/";
     meta.hydraPlatforms = [ ];
   };
 
@@ -23125,6 +23151,19 @@ final: prev: {
       hash = "sha256-v93VkFnGdyHpwU/pDJquTzuCEA3lZQxv1WUJRXIBCE4=";
     };
     meta.homepage = "https://github.com/guns/xterm-color-table.vim/";
+    meta.hydraPlatforms = [ ];
+  };
+
+  y9nika-nvim = buildVimPlugin {
+    pname = "y9nika.nvim";
+    version = "0-unstable-2026-01-17";
+    src = fetchFromGitHub {
+      owner = "y9san9";
+      repo = "y9nika.nvim";
+      rev = "f7174b7812e60379953a4102d6be20e47995b924";
+      hash = "sha256-bF9tFXLIYzjrMFVyB4FhsuC8eKiEutk7VjFHB+laAt4=";
+    };
+    meta.homepage = "https://github.com/y9san9/y9nika.nvim/";
     meta.hydraPlatforms = [ ];
   };
 

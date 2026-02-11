@@ -2021,6 +2021,19 @@ assertNoAdditions {
     checkInputs = [ self.lualine-nvim ];
   };
 
+  mcphub-nvim = super.mcphub-nvim.overrideAttrs {
+    dependencies = [ self.plenary-nvim ];
+    checkInputs = [
+      # Required by mcphub.extensions.luali
+      self.lualine-nvim
+    ];
+
+    nvimSkipModules = [
+      # ENOENT: no such file or directory (cmd): 'npm'
+      "bundled_build"
+    ];
+  };
+
   mind-nvim = super.mind-nvim.overrideAttrs {
     dependencies = [ self.plenary-nvim ];
   };
