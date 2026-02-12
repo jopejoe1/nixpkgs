@@ -22,7 +22,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "surge-XT";
+  pname = "surge-xt";
   version = "1.3.4";
 
   src = fetchFromGitHub {

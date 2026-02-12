@@ -2,21 +2,10 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  qtbase,
-  qtsvg,
-  qtwayland,
-  qtwebengine,
-  qtdeclarative,
-  extra-cmake-modules,
+  kdePackages,
   cpp-utilities,
-  qtutilities,
-  qtforkawesome,
   boost,
-  wrapQtAppsHook,
   cmake,
-  kio,
-  plasma-framework,
-  qttools,
   iconv,
   cppunit,
   syncthing,
@@ -49,37 +38,37 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   buildInputs = [
-    qtbase
-    qtsvg
+    kdePackages.qtbase
+    kdePackages.qtsvg
     cpp-utilities
-    qtutilities
+    kdePackages.qtutilities
     boost
-    qtforkawesome
+    kdePackages.qtforkawesome
   ]
   ++ lib.optionals stdenv.hostPlatform.isDarwin [ iconv ]
-  ++ lib.optionals stdenv.hostPlatform.isLinux [ qtwayland ]
-  ++ lib.optionals webviewSupport [ qtwebengine ]
-  ++ lib.optionals jsSupport [ qtdeclarative ]
-  ++ lib.optionals kioPluginSupport [ kio ]
-  ++ lib.optionals plasmoidSupport [ plasma-framework ];
+  ++ lib.optionals stdenv.hostPlatform.isLinux [ kdePackages.qtwayland ]
+  ++ lib.optionals webviewSupport [ kdePackages.qtwebengine ]
+  ++ lib.optionals jsSupport [ kdePackages.qtdeclarative ]
+  ++ lib.optionals kioPluginSupport [ kdePackages.kio ]
+  ++ lib.optionals plasmoidSupport [ kdePackages.libplasma ];
 
   nativeBuildInputs = [
-    wrapQtAppsHook
+    kdePackages.wrapQtAppsHook
     cmake
-    qttools
+    kdePackages.qttools
     # Although these are test dependencies, we add them anyway so that we test
     # whether the test units compile. On Darwin we don't run the tests but we
     # still build them.
     cppunit
     syncthing
   ]
-  ++ lib.optionals plasmoidSupport [ extra-cmake-modules ];
+  ++ lib.optionals plasmoidSupport [ kdePackages.extra-cmake-modules ];
 
   # syncthing server seems to hang on darwin, causing tests to fail.
   doCheck = !stdenv.hostPlatform.isDarwin;
   preCheck = ''
     export QT_QPA_PLATFORM=offscreen
-    export QT_PLUGIN_PATH="${lib.getBin qtbase}/${qtbase.qtPluginPrefix}"
+    export QT_PLUGIN_PATH="${lib.getBin kdePackages.qtbase}/${kdePackages.qtbase.qtPluginPrefix}"
   '';
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     # put the app bundle into the proper place /Applications instead of /bin
@@ -94,14 +83,14 @@ stdenv.mkDerivation (finalAttrs: {
   doInstallCheck = true;
 
   cmakeFlags = [
-    "-DQT_PACKAGE_PREFIX=Qt${lib.versions.major qtbase.version}"
-    "-DKF_PACKAGE_PREFIX=KF${lib.versions.major qtbase.version}"
+    "-DQT_PACKAGE_PREFIX=Qt${lib.versions.major kdePackages.qtbase.version}"
+    "-DKF_PACKAGE_PREFIX=KF${lib.versions.major kdePackages.qtbase.version}"
     "-DBUILD_TESTING=ON"
     # See https://github.com/Martchus/syncthingtray/issues/208
     "-DEXCLUDE_TESTS_FROM_ALL=OFF"
     "-DAUTOSTART_EXEC_PATH=${autostartExecPath}"
     # See https://github.com/Martchus/syncthingtray/issues/42
-    "-DQT_PLUGIN_DIR:STRING=${placeholder "out"}/${qtbase.qtPluginPrefix}"
+    "-DQT_PLUGIN_DIR:STRING=${placeholder "out"}/${kdePackages.qtbase.qtPluginPrefix}"
     "-DBUILD_SHARED_LIBS=ON"
   ]
   ++ lib.optionals (!plasmoidSupport) [ "-DNO_PLASMOID=ON" ]
