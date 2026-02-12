@@ -431,6 +431,22 @@ let
         Please read https://www.visualstudio.com/license-terms/mt644918/ and enable this config if you accept.
       '';
     };
+
+    packageOverrides = mkOption {
+      type = types.functionTo types.attrs;
+      default = pkgs: { };
+      description = ''
+        A function to replace or add packages in `pkgs` expects an attrset to be returned when called.
+      '';
+    };
+
+    perlPackageOverrides = mkOption {
+      type = types.functionTo types.attrs;
+      default = pkgs: { };
+      description = ''
+        The same as `packageOverrides` but for packages in the perl package set.
+      '';
+    };
   };
 
 in
