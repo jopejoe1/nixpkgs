@@ -691,6 +691,8 @@ let
 
         frontc = callPackage ../development/ocaml-modules/frontc { };
 
+        fs-io = callPackage ../development/ocaml-modules/fs-io { };
+
         functory = callPackage ../development/ocaml-modules/functory { };
 
         ### G ###
@@ -2125,6 +2127,8 @@ let
         tls-mirage = callPackage ../development/ocaml-modules/tls/mirage.nix { };
 
         toml = callPackage ../development/ocaml-modules/toml { };
+
+        top-closure = callPackage ../development/ocaml-modules/top-closure { };
 
         topkg = callPackage ../development/ocaml-modules/topkg { };
 
