@@ -1,10 +1,10 @@
 {
   lib,
-  pythonPackages,
+  python3Packages,
   fetchFromGitHub,
 }:
 
-pythonPackages.buildPythonApplication rec {
+python3Packages.buildPythonApplication rec {
   pname = "nixbang";
   version = "0.1.2";
   format = "setuptools";

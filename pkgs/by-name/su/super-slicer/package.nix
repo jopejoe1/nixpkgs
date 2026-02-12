@@ -34,7 +34,7 @@ let
       fetchSubmodules = true;
     };
     patches = [
-      ../../../by-name/wx/wxGTK31/0001-fix-assertion-using-hide-in-destroy.patch
+      ./0001-fix-assertion-using-hide-in-destroy.patch
     ];
   });
 

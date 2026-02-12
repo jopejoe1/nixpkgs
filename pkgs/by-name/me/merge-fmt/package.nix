@@ -1,13 +1,10 @@
 {
   lib,
   fetchurl,
-  buildDunePackage,
-  cmdliner,
-  base,
-  stdio,
+  ocamlPackages,
 }:
 
-buildDunePackage rec {
+ocamlPackages.buildDunePackage rec {
   pname = "merge-fmt";
   version = "0.3";
 
@@ -20,9 +17,9 @@ buildDunePackage rec {
   duneVersion = "3";
 
   buildInputs = [
-    cmdliner
-    base
-    stdio
+    ocamlPackages.cmdliner
+    ocamlPackages.base
+    ocamlPackages.stdio
   ];
 
   # core v0.17 compatibility, obtained by `git diff -r 3e37827~2..3e37827`

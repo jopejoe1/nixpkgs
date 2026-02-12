@@ -1,5 +1,5 @@
 {
-  stdenv,
+  clangStdenv,
   lib,
   binutils,
   fetchFromGitHub,
@@ -36,7 +36,7 @@
   catch2_3,
   webkitgtk_4_1,
   ctestCheckHook,
-  withSystemd ? lib.meta.availableOn stdenv.hostPlatform systemd,
+  withSystemd ? lib.meta.availableOn clangStdenv.hostPlatform systemd,
   systemd,
   udevCheckHook,
   z3,
@@ -60,10 +60,12 @@ let
   opencascade-override' =
     if opencascade-override == null then opencascade-occt_7_6_1 else opencascade-override;
 in
-stdenv.mkDerivation (finalAttrs: {
+clangStdenv.mkDerivation (finalAttrs: {
   pname = "prusa-slicer";
   version = "2.9.4";
-
+  # Build with clang even on Linux, because GCC uses absolutely obscene amounts of memory
+  # on this particular code base (OOM with 32GB memory and --cores 16 on GCC, succeeds
+  # with --cores 32 on clang).
   src = fetchFromGitHub {
     owner = "prusa3d";
     repo = "PrusaSlicer";
@@ -81,7 +83,7 @@ stdenv.mkDerivation (finalAttrs: {
   # (not applicable to super-slicer fork)
   postPatch = lib.optionalString (finalAttrs.pname == "prusa-slicer") (
     # Patch required for GCC 14, but breaks on clang
-    lib.optionalString stdenv.cc.isGNU ''
+    lib.optionalString clangStdenv.cc.isGNU ''
       substituteInPlace src/slic3r-arrange/include/arrange/DataStoreTraits.hpp \
         --replace-fail \
         "WritableDataStoreTraits<ArrItem>::template set" \
@@ -250,7 +252,7 @@ stdenv.mkDerivation (finalAttrs: {
     ];
     platforms = lib.platforms.unix;
   }
-  // lib.optionalAttrs (stdenv.hostPlatform.isDarwin) {
+  // lib.optionalAttrs (clangStdenv.hostPlatform.isDarwin) {
     mainProgram = "PrusaSlicer";
   };
 })

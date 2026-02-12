@@ -6,7 +6,7 @@
   zlib,
   perl,
   perlPackages,
-  openmp,
+  llvmPackages,
 }:
 
 stdenv.mkDerivation rec {
@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
     zlib
     makeWrapper
   ];
-  buildInputs = lib.optional stdenv.cc.isClang openmp;
+  buildInputs = lib.optional stdenv.cc.isClang llvmPackages.openmp;
 
   makeFlags = [
     "CC=${stdenv.cc.targetPrefix}c++" # remove once https://github.com/weizhongli/cdhit/pull/114 is merged
