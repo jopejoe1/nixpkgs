@@ -27,8 +27,6 @@ buildPythonPackage (finalAttrs: {
   version = "0.7.0";
   pyproject = true;
 
-  disabled = pythonOlder "3.10";
-
   src = fetchFromGitHub {
     owner = "executablebooks";
     repo = "sphinx-design";
