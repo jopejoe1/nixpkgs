@@ -12665,6 +12665,8 @@ with pkgs;
 
   sane-frontends = callPackage ../applications/graphics/sane/frontends.nix { };
 
+  selinuxPackages = recurseIntoAttrs (callPackage ../os-specific/linux/selinux { });
+
   snscrape = with python3Packages; toPythonApplication snscrape;
 
   sourceAndTags = callPackage ../misc/source-and-tags {
