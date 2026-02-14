@@ -1228,7 +1228,7 @@
     name = "Alex Chapman";
   };
   alexfmpe = {
-    email = "alexandre.fmp.esteves@gmail.com";
+    email = "alexfmpe@proton.me";
     github = "alexfmpe";
     githubId = 2335822;
     name = "Alexandre Esteves";
@@ -2153,6 +2153,12 @@
     github = "arezvov";
     githubId = 58516559;
     name = "Alexander Rezvov";
+  };
+  argos_nothing = {
+    email = "argosnothing@gmail.com";
+    github = "argosnothing";
+    githubId = 225423001;
+    name = "Argos Nothing";
   };
   argrat = {
     email = "n.bertazzo@protonmail.com";
@@ -15234,6 +15240,12 @@
     githubId = 78693624;
     name = "llakala";
   };
+  llehouerou = {
+    email = "laurent@lehouerou.net";
+    github = "llehouerou";
+    githubId = 3669155;
+    name = "Laurent Le Houerou";
+  };
   lluchs = {
     email = "lukas.werling@gmail.com";
     github = "lluchs";
@@ -22970,6 +22982,12 @@
     githubId = 13570458;
     matrix = "@emma:rory.gay"; # preferred
     name = "Rory&";
+  };
+  rosebeats = {
+    name = "Sophie Doiron";
+    email = "sophie.d21401@gmail.com";
+    github = "rosebeats";
+    githubId = 39890784;
   };
   rosehobgoblin = {
     name = "J. L. Bowden";
