@@ -10,13 +10,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "abseil-cpp";
-  version = "20250814.2";
+  version = "20260107.1";
 
   src = fetchFromGitHub {
     owner = "abseil";
     repo = "abseil-cpp";
     tag = finalAttrs.version;
-    hash = "sha256-PCospVD/hnbT/87tRtvick+RIuwAv7DDPGnLG3ZMb3g=";
+    hash = "sha256-TJT2Kzc64zI42FAbbGWP3Sshh1dU/D/AtEpgZrrhebg=";
   };
 
   outputs = [
