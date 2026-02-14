@@ -4,18 +4,19 @@
   fetchFromGitHub,
   hatchling,
   pytestCheckHook,
+  pytest-cov-stub,
 }:
 
 buildPythonPackage (finalAttrs: {
-  pname = "grapheme";
-  version = "0.8.0";
+  pname = "graphemeu";
+  version = "0.10.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "timendum";
     repo = "grapheme";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-FDQKjxQAW+krUScZKmfv9ytVPIcEKNrbHurXb5wVeIM=";
+    hash = "sha256-qDspbeOmlfQ4VLPdKEuxNPYilKjwUcAJiEOMfx9fFlI=";
   };
 
   build-system = [
@@ -23,6 +24,7 @@ buildPythonPackage (finalAttrs: {
   ];
 
   nativeCheckInputs = [
+    pytest-cov-stub
     pytestCheckHook
   ];
 
@@ -31,10 +33,10 @@ buildPythonPackage (finalAttrs: {
   ];
 
   meta = {
-    description = "Grapheme";
+    description = "Python package for grapheme aware string handling";
     homepage = "https://github.com/timendum/grapheme";
-    changelog = "https://github.com/timendum/grapheme/blob/${finalAttrs.src.tag}/CHANGELOG.md";
+    changelog = "https://github.com/timendum/grapheme/blob/v${finalAttrs.version}/CHANGELOG.md";
     license = lib.licenses.mit;
-    maintainers = [ ];
+    maintainers = with lib.maintainers; [ anthonyroussel ];
   };
 })
