@@ -21463,6 +21463,12 @@
     githubId = 4033651;
     name = "Keagan McClelland";
   };
+  prophetofxenu = {
+    email = "xenu@prophetofxenu.net";
+    github = "prophetofxenu";
+    githubId = 20529712;
+    name = "William Harrell";
+  };
   protoben = {
     email = "protob3n@gmail.com";
     github = "protoben";
@@ -28426,6 +28432,12 @@
     email = "nixpkgs@janweitz.de";
     github = "weitzj";
     githubId = 829277;
+  };
+  wellmannmathis = {
+    email = "wellmannmathis@gmail.com";
+    github = "MathisWellmann";
+    githubId = 26856233;
+    name = "Mathis Wellmann";
   };
   welteki = {
     email = "welteki@pm.me";

@@ -1617,6 +1617,14 @@ assertNoAdditions {
     dependencies = [ self.lush-nvim ];
   };
 
+  jj-nvim = super.jj-nvim.overrideAttrs {
+    # Don't install 30 MB of GIFs
+    installPhase = ''
+      mkdir $out
+      cp -r lua $out
+    '';
+  };
+
   jupytext-nvim = super.jupytext-nvim.overrideAttrs {
     passthru.python3Dependencies = ps: [ ps.jupytext ];
   };

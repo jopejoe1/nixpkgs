@@ -53,15 +53,21 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   hardeningDisable = [ "zerocallusedregs" ];
-  # When building BPF, the default CC wrapper is interfering a bit too much.
-  BPF_CFLAGS = "-fno-stack-protector -Wno-error=unused-command-line-argument";
-  # When cross compiling, configure prefers the unwrapped clang unless told otherwise.
-  CLANG = lib.getExe buildPackages.llvmPackages.clang;
 
-  PRODUCTION = 1;
-  DYNAMIC_LIBXDP = 1;
-  FORCE_SYSTEM_LIBBPF = 1;
-  FORCE_EMACS = 1;
+  env = {
+    # When building BPF, the default CC wrapper is interfering a bit too much.
+    BPF_CFLAGS = toString [
+      "-fno-stack-protector"
+      "-Wno-error=unused-command-line-argument"
+    ];
+    # When cross compiling, configure prefers the unwrapped clang unless told otherwise.
+    CLANG = lib.getExe buildPackages.llvmPackages.clang;
+
+    PRODUCTION = 1;
+    DYNAMIC_LIBXDP = 1;
+    FORCE_SYSTEM_LIBBPF = 1;
+    FORCE_EMACS = 1;
+  };
 
   makeFlags = [
     "PREFIX=$(out)"
