@@ -8289,7 +8289,7 @@ with pkgs;
         kanidmWithSecretProvisioning = kanidmWithSecretProvisioning_1_8;
       };
       kanidm_1_9 = callPackage ../servers/kanidm/1_9.nix {
-        kanidmWithSecretProvisioning = kanidmWithSecretProvisioning_1_8;
+        kanidmWithSecretProvisioning = kanidmWithSecretProvisioning_1_9;
       };
 
       kanidmWithSecretProvisioning_1_7 = kanidm_1_7.override { enableSecretProvisioning = true; };
