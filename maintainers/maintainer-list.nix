@@ -10173,6 +10173,12 @@
     githubId = 1742172;
     name = "Hamish Hutchings";
   };
+  hamidr = {
+    email = "hamidr.dev@gmail.com";
+    github = "hamidr";
+    githubId = 298427;
+    name = "Hamid Davoodi";
+  };
   hamzaremmal = {
     email = "hamza.remmal@epfl.ch";
     github = "hamzaremmal";
@@ -29436,6 +29442,12 @@
     github = "yuannan";
     githubId = 8006928;
     name = "Yuannan (Brandon) Lin";
+  };
+  yujonpradhananga = {
+    email = "yujonpradhan123@gmail.com";
+    github = "Yujonpradhananga";
+    githubId = 139200034;
+    name = "Yujon Pradhananga";
   };
   yuka = {
     email = "yuka@yuka.dev";

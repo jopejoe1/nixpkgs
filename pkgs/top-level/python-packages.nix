@@ -2942,6 +2942,10 @@ self: super: with self; {
 
   colcon-devtools = callPackage ../development/python-modules/colcon-devtools { };
 
+  colcon-hardware-acceleration =
+    callPackage ../development/python-modules/colcon-hardware-acceleration
+      { };
+
   colcon-installed-package-information =
     callPackage ../development/python-modules/colcon-installed-package-information
       { };
@@ -16360,6 +16364,8 @@ self: super: with self; {
   readme = callPackage ../development/python-modules/readme { };
 
   readme-renderer = callPackage ../development/python-modules/readme-renderer { };
+
+  real-ladybug = callPackage ../development/python-modules/real-ladybug { };
 
   realtime = callPackage ../development/python-modules/realtime { };
 

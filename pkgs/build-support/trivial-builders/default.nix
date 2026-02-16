@@ -687,7 +687,7 @@ rec {
         # This is the best we can do since the other attrs are either defined here, or curried values that
         # we cannot extract a position from
         pos =
-          if lib.isAttrs entries then
+          if (lib.isAttrs entries) && (entries != { }) then
             builtins.unsafeGetAttrPos (builtins.head (builtins.attrNames entries)) entries
           else
             null;
