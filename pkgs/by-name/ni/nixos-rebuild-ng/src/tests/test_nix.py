@@ -1,3 +1,4 @@
+import sys
 import textwrap
 import uuid
 from pathlib import Path
@@ -548,6 +549,29 @@ def test_list_generations(mock_get_generations: Mock, tmp_path: Path) -> None:
             "specialisations": [],
         },
     ]
+
+
+@patch(get_qualified_name(n.run_wrapper, n), autospec=True)
+def test_diff_closures(mock_run: Mock) -> None:
+
+    assert n.diff_closures(
+        Path("/run/current-system"),
+        Path("/nix/var/nix/profiles/system"),
+        None
+    ) == None
+    mock_run.assert_called_with(
+        [
+            "nix",
+            "--extra-experimental-features",
+            "nix-command flakes",
+            "store",
+            "diff-closures",
+            Path("/run/current-system"),
+            Path("/nix/var/nix/profiles/system"),
+        ],
+        remote=None,
+        stdout=sys.stderr
+    )
 
 
 @patch(get_qualified_name(n.run_wrapper, n), autospec=True)

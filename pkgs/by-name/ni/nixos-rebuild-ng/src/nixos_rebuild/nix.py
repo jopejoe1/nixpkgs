@@ -1,3 +1,4 @@
+import sys
 import json
 import logging
 import os
@@ -536,6 +537,25 @@ def list_generations(profile: Profile) -> list[GenerationJson]:
             key=lambda x: x["generation"],
             reverse=True,
         )
+
+def diff_closures(current_config: Path, new_config: Path, target_host: Remote | None = None):
+    print(
+        f"<<< {current_config}\n"
+        f">>> {new_config}",
+        file=sys.stderr
+    )
+    run_wrapper(
+        [
+            "nix",
+            *FLAKE_FLAGS,
+            "store",
+            "diff-closures",
+            current_config,
+            new_config,
+        ],
+        remote=target_host,
+        stdout=sys.stderr
+    )
 
 
 def repl(build_attr: BuildAttr, nix_flags: Args | None = None) -> None:

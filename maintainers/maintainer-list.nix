@@ -11111,6 +11111,12 @@
     githubId = 7481521;
     name = "Balázs Lengyel";
   };
+  ilai-deutel = {
+    github = "ilai-deutel";
+    githubId = 10098207;
+    name = "Ilaï Deutel";
+    keys = [ { fingerprint = "1025 8841 8FF7 E165 6964  90A2 06E8 A973 4948 08A2"; } ];
+  };
   ilarvne = {
     email = "ilarvne@proton.me";
     github = "ilarvne";
@@ -14432,6 +14438,11 @@
     github = "kuglimon";
     githubId = 629430;
     keys = [ { fingerprint = "2843 750C B1AB E256 94BE  40E2 D843 D30B 42CA 0E2D"; } ];
+  };
+  kulczwoj = {
+    name = "Wojciech Kulczycki";
+    github = "kulczwoj";
+    githubId = 58049191;
   };
   KunyaKud = {
     name = "KunyaKud";
