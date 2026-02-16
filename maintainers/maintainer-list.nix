@@ -13986,6 +13986,13 @@
     github = "kkoniuszy";
     githubId = 120419423;
   };
+  Kladki = {
+    name = "Matthias Ahouansou";
+    email = "matthias@ahouansou.cz";
+    github = "Kladki";
+    githubId = 158313939;
+    matrix = "@matthias:ahouansou.cz";
+  };
   klchen0112 = {
     name = "klchen0112";
     email = "klchen0112@gmail.com";
@@ -17272,12 +17279,6 @@
     github = "michalrus";
     githubId = 4366292;
     name = "Michal Rus";
-  };
-  michelk = {
-    email = "michel@kuhlmanns.info";
-    github = "michelk";
-    githubId = 1404919;
-    name = "Michel Kuhlmann";
   };
   michojel = {
     email = "mic.liamg@gmail.com";
@@ -25008,6 +25009,12 @@
     github = "sochotnicky";
     githubId = 55726;
     name = "Stanislav Ochotnický";
+  };
+  socksy = {
+    email = "ben.j.lovell@gmail.com";
+    github = "socksy";
+    githubId = 511549;
+    name = "Ben Lovell";
   };
   sodagunz = {
     name = "sodagunz";
