@@ -394,6 +394,8 @@ def test_get_build_image_variants_flake(mock_run: Mock) -> None:
     mock_run.assert_called_with(
         [
             "nix",
+            "--extra-experimental-features",
+            "nix-command flakes",
             "eval",
             "--json",
             "/flake.nix#myAttr.config.system.build.images",
@@ -554,11 +556,9 @@ def test_list_generations(mock_get_generations: Mock, tmp_path: Path) -> None:
 @patch(get_qualified_name(n.run_wrapper, n), autospec=True)
 def test_diff_closures(mock_run: Mock) -> None:
 
-    assert n.diff_closures(
-        Path("/run/current-system"),
-        Path("/nix/var/nix/profiles/system"),
-        None
-    ) == None
+    n.diff_closures(
+        Path("/run/current-system"), Path("/nix/var/nix/profiles/system"), None
+    )
     mock_run.assert_called_with(
         [
             "nix",
@@ -570,7 +570,7 @@ def test_diff_closures(mock_run: Mock) -> None:
             Path("/nix/var/nix/profiles/system"),
         ],
         remote=None,
-        stdout=sys.stderr
+        stdout=sys.stderr,
     )
 
 

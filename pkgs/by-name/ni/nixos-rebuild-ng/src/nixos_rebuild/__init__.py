@@ -201,7 +201,7 @@ def get_parser() -> tuple[argparse.ArgumentParser, dict[str, argparse.ArgumentPa
         "--diff",
         action="store_true",
         help="prints out the diff between the current system "
-        "and the newly built one using nix store diff-closures"
+        "and the newly built one using nix store diff-closures",
     )
     main_parser.add_argument("action", choices=Action.values(), nargs="?")
 

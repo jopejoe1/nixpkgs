@@ -1,7 +1,7 @@
-import sys
 import json
 import logging
 import os
+import sys
 import textwrap
 import uuid
 from concurrent.futures import ThreadPoolExecutor
@@ -314,6 +314,7 @@ def get_build_image_name_flake(
     r = run_wrapper(
         [
             "nix",
+            *FLAKE_FLAGS,
             "eval",
             "--json",
             flake.to_attr(
@@ -365,6 +366,7 @@ def get_build_image_variants_flake(
     r = run_wrapper(
         [
             "nix",
+            *FLAKE_FLAGS,
             "eval",
             "--json",
             flake.to_attr("config.system.build.images"),
@@ -538,12 +540,13 @@ def list_generations(profile: Profile) -> list[GenerationJson]:
             reverse=True,
         )
 
-def diff_closures(current_config: Path, new_config: Path, target_host: Remote | None = None):
-    print(
-        f"<<< {current_config}\n"
-        f">>> {new_config}",
-        file=sys.stderr
-    )
+
+def diff_closures(
+    current_config: Path,
+    new_config: Path,
+    target_host: Remote | None = None,
+) -> None:
+    print(f"<<< {current_config}\n>>> {new_config}", file=sys.stderr)
     run_wrapper(
         [
             "nix",
@@ -554,7 +557,7 @@ def diff_closures(current_config: Path, new_config: Path, target_host: Remote | 
             new_config,
         ],
         remote=target_host,
-        stdout=sys.stderr
+        stdout=sys.stderr,
     )
 
 

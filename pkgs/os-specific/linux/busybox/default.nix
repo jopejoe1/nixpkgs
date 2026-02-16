@@ -20,10 +20,7 @@ assert stdenv.hostPlatform.libc == "musl" -> useMusl;
 let
   configParser = ''
     function parseconfig {
-        while read LINE; do
-            NAME=`echo "$LINE" | cut -d \  -f 1`
-            OPTION=`echo "$LINE" | cut -d \  -f 2`
-
+        while IFS=" " read NAME OPTION; do
             if ! [[ "$NAME" =~ ^CONFIG_ ]]; then continue; fi
 
             echo "parseconfig: removing $NAME"

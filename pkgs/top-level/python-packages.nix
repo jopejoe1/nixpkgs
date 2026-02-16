@@ -694,6 +694,12 @@ self: super: with self; {
 
   amcrest = callPackage ../development/python-modules/amcrest { };
 
+  amdsmi = toPythonModule (
+    pkgs.rocmPackages.amdsmi.override {
+      inherit python;
+    }
+  );
+
   ament-package = callPackage ../development/python-modules/ament-package { };
 
   amply = callPackage ../development/python-modules/amply { };
