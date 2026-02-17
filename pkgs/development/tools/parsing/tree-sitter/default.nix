@@ -4,8 +4,8 @@
   fetchFromGitHub,
   fetchFromGitLab,
   fetchFromSourcehut,
+  fetchpatch,
   nix-update-script,
-  runCommand,
   which,
   rustPlatform,
   emscripten,
@@ -56,6 +56,7 @@ let
       fetchFromGitHub
       fetchFromGitLab
       fetchFromSourcehut
+      fetchpatch
       ;
   };
 
@@ -134,6 +135,11 @@ rustPlatform.buildRustPackage (finalAttrs: {
     (substitute {
       src = ./remove-web-interface.patch;
     })
+    (fetchpatch {
+      name = "feat: allow `-` in grammar names";
+      url = "https://github.com/tree-sitter/tree-sitter/commit/7d3c32125379c1dc02f47277bcd4eceaac299bdb.diff";
+      hash = "sha256-ZNjdNateHVHDy0/txlAW8TUdz+DVxLKXpw8ojZbIQS8=";
+    })
   ];
 
   postPatch =
@@ -163,6 +169,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
     PREFIX=$out make install
     ${lib.optionalString (!enableShared) "rm -f $out/lib/*.so{,.*}"}
     ${lib.optionalString (!enableStatic) "rm -f $out/lib/*.a"}
+
+    mv docs/src/assets/schemas/config.schema.json $out/
   ''
   + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd tree-sitter \
