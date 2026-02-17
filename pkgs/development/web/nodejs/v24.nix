@@ -69,7 +69,10 @@ buildNodejs {
     ++ lib.optionals stdenv.is32bit [
       # see: https://github.com/nodejs/node/issues/58458
       ./v24-32bit.patch
-      # see: https://github.com/nodejs/node/issues/61025
-      ./sab-test-32bit.patch
+      # TODO: remove once included in an future upstream release
+      (fetchpatch2 {
+        url = "https://github.com/nodejs/node/commit/f13d7bf69a7f1642fb5b1b624eff1a50ceb71849.patch?full_index=1";
+        hash = "sha256-4PZq1gG/K+FwAM06VIXYoSNJeOYe37kfKW0jqczeXbc=";
+      })
     ];
 }
