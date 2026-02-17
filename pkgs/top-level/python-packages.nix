@@ -8782,6 +8782,8 @@ self: super: with self; {
 
   libuuu = callPackage ../development/python-modules/libuuu { };
 
+  libvalkey = callPackage ../development/python-modules/libvalkey { };
+
   libversion = callPackage ../development/python-modules/libversion { inherit (pkgs) libversion; };
 
   libvirt = callPackage ../development/python-modules/libvirt { inherit (pkgs) libvirt; };

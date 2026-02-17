@@ -1444,6 +1444,13 @@
     githubId = 373;
     name = "Alexandre Girard Davila";
   };
+  alyamanmas = {
+    email = "alyaman.maasarani@gmail.com";
+    github = "AlyamanMas";
+    githubId = 33905034;
+    name = "Alyaman Huzaifa Massarani";
+    keys = [ { fingerprint = "570D 147B 9514 08C6 2CD8  D530 515E 428A C916 D39C"; } ];
+  };
   amaanq = {
     email = "contact@amaanq.com";
     github = "amaanq";
@@ -6942,13 +6949,6 @@
     githubId = 126339;
     name = "Domen Kozar";
   };
-  DomesticMoth = {
-    name = "Andrew";
-    email = "silkmoth@protonmail.com";
-    github = "asciimoth";
-    githubId = 91414737;
-    keys = [ { fingerprint = "7D6B AE0A A98A FDE9 3396  E721 F87E 15B8 3AA7 3087"; } ];
-  };
   dominikh = {
     email = "dominik@honnef.co";
     github = "dominikh";
@@ -7094,6 +7094,12 @@
     github = "drawbu";
     githubId = 69208565;
     name = "Clément Boillot";
+  };
+  drdo = {
+    email = "drdo@drdo.eu";
+    github = "drdo";
+    githubId = 446083;
+    name = "Daniel Rebelo de Oliveira";
   };
   drets = {
     email = "dmitryrets@gmail.com";
@@ -7741,7 +7747,7 @@
     name = "Elnu";
   };
   elpdt852 = {
-    email = "nix@pdtpartners.com";
+    email = "nix+elpdt852@pdtpartners.com";
     github = "elpdt852";
     githubId = 122112154;
     name = "Edgar Lee";
@@ -14737,7 +14743,7 @@
     name = "Luka Blaskovic";
   };
   lbpdt = {
-    email = "nix@pdtpartners.com";
+    email = "nix+lbpdt@pdtpartners.com";
     github = "lbpdt";
     githubId = 45168934;
     name = "Louis Blin";
@@ -17175,6 +17181,13 @@
     githubId = 20536514;
     name = "Magdalena Haselsteiner";
   };
+  mhdask = {
+    email = "nixpkgs@mdask.dk";
+    matrix = "@mhdask:matrix.org";
+    github = "mhdask";
+    githubId = 55240757;
+    name = "mhdask";
+  };
   mhemeryck = {
     email = "martijn.hemeryck@gmail.com";
     github = "mhemeryck";
@@ -18232,7 +18245,7 @@
     keys = [ { fingerprint = "5658 4D09 71AF E45F CC29 6BD7 4CE6 2A90 EFC0 B9B2"; } ];
   };
   mupdt = {
-    email = "nix@pdtpartners.com";
+    email = "nix+mupdt@pdtpartners.com";
     github = "mupdt";
     githubId = 25388474;
     name = "Matej Urbas";
@@ -20427,12 +20440,6 @@
     githubId = 58092422;
     name = "Patrick";
     keys = [ { fingerprint = "5E4C 3D74 80C2 35FE 2F0B  D23F 7DD6 A72E C899 617D"; } ];
-  };
-  patricksjackson = {
-    email = "patrick@jackson.dev";
-    github = "arcuru";
-    githubId = 160646;
-    name = "Patrick Jackson";
   };
   patryk27 = {
     email = "pwychowaniec@pm.me";
