@@ -8885,6 +8885,12 @@
     githubId = 74379;
     name = "Florian Pester";
   };
+  flyingpeakock = {
+    email = "nix@phlipphlop.me";
+    github = "flyingpeakock";
+    githubId = 21244519;
+    name = "Philip Johansson";
+  };
   fmhoeger = {
     email = "fmhoeger@mirsem.org";
     name = "fmhoeger";
