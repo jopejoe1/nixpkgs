@@ -15,7 +15,7 @@
   pyyaml,
   shellingham,
   tqdm,
-  typer-slim,
+  typer,
   typing-extensions,
 
   # optional-dependencies
@@ -45,6 +45,11 @@ buildPythonPackage (finalAttrs: {
     hash = "sha256-At3FN+dplQ3L9B4vDZrEvREdwgepUvzWC7yeU6L5XY8=";
   };
 
+  postPatch = ''
+    substituteInPlace setup.py \
+      --replace-fail "typer-slim" "typer"
+  '';
+
   build-system = [ setuptools ];
 
   dependencies = [
@@ -56,7 +61,7 @@ buildPythonPackage (finalAttrs: {
     pyyaml
     shellingham
     tqdm
-    typer-slim
+    typer
     typing-extensions
   ];
 

@@ -15,7 +15,7 @@
   safetensors,
   tokenizers,
   tqdm,
-  typer-slim,
+  typer,
 
   # optional-dependencies
   # sklearn
@@ -103,6 +103,11 @@ buildPythonPackage (finalAttrs: {
     hash = "sha256-vus4Y+1QXUNqwBO1ZK0gWd+sJBPwrqWW7O2sn0EBvno=";
   };
 
+  postPatch = ''
+    substituteInPlace setup.py \
+      --replace-fail "typer-slim" "typer"
+  '';
+
   build-system = [ setuptools ];
 
   dependencies = [
@@ -114,7 +119,7 @@ buildPythonPackage (finalAttrs: {
     safetensors
     tokenizers
     tqdm
-    typer-slim
+    typer
   ];
 
   optional-dependencies = lib.fix (self: {
