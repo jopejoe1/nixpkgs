@@ -5,7 +5,7 @@
   nix-update-script,
 }:
 buildGoModule (finalAttrs: {
-  pname = "arduinoOTA";
+  pname = "arduino-ota";
   version = "1.4.1";
 
   src = fetchFromGitHub {
@@ -19,7 +19,7 @@ buildGoModule (finalAttrs: {
 
   postPatch = ''
     substituteInPlace version/version.go \
-      --replace 'versionString        = ""' 'versionString        = "${finalAttrs.version}"'
+      --replace-fail 'versionString        = ""' 'versionString        = "${finalAttrs.version}"'
   '';
 
   passthru.updateScript = nix-update-script { };

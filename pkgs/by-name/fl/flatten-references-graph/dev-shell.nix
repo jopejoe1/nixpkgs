@@ -1,5 +1,5 @@
 # Start this shell with:
-# nix-shell path/to/root/of/nixpkgs -A flattenReferencesGraph.dev-shell
+# nix-shell path/to/root/of/nixpkgs -A flatten-references-graph.dev-shell
 {
   mkShell,
   callPackage,

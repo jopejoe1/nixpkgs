@@ -7,7 +7,7 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = "nuXmv";
+  pname = "nuxmv";
   version = "2.0.0";
 
   src = fetchurl {
@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
 
   meta = {
     description = "Symbolic model checker for analysis of finite and infinite state systems";
-    homepage = "https://nuxmv.fbk.eu/pmwiki.php";
+    homepage = "https://nuxmv.fbk.eu/";
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
     maintainers = with lib.maintainers; [ siraben ];

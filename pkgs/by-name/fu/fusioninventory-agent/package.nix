@@ -12,7 +12,7 @@
 }:
 
 perlPackages.buildPerlPackage rec {
-  pname = "FusionInventory-Agent";
+  pname = "fusioninventory-agent";
   version = "2.6";
 
   src = fetchFromGitHub {

@@ -11,7 +11,6 @@
   gitMinimal,
 }:
 let
-  version = "1.23.0";
   deps = lib.makeBinPath [
     curl
     python3
@@ -21,14 +20,14 @@ let
     gitMinimal
   ];
 in
-stdenv.mkDerivation {
-  pname = "bashSnippets";
-  inherit version;
+stdenv.mkDerivation (finalAttrs: {
+  pname = "bash-snippets";
+  version = "1.23.0";
 
   src = fetchFromGitHub {
     owner = "alexanderepstein";
     repo = "Bash-Snippets";
-    rev = "v${version}";
+    rev = "v${finalAttrs.version}";
     sha256 = "044nxgd3ic2qr6hgq5nymn3dyf5i4s8mv5z4az6jvwlrjnvbg8cp";
   };
 
@@ -58,4 +57,4 @@ stdenv.mkDerivation {
     maintainers = [ ];
     platforms = lib.platforms.unix;
   };
-}
+})

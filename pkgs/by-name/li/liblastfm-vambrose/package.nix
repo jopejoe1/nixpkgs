@@ -8,7 +8,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "liblastfm-SF";
+  pname = "liblastfm-vambrose";
   version = "0.5";
 
   nativeBuildInputs = [ pkg-config ];

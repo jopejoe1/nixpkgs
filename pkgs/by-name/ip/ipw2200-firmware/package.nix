@@ -5,7 +5,7 @@
 }:
 
 stdenvNoCC.mkDerivation rec {
-  pname = "intel2200BGFirmware";
+  pname = "ipw2200-firmware";
   version = "3.1";
 
   src = fetchurl {

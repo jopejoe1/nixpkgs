@@ -23,7 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "Firmware extractor for cards supported by the b43 kernel module";
     mainProgram = "b43-fwcutter";
-    homepage = "http://wireless.kernel.org/en/users/Drivers/b43";
+    homepage = "https://wireless.docs.kernel.org/en/latest/en/users/drivers/b43.html";
     license = lib.licenses.bsd2;
     platforms = lib.platforms.linux;
   };

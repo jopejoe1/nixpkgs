@@ -6,7 +6,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "fastjson";
+  pname = "libfastjson";
   version = "1.2304.0";
 
   src = fetchFromGitHub {
