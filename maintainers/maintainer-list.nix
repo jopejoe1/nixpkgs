@@ -12593,6 +12593,12 @@
     githubId = 43830312;
     name = "Joël Miramon";
   };
+  jmmv = {
+    email = "julio@meroh.net";
+    github = "jmmv";
+    githubId = 879272;
+    name = "Julio Merino";
+  };
   jn-sena = {
     email = "jn-sena@proton.me";
     github = "jn-sena";
@@ -19281,6 +19287,12 @@
     github = "nocoolnametom";
     githubId = 810877;
     name = "Tom Doggett";
+  };
+  noderyos = {
+    email = "vincent.bsod@gmail.com";
+    github = "Noderyos";
+    githubId = 56077132;
+    name = "Noderyos";
   };
   noiioiu = {
     github = "noiioiu";
@@ -27831,10 +27843,11 @@
     githubId = 68829907;
   };
   v3rm1n0 = {
-    name = "Niklas Choinowski";
-    email = "niklas.choinowski@proton.me";
+    name = "V3RM1N";
+    email = "mail@v3rm1n.dev";
     github = "v3rm1n0";
     githubId = 57269010;
+    keys = [ { fingerprint = "58E4 2840 D274 49A5 5948  78AA 85F3 7D09 1304 5718"; } ];
   };
   vaavaav = {
     name = "Pedro Peixoto";

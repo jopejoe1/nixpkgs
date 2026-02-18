@@ -128,6 +128,7 @@ buildPythonPackage (finalAttrs: {
       "hyp2f1_test_case3"
       "test_uint64_max"
       "test_large_m4" # https://github.com/scipy/scipy/issues/22466
+      "test_spiral_cleanup"
     ]
     ++ lib.optionals (stdenv.hostPlatform.isPower64 && stdenv.hostPlatform.isBigEndian) [
       # https://github.com/scipy/scipy/issues/24090

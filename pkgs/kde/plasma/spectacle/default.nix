@@ -8,7 +8,7 @@
   tesseract5,
 }:
 let
-  tesseract = (tesseract5.override { enableLanguages = tesseractLanguages; });
+  tesseract = tesseract5.override { enableLanguages = tesseractLanguages; };
 in
 mkKdeDerivation {
   pname = "spectacle";

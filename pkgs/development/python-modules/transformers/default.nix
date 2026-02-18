@@ -7,10 +7,8 @@
   setuptools,
 
   # dependencies
-  filelock,
   huggingface-hub,
   numpy,
-  protobuf,
   packaging,
   pyyaml,
   regex,
@@ -73,6 +71,7 @@
   num2words,
   # sentencepiece
   sentencepiece,
+  protobuf,
   # tiktoken
   tiktoken,
   blobfile,
@@ -94,20 +93,19 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "transformers";
-  version = "5.1.0";
+  version = "5.2.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "huggingface";
     repo = "transformers";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-DMm85M47hMWhqbwY3k3F5nbkbctM23K6wnmIUa2O43g=";
+    hash = "sha256-vus4Y+1QXUNqwBO1ZK0gWd+sJBPwrqWW7O2sn0EBvno=";
   };
 
   build-system = [ setuptools ];
 
   dependencies = [
-    filelock
     huggingface-hub
     numpy
     packaging
@@ -165,7 +163,6 @@ buildPythonPackage (finalAttrs: {
       librosa
       # pyctcdecode
       phonemizer
-      # kenlm
     ];
     vision = [
       torchvision
@@ -183,7 +180,7 @@ buildPythonPackage (finalAttrs: {
       blobfile
     ];
     mistral-common = [ mistral-common ] ++ mistral-common.optional-dependencies.image;
-    chat_template = [
+    chat-template = [
       jinja2
       jmespath
     ];
