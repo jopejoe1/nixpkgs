@@ -2453,11 +2453,10 @@
     };
   };
 
-  sshclientconfig = {
-    version = "0-unstable-2025-12-19";
-    url = "github:metio/tree-sitter-ssh-client-config";
-    rev = "9c86b2af6d8f9fd0a82edcc253b45c3e8eb93c52";
-    hash = "sha256-YF+iMd0F1po0j8FqBO36P6DCpMgscT6YkVMOKetAS6w=";
+  sshclientconfig = rec {
+    version = "2026.2.18";
+    url = "github:metio/tree-sitter-ssh-client-config?ref=${version}";
+    hash = "sha256-zEQ9jof8CMx6YtzU+y/GnBeI7htv9EbUHtAKSmX6c3M=";
     meta = {
       license = lib.licenses.cc0;
       maintainers = with lib.maintainers; [
