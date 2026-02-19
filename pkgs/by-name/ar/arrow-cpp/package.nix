@@ -322,6 +322,8 @@ stdenv.mkDerivation (finalAttrs: {
       runHook postInstallCheck
     '';
 
+  __structuredAttrs = true;
+
   meta = {
     description = "Cross-language development platform for in-memory data";
     homepage = "https://arrow.apache.org/docs/cpp/";
