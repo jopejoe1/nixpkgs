@@ -6178,6 +6178,8 @@ self: super: with self; {
 
   ghidra-bridge = callPackage ../development/python-modules/ghidra-bridge { };
 
+  ghmap = callPackage ../development/python-modules/ghmap { };
+
   ghome-foyer-api = callPackage ../development/python-modules/ghome-foyer-api { };
 
   ghostscript = callPackage ../development/python-modules/ghostscript { };
