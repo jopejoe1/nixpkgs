@@ -33,7 +33,6 @@
   gtest,
   libbacktrace,
   lz4,
-  minio,
   ninja,
   nlohmann_json,
   openssl,
@@ -155,6 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
               "TestMinioServer.Connect"
               "TestS3FS.*"
               "TestS3FSGeneric.*"
+              "TestS3FSHTTPS.*" # Needs Minio
             ];
         in
         "-${lib.concatStringsSep ":" filteredTests}";
@@ -288,7 +288,6 @@ stdenv.mkDerivation (finalAttrs: {
     which
     sqlite
   ]
-  ++ lib.optionals enableS3 [ minio ]
   ++ lib.optionals enableFlight [ python3 ]
   ++ lib.optionals enableAzure [ azurite ];
 
