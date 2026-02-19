@@ -8,7 +8,7 @@
   fixup-yarn-lock,
   go,
   makeWrapper,
-  nodejs,
+  nodejs_20,
   nix-update-script,
   patchelf,
   removeReferencesTo,
@@ -18,26 +18,26 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "cdktf-cli";
-  version = "0.21.0";
+  pname = "cdktn-cli";
+  version = "0.22.0";
 
   src = fetchFromGitHub {
-    owner = "hashicorp";
-    repo = "terraform-cdk";
+    owner = "open-constructs";
+    repo = "cdk-terrain";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-iqy8j1bqwjSRBOj8kjFtAq9dLiv6dDbJsiFGQUhGW7k=";
+    hash = "sha256-KgDRQ76ePLJEdULMCTJTouMaWu0SCeV4NwNW2WpoaNY=";
   };
 
   offlineCache = fetchYarnDeps {
     yarnLock = "${finalAttrs.src}/yarn.lock";
-    hash = "sha256-qGjzy/+u8Ui9aHK0sX3MfYbkj5Cqab4RlhOgrwbEmGs=";
+    hash = "sha256-0aOwRdfCTiQHmWzOk+ExLX+/EAryxheyILe7L7oyd4w=";
   };
 
   hcl2json-go-modules =
     (buildGoModule {
-      pname = "cdktf-hcl2json-go-modules";
+      pname = "cdktn-hcl2json-go-modules";
       inherit (finalAttrs) version src;
-      modRoot = "packages/@cdktf/hcl2json";
+      modRoot = "packages/@cdktn/hcl2json";
       vendorHash = "sha256-OiKPq0CHkOxJaFzgsaNJ02tasvHtHWylmaPRPayJob4=";
       proxyVendor = true;
       doCheck = false;
@@ -46,9 +46,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   hcltools-go-modules =
     (buildGoModule {
-      pname = "cdktf-hcltools-go-modules";
+      pname = "cdktn-hcltools-go-modules";
       inherit (finalAttrs) version src;
-      modRoot = "packages/@cdktf/hcl-tools";
+      modRoot = "packages/@cdktn/hcl-tools";
       vendorHash = "sha256-orGxkYEQVtTKvXb7/FD/CLwqSINgBQFTF5arbR0xAvE=";
       proxyVendor = true;
       doCheck = false;
@@ -63,7 +63,7 @@ stdenv.mkDerivation (finalAttrs: {
     fixup-yarn-lock
     go
     makeWrapper
-    nodejs
+    nodejs_20
     patchelf
     removeReferencesTo
     yarn
@@ -71,9 +71,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   postPatch = ''
     # wasm_exec has moved to lib in newer versions of Go
-    substituteInPlace packages/@cdktf/hcl-tools/prebuild.sh \
+    substituteInPlace packages/@cdktn/hcl-tools/prebuild.sh \
       --replace-fail "misc/wasm/wasm_exec.js" "lib/wasm/wasm_exec.js"
-    substituteInPlace packages/@cdktf/hcl2json/prebuild.sh \
+    substituteInPlace packages/@cdktn/hcl2json/prebuild.sh \
       --replace-fail "misc/wasm/wasm_exec.js" "lib/wasm/wasm_exec.js"
   '';
 
@@ -114,7 +114,7 @@ stdenv.mkDerivation (finalAttrs: {
     runHook preCheck
 
     # Skip tests that require terraform (unfree)
-    yarn --offline workspace cdktf-cli test -- \
+    yarn --offline workspace cdktn-cli test -- \
       --testPathIgnorePatterns \
        "src/test/cmds/(convert|init).test.ts"
 
@@ -126,11 +126,11 @@ stdenv.mkDerivation (finalAttrs: {
 
     yarn --offline --production install
 
-    mkdir -p "$out/lib/node_modules/cdktf-cli"
-    cp -rL node_modules packages/cdktf-cli/bundle packages/cdktf-cli/package.json "$out/lib/node_modules/cdktf-cli/"
+    mkdir -p "$out/lib/node_modules/cdktn-cli"
+    cp -rL node_modules packages/cdktn-cli/bundle packages/cdktn-cli/package.json "$out/lib/node_modules/cdktn-cli/"
 
-    makeWrapper "${lib.getExe nodejs}" "$out/bin/cdktf" \
-      --add-flags "$out/lib/node_modules/cdktf-cli/bundle/bin/cdktf.js"
+    makeWrapper "${lib.getExe nodejs_20}" "$out/bin/cdktn" \
+      --add-flags "$out/lib/node_modules/cdktn-cli/bundle/bin/cdktn.js"
 
     runHook postInstall
   '';
@@ -138,8 +138,8 @@ stdenv.mkDerivation (finalAttrs: {
   postInstall = ''
     # Go isn't needed at runtime, so remove these to decrease the closure size
     remove-references-to -t ${go} \
-      "$out/lib/node_modules/cdktf-cli/node_modules/@cdktf/hcl-tools/main.wasm" \
-      "$out/lib/node_modules/cdktf-cli/node_modules/@cdktf/hcl2json/main.wasm"
+      "$out/lib/node_modules/cdktn-cli/node_modules/@cdktn/hcl-tools/main.wasm" \
+      "$out/lib/node_modules/cdktn-cli/node_modules/@cdktn/hcl2json/main.wasm"
   '';
 
   nativeInstallCheckInputs = [
@@ -154,10 +154,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     description = "CDK for Terraform CLI";
-    homepage = "https://github.com/hashicorp/terraform-cdk";
-    changelog = "https://github.com/hashicorp/terraform-cdk/releases/tag/${finalAttrs.src.tag}";
+    homepage = "https://cdktn.io";
+    changelog = "https://github.com/open-constructs/cdk-terrain/releases/tag/${finalAttrs.src.tag}";
     license = lib.licenses.mpl20;
-    mainProgram = "cdktf";
+    mainProgram = "cdktn";
     maintainers = with lib.maintainers; [ deejayem ];
     platforms = lib.platforms.unix;
   };

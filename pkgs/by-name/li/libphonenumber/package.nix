@@ -8,7 +8,8 @@
   gtest,
   jre,
   pkg-config,
-  boost,
+  # complains about missing boost.system on 1.89
+  boost188,
   icu,
   protobuf,
 }:
@@ -52,7 +53,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   propagatedBuildInputs = lib.optionals enableTests [
-    boost
+    boost188
   ];
 
   cmakeDir = "../cpp";
