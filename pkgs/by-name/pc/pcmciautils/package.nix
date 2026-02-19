@@ -9,8 +9,9 @@
   kmod,
   udev,
   udevCheckHook,
-  firmware ? config.pcmciaUtils.firmware or [ ], # Special pcmcia cards.
-  configOpts ? config.pcmciaUtils.config or null, # Special hardware (map memory & port & irq)
+  # config.pcmciaUtils as backwards compat for renamed package
+  firmware ? config.pcmcia-utils.firmware or config.pcmciaUtils.firmware or [ ], # Special pcmcia cards.
+  configOpts ? config.pcmcia-utils.config or config.pcmciaUtils.config or null, # Special hardware (map memory & port & irq)
 }: # used to generate postInstall script.
 
 # FIXME: should add an option to choose between hotplug and udev.
