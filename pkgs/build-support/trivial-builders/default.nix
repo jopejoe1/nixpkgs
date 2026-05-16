@@ -933,6 +933,7 @@ rec {
           printf '%s' ${lib.escapeShellArg msg}
           exit 1
         '';
+        meta.license = lib.licenses.unfree;
       }
       // (lib.optionalAttrs (name == null) {
         # The case of providing `url`, but not `name`. This has
