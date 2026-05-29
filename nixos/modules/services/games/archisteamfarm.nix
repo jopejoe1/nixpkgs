@@ -40,6 +40,24 @@ let
         PasswordFormat = 4;
       }
     );
+
+    finalPackage = pkgs.symlinkJoin {
+      name = "archisteamfarm-with-plugins";
+      paths = [
+        cfg.package
+      ] ++ lib.optionals (cfg.plugins != [ ]) [
+        (pkgs.runCommand "archisteamfarm-plugins" { path = ""; } ''
+          local out_dir=$out/lib/archisteamfarm/plugins
+          mkdir -p $out_dir
+          for plugin in $(ls ${pkgs.linkFarm "archisteamfarm-plugins" (lib.map (x: { name = x.pname; path = x; }) cfg.plugins)}/*/); do
+            ln -s "$(readlink $plugin)/lib/*" "$out_dir"
+          done
+        '')
+      ];
+      meta = {
+        inherit (cfg.package.meta) mainProgram;
+      };
+    };
 in
 {
   options.services.archisteamfarm = {
@@ -84,6 +102,15 @@ in
         Should always be the latest version, for security reasons,
         since this module uses very new features and to not get out of sync with the Steam API.
         :::
+      '';
+    };
+
+    plugins = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [ ];
+      example = [ pkgs.archisteamfarm-freepackages ];
+      description = ''
+        List of plugins to install for ASF, must be a list of derivations.
       '';
     };
 
@@ -208,7 +235,7 @@ in
             Group = "archisteamfarm";
             WorkingDirectory = cfg.dataDir;
             Type = "simple";
-            ExecStart = "${lib.getExe cfg.package} --no-restart --service --system-required --path ${cfg.dataDir}";
+            ExecStart = "${lib.getExe finalPackage} --no-restart --service --system-required --path ${cfg.dataDir}";
             Restart = "always";
 
             # copied from the default systemd service at
