@@ -809,6 +809,9 @@ stdenv.mkDerivation (
       "--cc=${stdenv.cc.targetPrefix}clang"
       "--cxx=${stdenv.cc.targetPrefix}clang++"
     ]
+    ++ optionals (withVulkan && (versionAtLeast version "9.0")) [
+      "--glslc=${lib.getExe buildPackages.shaderc}"
+    ]
     ++ optionals withCudaLLVM [
       # Unwrapped compiler because it will be retargeted and used freestanding with --cuda-device-only.
       "--nvcc=${lib.getExe buildPackages.clang.cc}"
@@ -828,7 +831,8 @@ stdenv.mkDerivation (
           map placeholder (lib.remove "data" finalAttrs.outputs) # We want to keep references to the data dir.
           ++ lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) buildPackages.stdenv.cc
           ++ lib.optional withCudaLLVM buildPackages.clang.cc
-          ++ lib.optional withMetal xcode;
+          ++ lib.optional withMetal xcode
+          ++ lib.optional (withVulkan && (versionAtLeast version "9.0")) buildPackages.shaderc;
       in
       "remove-references-to ${lib.concatMapStringsSep " " (o: "-t ${o}") toStrip} config.h";
 
