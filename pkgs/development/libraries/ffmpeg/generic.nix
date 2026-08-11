@@ -55,7 +55,6 @@
   withBzlib ? withHeadlessDeps,
   withCaca ? withFullDeps, # Textual display (ASCII art)
   withCdio ? withFullDeps && withGPL, # Audio CD grabbing
-  withCelt ? withFullDeps && lib.versionOlder version "9.0", # CELT decoder
   withChromaprint ? withFullDeps, # Audio fingerprinting
   withCodec2 ? withFullDeps, # codec2 en/decoding
   withCuda ? withFullDeps && withNvcodec,
@@ -255,7 +254,6 @@
   aribb24,
   avisynthplus,
   bzip2,
-  celt,
   chromaprint,
   codec2,
   dav1d,
@@ -614,12 +612,6 @@ stdenv.mkDerivation (
       (enableFeature withBzlib "bzlib")
       (enableFeature withCaca "libcaca")
       (enableFeature withCdio "libcdio")
-    ]
-    ++ optionals (versionOlder version "9.0") [
-      # FFMpeg >= 9 doesn't know about the flag anymore
-      (enableFeature withCelt "libcelt")
-    ]
-    ++ [
       (enableFeature withChromaprint "chromaprint")
       (enableFeature withCodec2 "libcodec2")
       (enableFeature withCuda "cuda")
@@ -870,7 +862,6 @@ stdenv.mkDerivation (
         libcdio
         libcdio-paranoia
       ]
-      ++ optionals withCelt [ celt ]
       ++ optionals withChromaprint [ chromaprint ]
       ++ optionals withCodec2 [ codec2 ]
       ++ optionals withCudaNVCC [
