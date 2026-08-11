@@ -63,7 +63,9 @@
     # Cuda isn’t supported on Darwin
     && !stdenv.hostPlatform.isDarwin
     # Clang for our ppc64 targets needs cc-wrapper to work
-    && !(stdenv.buildPlatform.isPower64 && stdenv.buildPlatform.isBigEndian),
+    && !(stdenv.buildPlatform.isPower64 && stdenv.buildPlatform.isBigEndian)
+    # This gets turned into a noop when cudaNVCC is enabled
+    && !withCudaNVCC,
   withCudaNVCC ? withFullDeps && withUnfree && config.cudaSupport,
   withCuvid ? withHeadlessDeps && withNvcodec,
   withDav1d ? withHeadlessDeps, # AV1 decoder (focused on speed and correctness)
