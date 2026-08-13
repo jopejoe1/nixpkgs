@@ -6,6 +6,7 @@
   meson,
   pkg-config,
   ninja,
+  gitUpdater,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -33,7 +34,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   setupHook = ./setup-hook.sh;
 
-  passthru.tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
+  passthru = {
+    updateScript = gitUpdater { rev-prefix = "v"; };
+    tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
+  };
 
   meta = {
     description = "Default fallback theme used by implementations of the icon theme specification";
