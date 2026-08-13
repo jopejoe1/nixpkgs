@@ -2,6 +2,7 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
+    nix-update-script,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -26,6 +27,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
   postInstall = ''
     install -Dm644 -t $out/include crates/c-api/*.h
   '';
+
+  passthru.updateScript = nix-update-script { };
 
   meta = {
     description = "SVG rendering library";
