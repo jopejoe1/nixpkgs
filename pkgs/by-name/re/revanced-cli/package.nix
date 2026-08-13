@@ -4,6 +4,7 @@
   fetchurl,
   makeWrapper,
   jre,
+  gitUpdater,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -31,6 +32,11 @@ stdenv.mkDerivation (finalAttrs: {
 
     runHook postInstall
   '';
+
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+    url = "https://github.com/ReVanced/revanced-cli.git";
+  };
 
   meta = {
     description = "Command line application as an alternative to the ReVanced Manager";
