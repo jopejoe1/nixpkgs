@@ -21,6 +21,7 @@
   xattr,
   skia-pathops,
   uharfbuzz,
+  freetype-py,
   addBinToPathHook,
   pytestCheckHook,
 }:
@@ -69,6 +70,7 @@ buildPythonPackage (finalAttrs: {
   nativeCheckInputs = [
     addBinToPathHook
     pytestCheckHook
+    freetype-py
   ]
   ++ lib.concatLists (
     lib.attrVals (
@@ -76,6 +78,8 @@ buildPythonPackage (finalAttrs: {
         "woff"
         # "interpolatable" is not included because it only contains 2 tests at the time of writing but adds 270 extra dependencies
         "ufo"
+        "lxml"
+        "symfont"
       ]
       ++
         lib.optionals (lib.meta.availableOn stdenv.hostPlatform skia-pathops && !skia-pathops.meta.broken)
