@@ -105,6 +105,9 @@ buildPythonPackage (finalAttrs: {
     description = "Library to manipulate font files from Python";
     changelog = "https://github.com/fonttools/fonttools/blob/${finalAttrs.src.tag}/NEWS.rst";
     license = lib.licenses.mit;
-    maintainers = [ lib.maintainers.sternenseemann ];
+    maintainers = [
+      lib.maintainers.sternenseemann
+      lib.maintainers.jopejoe1
+    ];
   };
 })
