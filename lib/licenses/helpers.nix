@@ -6,10 +6,22 @@ let
     any
     elem
     optionalAttrs
+    isList
+    isString
     ;
+
+  inherit (lib.licenses) mkLicense;
+
   handleComplexProperty =
     evaluateSubProperty: AND: OR: license:
-    if license.licenseType == "compound" then
+    if isList license then
+      AND evaluateSubProperty license.licenses
+    else if isString then
+      evaluateSubProperty (mkLicense {
+        shortName = license;
+        deprecated = true;
+      })
+    else if license.licenseType == "compound" then
       if license.operator == "OR" then
         OR evaluateSubProperty license.licenses
       else if license.operator == "AND" then
@@ -21,7 +33,7 @@ let
     else if license.licenseType == "plus" then
       evaluateSubProperty license.license
     else
-      throw "Unknown license type or legacy license";
+      evaluateSubProperty (mkLicense license);
 in
 rec {
   /**
@@ -61,7 +73,10 @@ rec {
       evaluateComplexProperty = handleComplexProperty (evaluateProperty predicate permissive) AND OR;
     in
     license:
-    if license.licenseType == "simple" then predicate license else evaluateComplexProperty license;
+    if license.licenseType or "" == "simple" then
+      predicate license
+    else
+      evaluateComplexProperty license;
 
   /**
     Evaluate a license expression for a given property name. The property must
@@ -101,7 +116,7 @@ rec {
       evaluateComplexProperty = handleComplexProperty (evaluateNamedProperty name permissive) AND OR;
     in
     license:
-    if license.licenseType == "simple" then license.${name} else evaluateComplexProperty license;
+    if license.licenseType or "" == "simple" then license.${name} else evaluateComplexProperty license;
 
   /**
     Check whether a license expression is free.
@@ -211,8 +226,10 @@ rec {
         x:
         if x.licenseType == "compound" || x.licenseType == "exception" then "(${toSPDX x})" else toSPDX x;
     in
-    if license.licenseType == "simple" then
-      license.spdxId or "LicenseRef-nixos-${license.shortName}"
+    if isList license then
+      lib.concatMapStringsSep " AND " (x: mkBracket x) license.licenses
+    else if isString license then
+      "LicenseRef-unknown"
     else if license.licenseType == "compound" then
       lib.concatMapStringsSep " ${license.operator} " (x: mkBracket x) license.licenses
     else if license.licenseType == "exception" then
@@ -220,7 +237,8 @@ rec {
     else if license.licenseType == "plus" then
       "${mkBracket license.license}${license.operator}"
     else
-      throw "Unknown license type";
+      license.spdxId
+        or (if license ? shortName then "LicenseRef-nixos-${license.shortName}" else "LicenseRef-unknown");
 
   /**
     Create a license.
