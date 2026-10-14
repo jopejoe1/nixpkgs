@@ -8024,8 +8024,6 @@ with pkgs;
 
   adwaita-qt6 = adwaita-qt.override { useQt6 = true; };
 
-  dejavu_fonts = lowPrio (callPackage ../data/fonts/dejavu-fonts { });
-
   docbook_sgml_dtd_41 = callPackage ../data/sgml+xml/schemas/sgml-dtd/docbook/4.1.nix { };
 
   inherit (callPackage ../data/sgml+xml/schemas/sgml-dtd/docbook { })
