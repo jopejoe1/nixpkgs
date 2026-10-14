@@ -23,7 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "dejavu-fonts";
     repo = "dejavu-fonts";
     tag = "version_${lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version}";
-    sha256 = "1xknlg2h287dx34v2n5r33bpcl4biqf0cv7nak657rjki7s0k4bk";
+    hash = "sha256-c5EJ9IlT5lPMVPZsBhyOi1B21xi5WLHJ6O0gAcWjdvY=";
   };
 
   buildFlags = [ "full-ttf" ];
