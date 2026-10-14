@@ -9,7 +9,7 @@
   libmpg123,
   ffmpeg,
   cdparanoia,
-  dejavu_fonts,
+  dejavu-fonts,
   versionCheckHook,
 }:
 
@@ -29,9 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail sdl-config "${lib.getExe' (lib.getDev SDL) "sdl-config"}"
 
     # font loading in xwax is relying on a hardcoded list of paths,
-    # therefore we patch interface.c to also look up in the dejavu_fonts nix store path
+    # therefore we patch interface.c to also look up in the dejavu-fonts nix store path
     substituteInPlace interface.c \
-      --replace-fail "/usr/X11R6/lib/X11/fonts/TTF" "${dejavu_fonts.outPath}/share/fonts/truetype/"
+      --replace-fail "/usr/X11R6/lib/X11/fonts/TTF" "${dejavu-fonts.outPath}/share/fonts/truetype/"
 
     # make paths to executed binaries hermetic:
     substituteInPlace import \
@@ -55,7 +55,7 @@ stdenv.mkDerivation (finalAttrs: {
     cdparanoia
 
     # fonts
-    dejavu_fonts
+    dejavu-fonts
   ];
 
   configureFlags = [

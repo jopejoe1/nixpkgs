@@ -8,7 +8,7 @@
   expat,
   libxslt,
   gperf,
-  dejavu_fonts,
+  dejavu-fonts,
   autoreconfHook,
   versionCheckHook,
   testers,
@@ -60,7 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
     "--with-arch=${stdenv.hostPlatform.parsed.cpu.name}"
     "--with-cache-dir=/var/cache/fontconfig" # otherwise the fallback is in $out/
     # just <1MB; this is what you get when loading config fails for some reason
-    "--with-default-fonts=${dejavu_fonts.minimal}"
+    "--with-default-fonts=${dejavu-fonts.minimal}"
   ]
   ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
     "--with-arch=${stdenv.hostPlatform.parsed.cpu.name}"
@@ -80,7 +80,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postInstall = ''
     cd "$out/etc/fonts"
-    xsltproc --stringparam fontDirectories "${dejavu_fonts.minimal}" \
+    xsltproc --stringparam fontDirectories "${dejavu-fonts.minimal}" \
       --stringparam includes /etc/fonts/conf.d \
       --path $out/share/xml/fontconfig \
       ${./make-fonts-conf.xsl} $out/etc/fonts/fonts.conf \

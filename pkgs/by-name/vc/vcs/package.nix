@@ -12,7 +12,7 @@
   mplayer,
   util-linux,
   getopt,
-  dejavu_fonts,
+  dejavu-fonts,
 }:
 let
   version = "1.13.4";
@@ -40,7 +40,7 @@ stdenv.mkDerivation {
   patches = [ ./fonts.patch ];
   nativeBuildInputs = [ makeWrapper ];
 
-  inherit dejavu_fonts;
+  inherit dejavu-fonts;
   installPhase = ''
     mkdir -p $out/bin
     mv vcs $out/bin/vcs

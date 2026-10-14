@@ -11,7 +11,7 @@
   libGLU,
   SDL2,
   libepoxy,
-  dejavu_fonts,
+  dejavu-fonts,
   inkscape,
   optipng,
   imagemagick,
@@ -76,7 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postInstall = ''
     ln -sf \
-      ${dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf \
+      ${dejavu-fonts}/share/fonts/truetype/DejaVuSansMono.ttf \
       $out/share/games/arx/misc/dejavusansmono.ttf
   ''
   + optionalString withCrashReporter ''

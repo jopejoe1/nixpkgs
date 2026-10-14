@@ -30,7 +30,7 @@ let
 
   # Horizon renders its broker/desktop launch-item (tile) labels with
   # "DejaVu Sans", but fails to instantiate the font when fontconfig resolves it
-  # to a symlinked file -- which is exactly what nixpkgs' dejavu_fonts provides
+  # to a symlinked file -- which is exactly what nixpkgs' dejavu-fonts provides
   # (it is a symlink tree into dejavu-fonts-minimal). The labels then render as
   # blank boxes; the rest of the UI uses the GTK theme font and is unaffected.
   # Other toolkits load the same symlinked font without issue, so this is

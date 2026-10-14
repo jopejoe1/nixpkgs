@@ -6,7 +6,7 @@
   installShellFiles,
   nix-update-script,
   versionCheckHook,
-  dejavu_fonts,
+  dejavu-fonts,
   fetchpatch,
 }:
 python3Packages.buildPythonApplication (finalAttrs: {
@@ -54,7 +54,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
 
   postPatch = ''
     substituteInPlace qr-backup \
-      --replace-fail '"DejaVuSansMono.ttf"' "'${dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf'" \
+      --replace-fail '"DejaVuSansMono.ttf"' "'${dejavu-fonts}/share/fonts/truetype/DejaVuSansMono.ttf'" \
       --replace-fail '"python3", sys.argv[0]' "'$out/bin/qr-backup'"
   '';
 

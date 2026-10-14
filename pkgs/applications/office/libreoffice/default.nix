@@ -161,7 +161,7 @@
   caladea,
   carlito,
   culmus,
-  dejavu_fonts,
+  dejavu-fonts,
   rubik,
   liberation-sans-narrow,
   liberation_ttf_v2,
@@ -201,7 +201,7 @@ let
       caladea
       carlito
       culmus
-      dejavu_fonts
+      dejavu-fonts
       rubik
       liberation-sans-narrow
       liberation_ttf_v2

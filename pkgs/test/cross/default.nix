@@ -117,7 +117,7 @@ let
         exec = "/bin/file";
         args = [
           "${pkgs.file}/share/man/man1/file.1.gz"
-          "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuMathTeXGyre.ttf"
+          "${pkgs.dejavu-fonts}/share/fonts/truetype/DejaVuMathTeXGyre.ttf"
         ];
         pkgFun = pkgs: platformFun pkgs.file;
       };

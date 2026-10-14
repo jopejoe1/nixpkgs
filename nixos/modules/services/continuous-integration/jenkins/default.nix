@@ -168,7 +168,7 @@ in
     environment = {
       # server references the dejavu fonts
       systemPackages = [
-        pkgs.dejavu_fonts
+        pkgs.dejavu-fonts
       ]
       ++ lib.optional cfg.withCLI cfg.package;
 

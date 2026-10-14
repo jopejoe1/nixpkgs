@@ -13,7 +13,7 @@
   libwtk-sdl2,
   icu,
   libconfig,
-  dejavu_fonts,
+  dejavu-fonts,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -44,7 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postPatch = ''
     substituteInPlace data/program.conf \
-      --replace-fail /usr/share/fonts/TTF ${dejavu_fonts}/share/fonts/truetype
+      --replace-fail /usr/share/fonts/TTF ${dejavu-fonts}/share/fonts/truetype
   '';
 
   buildInputs = [

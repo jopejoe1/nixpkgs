@@ -113,7 +113,7 @@ stdenv.mkDerivation rec {
 
         # Fonts used by built-in and third party editor tools
         corefonts
-        dejavu_fonts
+        dejavu-fonts
         liberation_ttf
       ]
       ++ extraLibs pkgs;

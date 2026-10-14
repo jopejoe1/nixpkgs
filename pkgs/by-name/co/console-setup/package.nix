@@ -5,7 +5,7 @@
   bdfresize,
   perl,
   unifont,
-  dejavu_fonts,
+  dejavu-fonts,
   otf2bdf,
   gitUpdater,
 }:
@@ -35,7 +35,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   postPatch = ''
     patchShebangs .
-    substituteInPlace Fonts/Makefile --replace-fail '/usr/share/fonts/truetype/dejavu/' '${dejavu_fonts}/share/fonts/truetype/'
+    substituteInPlace Fonts/Makefile --replace-fail '/usr/share/fonts/truetype/dejavu/' '${dejavu-fonts}/share/fonts/truetype/'
     substituteInPlace Fonts/Makefile --replace-fail '/usr/share/unifont/' '${unifont.doc}/share/unifont/'
   '';
 

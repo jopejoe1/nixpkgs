@@ -12,7 +12,7 @@ let
         environment.variables.NIXOS_OZONE_WL = "1";
         environment.variables.DISPLAY = "do not use";
 
-        fonts.packages = with pkgs; [ dejavu_fonts ];
+        fonts.packages = with pkgs; [ dejavu-fonts ];
       };
     xorg =
       { lib, pkgs, ... }:

@@ -10,7 +10,7 @@
   zlib,
   pkg-config,
   ncurses,
-  dejavu_fonts,
+  dejavu-fonts,
   libpng,
   SDL2,
   SDL2_image,
@@ -81,7 +81,7 @@ stdenv.mkDerivation rec {
   + lib.optionalString tileMode "mv xdg-data/*_tiles.* $out/xdg-data"
   + lib.optionalString (!tileMode) "mv xdg-data/*_console.* $out/xdg-data";
 
-  fontsPath = lib.optionalString tileMode dejavu_fonts;
+  fontsPath = lib.optionalString tileMode dejavu-fonts;
 
   makeFlags = [
     "prefix=${placeholder "out"}"

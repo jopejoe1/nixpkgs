@@ -12,7 +12,7 @@
     {
       imports = [ ./common/user-account.nix ];
 
-      fonts.packages = with pkgs; [ dejavu_fonts ];
+      fonts.packages = with pkgs; [ dejavu-fonts ];
 
       services.cage = {
         enable = true;

@@ -2,7 +2,7 @@
   autoreconfHook,
   cups,
   dbus,
-  dejavu_fonts,
+  dejavu-fonts,
   fetchFromGitHub,
   fetchpatch,
   fetchurl,
@@ -97,7 +97,7 @@ stdenv.mkDerivation {
     "--with-gs-path=${lib.getExe ghostscript}"
     "--with-ippfind-path=${lib.getExe' cups "ippfind"}"
     "--enable-imagefilters"
-    "--with-test-font-path=${dejavu_fonts}/share/fonts/truetype/DejaVuSans.ttf"
+    "--with-test-font-path=${dejavu-fonts}/share/fonts/truetype/DejaVuSans.ttf"
   ]
   # build on platforms without execvpe (path to Ghostscript must be absolute)
   ++ lib.optional stdenv.hostPlatform.isDarwin "--with-gs-path=${lib.getExe ghostscript}";

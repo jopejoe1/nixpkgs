@@ -14,7 +14,7 @@
   fluidsynth,
   soundfont-fluid,
   soundFonts ? [ soundfont-fluid ],
-  dejavu_fonts,
+  dejavu-fonts,
   unzip,
   qt6,
 }:
@@ -81,7 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
   + lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
     mkdir -p $out/share/games/pianobooster/fonts
     # use readlink to avoid referencing dejavu-fonts but dejavu-fonts-minimal instead
-    ln -s $(readlink -f ${dejavu_fonts}/share/fonts/truetype/DejaVuSans.ttf) $out/share/games/pianobooster/fonts/DejaVuSans.ttf
+    ln -s $(readlink -f ${dejavu-fonts}/share/fonts/truetype/DejaVuSans.ttf) $out/share/games/pianobooster/fonts/DejaVuSans.ttf
   ''
   + lib.optionalString stdenv.hostPlatform.isDarwin ''
     mkdir -p $out/{Applications,bin}

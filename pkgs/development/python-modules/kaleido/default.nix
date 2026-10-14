@@ -7,7 +7,7 @@
   fetchurl,
   autoPatchelfHook,
   bash,
-  dejavu_fonts,
+  dejavu-fonts,
   expat,
   fontconfig,
   lato,
@@ -47,7 +47,7 @@ buildPythonPackage rec {
   ];
   buildInputs = [
     bash
-    dejavu_fonts
+    dejavu-fonts
     expat
     fontconfig
     lato

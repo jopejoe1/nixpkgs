@@ -13,7 +13,7 @@
   makeFontsConf,
 
   # testing
-  dejavu_fonts,
+  dejavu-fonts,
   python,
 }:
 
@@ -43,7 +43,7 @@ buildPythonPackage rec {
     ${python.pythonOnBuildForHost.interpreter} setup.py build_ext -i
   '';
 
-  nativeCheckInputs = [ dejavu_fonts ];
+  nativeCheckInputs = [ dejavu-fonts ];
 
   preCheck = ''
     export FONTCONFIG_FILE=${fontsConf};

@@ -3,7 +3,7 @@
   buildGoModule,
   buildFHSEnv,
   binutils,
-  dejavu_fonts,
+  dejavu-fonts,
   pkg-config,
   fetchFromGitHub,
   roboto,
@@ -90,7 +90,7 @@ buildFHSEnv {
     pkgs:
     [
       binutils
-      dejavu_fonts
+      dejavu-fonts
       flutter
       gcc
       go

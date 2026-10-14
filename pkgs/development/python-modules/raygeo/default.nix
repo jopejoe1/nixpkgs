@@ -7,7 +7,7 @@
   rustPlatform,
   msgpack,
   numpy,
-  dejavu_fonts,
+  dejavu-fonts,
   makeFontsConf,
   pycairo,
   pytestCheckHook,
@@ -47,7 +47,7 @@ buildPythonPackage rec {
 
   # The text-to-geometry tests render with the DejaVu Sans family and the
   # layout tests derive their assertions from real glyph metrics.
-  env.FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ dejavu_fonts ]; };
+  env.FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ dejavu-fonts ]; };
 
   pythonImportsCheck = [ "raygeo" ];
 

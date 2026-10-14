@@ -4,7 +4,6 @@
   coreutils,
   cups,
   dbus,
-  dejavu_fonts,
   fetchFromGitHub,
   fetchpatch,
   fontconfig,

@@ -6,7 +6,7 @@
   makeDesktopItem,
   installShellFiles,
   copyDesktopItems,
-  dejavu_fonts,
+  dejavu-fonts,
   SDL2,
   SDL2_ttf,
   SDL2_image,
@@ -61,7 +61,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   postInstall = ''
     mkdir -p $out/share/fonts/truetype/dejavu
     ln -sf \
-      ${dejavu_fonts}/share/fonts/truetype/DejaVuSans.ttf \
+      ${dejavu-fonts}/share/fonts/truetype/DejaVuSans.ttf \
       $out/share/fonts/truetype/dejavu/DejaVuSans.ttf
     mkdir -p $out/share/doc/freenukum
     install -Dm644 README.md CHANGELOG.md $out/share/doc/freenukum/

@@ -23,7 +23,7 @@ in
       packages = lib.mkOption {
         type = with lib.types; listOf path;
         default = [ ];
-        example = lib.literalExpression "[ pkgs.dejavu_fonts ]";
+        example = lib.literalExpression "[ pkgs.dejavu-fonts ]";
         description = "List of primary font packages.";
       };
 
@@ -42,7 +42,7 @@ in
     fonts.packages = lib.mkIf cfg.enableDefaultPackages (
       with pkgs;
       [
-        dejavu_fonts
+        dejavu-fonts
         freefont_ttf
         gyre-fonts # TrueType substitutes for standard PostScript fonts
         liberation_ttf

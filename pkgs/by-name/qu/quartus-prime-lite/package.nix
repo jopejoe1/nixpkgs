@@ -78,7 +78,7 @@ buildFHSEnv (finalAttrs: {
       # qsys requirements
       libxtst
       libxi
-      dejavu_fonts
+      dejavu-fonts
       gnumake
     ];
 

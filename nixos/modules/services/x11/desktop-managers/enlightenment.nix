@@ -109,7 +109,7 @@ in
 
     environment.etc."X11/xkb".source = xcfg.xkb.dir;
 
-    fonts.packages = [ pkgs.dejavu_fonts ];
+    fonts.packages = [ pkgs.dejavu-fonts ];
 
     services.udisks2.enable = true;
     services.upower.enable = config.powerManagement.enable;

@@ -13,7 +13,7 @@
   runtimeShell,
   makeFontsConf,
   noto-fonts-color-emoji,
-  dejavu_fonts,
+  dejavu-fonts,
   nixosTests,
 }:
 
@@ -63,7 +63,7 @@ buildNpmPackage (finalAttrs: {
   env.FONTCONFIG_FILE = makeFontsConf {
     fontDirectories = [
       noto-fonts-color-emoji
-      dejavu_fonts
+      dejavu-fonts
     ];
   };
 
