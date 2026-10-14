@@ -322,7 +322,6 @@ mapAliases {
   ant-theme = throw "'ant-theme' has been removed because it depended on 'gtk-engine-murrine', which was removed because it was unmaintained upstream and depended on GTK 2."; # Added 2026-07-22
   antibody = throw "antibody has been removed because it was deprecated and archived upstream. Consider using antidote instead"; # Added 2026-01-16
   antigravity = warnAlias "'antigravity' has been renamed to 'antigravity-ide'" antigravity-ide; # Added 2026-05-20
-  dejavu_fonts = warnAlias "'dejavu_fonts' has been renamed to 'dejavu-fonts'" dejavu-fonts; # Added 2026-10-15
   antigravity-fhs = warnAlias "'antigravity-fhs' has been renamed to 'antigravity-ide-fhs'" antigravity-ide-fhs; # Added 2026-05-20
   antigravity-fhsWithPackages = warnAlias "'antigravity-fhsWithPackages' has been renamed to 'antigravity-ide-fhsWithPackages'" antigravity-ide-fhsWithPackages; # Added 2026-05-20
   antlr4_8 = throw "antlr4_8 has been removed. Consider using a more recent version of antlr4"; # Added 2025-10-20
@@ -714,6 +713,7 @@ mapAliases {
   deepsea = throw "deepsea has been removed because it has been marked as broken since at least November 2024."; # Added 2025-09-28
   defuddle-cli = warnAlias "defuddle-cli has been renamed to/replaced by 'defuddle'" defuddle; # Added 2026-04-16
   degit-rs = throw "'degit-rs' has been removed because it is unmaintained upstream and has vulnerable dependencies."; # Added 2025-07-11
+  dejavu_fonts = warnAlias "'dejavu_fonts' has been renamed to 'dejavu-fonts'" dejavu-fonts; # Added 2026-10-15
   dejavu_fontsEnv = throw "'dejavu_fontsEnv' has been removed as its content is identical to 'dejavu_fonts'."; # Added 2026-09-25
   deltachat-cursed = throw "'deltachat-cursed' has been renamed to/replaced by 'arcanechat-tui'"; # Converted to throw 2025-10-27
   deltatouch = throw "'deltatouch' has been removed as it depended on qt5 webengine which reached EOL"; # Added 2026-04-25
