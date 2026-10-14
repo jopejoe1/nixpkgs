@@ -28,7 +28,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildFlags = [ "full-ttf" ];
 
-  preBuild = "patchShebangs scripts";
+  postPatch = ''
+    patchShebangs scripts
+  '';
 
   installPhase = ''
     runHook preInstall
