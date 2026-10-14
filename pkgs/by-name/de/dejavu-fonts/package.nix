@@ -50,7 +50,10 @@ stdenv.mkDerivation (finalAttrs: {
     # Copyright (c) 2006 by Tavmjong Bah. All Rights Reserved.
     # DejaVu changes are in public domain
     # See http://dejavu-fonts.org/wiki/License for details
-    license = lib.licenses.free;
+    license = with lib.licenses; AND [
+      bitstreamVera
+      publicDomain
+    ];
 
     platforms = lib.platforms.all;
   };
