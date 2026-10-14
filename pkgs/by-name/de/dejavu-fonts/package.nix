@@ -5,6 +5,7 @@
   fontforge,
   perl,
   perlPackages,
+  installFonts,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -15,6 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
     perl
     perlPackages.IOString
     perlPackages.FontTTF
+    installFonts
   ];
 
   src = fetchFromGitHub {
@@ -28,7 +30,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   preBuild = "patchShebangs scripts";
 
-  installPhase = "install -m444 -Dt $out/share/fonts/truetype build/*.ttf";
+  installPhase = ''
+    runHook preInstall
+    runHook postInstall
+  '';
 
   meta = {
     description = "Typeface family based on the Bitstream Vera fonts";
