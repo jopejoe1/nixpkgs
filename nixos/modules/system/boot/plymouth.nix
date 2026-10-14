@@ -120,8 +120,8 @@ in
       };
 
       font = mkOption {
-        default = "${pkgs.dejavu-fonts.minimal}/share/fonts/truetype/DejaVuSans.ttf";
-        defaultText = literalExpression ''"''${pkgs.dejavu-fonts.minimal}/share/fonts/truetype/DejaVuSans.ttf"'';
+        default = "${pkgs.dejavu-fonts}/share/fonts/truetype/DejaVuSans.ttf";
+        defaultText = literalExpression ''"''${pkgs.dejavu-fonts}/share/fonts/truetype/DejaVuSans.ttf"'';
         type = types.path;
         description = ''
           Font file made available for displaying text on the splash screen.

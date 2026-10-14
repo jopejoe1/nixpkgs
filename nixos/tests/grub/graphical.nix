@@ -21,7 +21,7 @@
       # to load it and silently falls back to its default (non-graphical) menu.
       splash = pkgs.runCommand "grub-gfxterm-splash.png" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
         magick -size 1024x768 xc:'#2d2d2d' \
-          -font ${pkgs.dejavu-fonts.minimal}/share/fonts/truetype/DejaVuSans.ttf \
+          -font ${pkgs.dejavu-fonts}/share/fonts/truetype/DejaVuSans.ttf \
           -gravity south -pointsize 48 -fill white \
           -annotate +0+150 'GFXTERMOK' \
           -depth 8 -type TrueColor PNG24:$out

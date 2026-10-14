@@ -12,7 +12,7 @@ let
 in
 {
   fontconfig ? fontconfig_,
-  # an array of fonts, e.g. `[ pkgs.dejavu-fonts.minimal ]`
+  # an array of fonts, e.g. `[ pkgs.dejavu-fonts ]`
   fontDirectories,
   impureFontDirectories ? [
     # nix user profile
@@ -46,7 +46,7 @@ runCommand "fonts.conf"
     buildInputs = [ fontconfig ];
     inherit fontDirectories includes;
     # Add a default font for non-nixos systems, <1MB and in nixos defaults.
-    impureFontDirectories = impureFontDirectories ++ [ dejavu-fonts.minimal ];
+    impureFontDirectories = impureFontDirectories ++ [ dejavu-fonts ];
   }
   ''
     xsltproc --stringparam fontDirectories "$fontDirectories" \

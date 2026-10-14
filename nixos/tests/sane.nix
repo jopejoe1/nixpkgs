@@ -14,7 +14,7 @@ let
   text = "66263666188646651519653683416";
   fontsConf = pkgs.makeFontsConf {
     fontDirectories = [
-      pkgs.dejavu-fonts.minimal
+      pkgs.dejavu-fonts
     ];
   };
   # an image with black on white text spelling "${text}"
