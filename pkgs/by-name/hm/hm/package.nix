@@ -37,17 +37,6 @@ stdenv.mkDerivation (finalAttrs: {
     llvmPackages.openmp
   ];
 
-  env.NIX_CFLAGS_COMPILE = toString (
-    [
-      "-Wno-error=array-bounds"
-    ]
-    ++ lib.optionals stdenv.cc.isClang [
-      "-Wno-error=bitwise-instead-of-logical"
-      "-Wno-error=missing-braces"
-      "-Wno-error=nontrivial-memcall"
-    ]
-  );
-
   installPhase = ''
     runHook preInstall
 
