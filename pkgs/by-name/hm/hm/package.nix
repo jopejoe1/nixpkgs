@@ -4,6 +4,7 @@
   fetchFromGitLab,
   gitUpdater,
   cmake,
+  openssl,
   llvmPackages,
 }:
 
@@ -36,6 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [
     llvmPackages.openmp
+    openssl
   ];
 
   installPhase = ''
