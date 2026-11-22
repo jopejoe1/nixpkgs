@@ -27,6 +27,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   cmakeFlags = [
     (lib.cmakeBool "HIGH_BITDEPTH" true)
+    (lib.cmakeBool "ENABLE_EXT" true)
+    (lib.cmakeBool "ENABLE_SVC" true)
   ];
 
   nativeBuildInputs = [
